@@ -14,7 +14,7 @@
   <title>Robert Van Liew · Product Designer & Full-Stack Developer</title>
   <meta name="description" content="Portfolio of Robert Van Liew — Product Designer and Full-Stack Developer based in New York. Specializing in interaction design, design systems, and AI-assisted product workflows.">
   <meta name="author" content="Robert Van Liew">
-  <meta name="keywords" content="Robert Van Liew, product designer, interaction design, UX design, full-stack developer, design systems, QuickBooks, Intuit, New York designer">
+  <meta name="keywords" content="Robert Van Liew, product designer, interaction design, UX design, full-stack developer, design systems, fintech design, New York designer">
   <link rel="canonical" href="https://robertvanliew.com/">
 
   <!-- ── Open Graph (LinkedIn, Slack, iMessage previews) ── -->
@@ -68,7 +68,7 @@
           "Front-End Development",
           "UX Research",
           "Fintech UX",
-          "QuickBooks",
+          "SaaS Design",
           "Figma",
           "React"
         ]
@@ -1412,6 +1412,37 @@
         grid-template-columns: 1fr !important;
       }
 
+      /* Decision card grids (120px label + 1fr content) */
+      .cs-section [style*="grid-template-columns:120px 1fr"],
+      .cs-section [style*="grid-template-columns: 120px 1fr"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* iPhone mockup status bar — add Dynamic Island clearance */
+      [style*="aspect-ratio:9/19.5"] > div:first-child {
+        padding-top: 12px !important;
+        position: relative;
+      }
+
+      /* iPhone Dynamic Island pill */
+      [style*="aspect-ratio:9/19.5"]::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90px;
+        height: 28px;
+        background: #000;
+        border-radius: 20px;
+        z-index: 2;
+      }
+
+      /* Dark-section padding on mobile */
+      .cs-section[style*="padding:36px 40px"] {
+        padding: 24px 16px !important;
+      }
+
       /* Prevent horizontal overflow on the whole page */
       html, body { overflow-x: hidden !important; }
       .content { overflow-x: hidden; }
@@ -1498,7 +1529,7 @@
             <div class="k">Discipline</div>Product Design · Interaction Design · Front-End
           </div>
           <div>
-            <div class="k">Status</div>Available for internal mobility (PD2)
+            <div class="k">Status</div>Open to new opportunities
           </div>
           <div>
             <div class="k">Tools</div>Figma · React/Tailwind · Figma AI · Claude/Gemini
@@ -1577,9 +1608,9 @@
                           <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="12" height="8" rx="1" stroke="rgba(255,255,255,0.3)" stroke-width="1.1"/><path d="M4 4V3a3 3 0 016 0v1" stroke="rgba(255,255,255,0.3)" stroke-width="1.1" stroke-linecap="round"/><path d="M5 8h4" stroke="rgba(255,255,255,0.3)" stroke-width="1.1" stroke-linecap="round"/></svg>
                           <div><div style="font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.55);">S-Corporation</div><div style="font-size:8.5px;color:rgba(255,255,255,0.25);margin-top:1px;">Corporate tax structure with payroll requirements.</div></div>
                         </div>
-                        <!-- ★ Intuit Better Together -->
+                        <!-- ★ Ecosystem Integration -->
                         <div style="margin-top:3px;padding:9px 11px;border-radius:7px;background:rgba(0,119,197,0.08);border:1px solid rgba(0,119,197,0.22);">
-                          <span style="font-size:9px;color:rgba(255,255,255,0.72);line-height:1.55;"><strong style="color:#4fc3f7;font-weight:700;">Intuit Better Together:</strong> This entity selection automatically configures which version of TurboTax best fits your filing needs (Self-Employed vs Business).</span>
+                          <span style="font-size:9px;color:rgba(255,255,255,0.72);line-height:1.55;"><strong style="color:#4fc3f7;font-weight:700;">Ecosystem Integration:</strong> This entity selection automatically configures which tax filing format best fits your needs (Self-Employed vs Business Schedule C).</span>
                         </div>
                       </div>
                       <div style="padding:8px 14px 12px;display:flex;justify-content:flex-end;gap:7px;border-top:1px solid rgba(255,255,255,0.06);">
@@ -1951,9 +1982,9 @@
           <div style="margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;border-top:1px solid var(--edge-soft);padding-top:20px;">
             <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:2px;white-space:nowrap;">Design intent</div>
             <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.75;margin:0;">
-              The privacy guarantee is inlined directly with the upload action — not buried in a privacy policy, not footnoted below the fold.
-              At the moment of highest user anxiety ("am I about to upload my bank statements to some startup?"), the shield icon and the plain-language promise are the first readable text after the headline.
-              <span style="color:var(--ink-faint);">For products handling financial data at Intuit's scale — QuickBooks, TurboTax, Mint — trust signals aren't a legal checkbox; they're a conversion mechanism and a brand promise simultaneously.</span>
+              I inlined the privacy guarantee directly with the upload action — not buried in a privacy policy, not footnoted below the fold.
+              At the moment of highest user anxiety ("am I about to upload my bank statements?"), the shield icon and the plain-language promise are the first readable text after the headline.
+              <span style="color:var(--ink-faint);">For any product handling financial data, trust signals aren't a legal checkbox — they're a conversion mechanism and a brand promise simultaneously.</span>
             </p>
           </div>
         </div>
@@ -2069,7 +2100,7 @@
           <div class="cs-section" style="margin-top:0;">
             <div class="cs-section-label">Design Rationale · Decision Point</div>
             <h2 class="cs-section-title">A Decision I Can Defend</h2>
-            <p class="cs-section-body">The JD asks designers to "articulate the rationale behind design decisions." Here's one — structured exactly the way I'd walk through it in a design critique.</p>
+            <p class="cs-section-body">I believe great design decisions should be articulable. Here's one — structured exactly the way I'd walk through it in a design critique.</p>
 
             <div style="margin-top:24px;border:1px solid rgba(255,255,255,0.07);border-radius:16px;overflow:hidden;font-family:'Inter',system-ui,sans-serif;">
 
@@ -3189,10 +3220,10 @@
                     CSV</strong> is the default hero action — IRS-labeled, pre-categorized, directly usable by an
                   accountant or TurboTax upload. Full XLSX serves users who want every transaction for their own
                   records. JSON serves developer/integrations workflows.</p>
-                <p class="cs-section-body" style="margin-top:12px;">The QuickBooks Sync module on the roadmap is
-                  intentional: Smart Deductions treats itself as a data preparation layer for the QB ecosystem. Users
-                  who outgrow single-operator LLC tracking can carry their categorized history directly into QuickBooks
-                  — a "Better Together" bridge that mirrors Intuit's platform strategy.</p>
+                <p class="cs-section-body" style="margin-top:12px;">The accounting-sync module on the roadmap is
+                  intentional: Smart Deductions treats itself as a data preparation layer for larger ecosystems. Users
+                  who outgrow single-operator LLC tracking can carry their categorized history directly into their
+                  accounting software — a natural upgrade path rather than a dead end.</p>
               </div>
             </div>
           </div>
@@ -3294,11 +3325,11 @@
 
             <!-- annotation -->
             <div style="margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;border-top:1px solid var(--edge-soft);padding-top:20px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:2px;white-space:nowrap;">Better Together</div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:2px;white-space:nowrap;">Ecosystem Handoff</div>
               <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.75;margin:0;">
-                The Schedule C CSV that Smart Deductions exports maps line-for-line onto TurboTax's Self-Employed import format — Office Expenses land on Line 18, Utilities on Line 25, Meals on Line 24b with the 50% rule pre-flagged.
+                The Schedule C CSV that Smart Deductions exports maps line-for-line onto standard tax-filing import formats — Office Expenses land on Line 18, Utilities on Line 25, Meals on Line 24b with the 50% rule pre-flagged.
                 The user doesn't re-enter a single number: they upload, they confirm, they file.
-                <span style="color:var(--ink-faint);">This is the "Better Together" thesis made literal — Smart Deductions is a data preparation layer for the Intuit filing stack, not a standalone tool. Every design decision upstream (the Schedule C category labels, the confidence flags, the review prompts) exists to make this downstream moment frictionless.</span>
+                <span style="color:var(--ink-faint);">I designed Smart Deductions as a data preparation layer, not a standalone tool. Every design decision upstream — the Schedule C category labels, the confidence flags, the review prompts — exists to make this downstream moment frictionless.</span>
               </p>
             </div>
           </div>
@@ -3416,9 +3447,9 @@
                 <p style="font-size:13px;line-height:1.6;color:#8892a4;margin:0;">I intentionally chose a local-first,
                   zero-server architecture to eliminate GDPR and CCPA compliance risks entirely. No user data ever
                   leaves the device — no consent banner, no data retention policy, no breach liability. This is the most
-                  defensible legal posture for a financial tool, and it mirrors the "privacy by design" principle Intuit
-                  applies across the platform. Client-side PDF.js trades some OCR accuracy for that guarantee; the UI
-                  surfaces confidence signals rather than silently accepting bad extractions.</p>
+                  defensible legal posture for a financial tool, and it's the "privacy by design" approach I believe
+                  every product handling sensitive data should adopt. Client-side PDF.js trades some OCR accuracy for
+                  that guarantee; the UI surfaces confidence signals rather than silently accepting bad extractions.</p>
               </div>
 
               <div style="background:#0f1117;border:1px solid #1e2130;border-radius:10px;padding:18px 20px;">
