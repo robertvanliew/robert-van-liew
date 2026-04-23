@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: DMC Canada '26 | Robert Van Liew</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    .case-study-hero {
+      padding: 120px 0 60px;
+      text-align: center;
+    }
+    .case-study-hero h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin-bottom: 20px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .case-study-hero p.tags {
+      color: var(--accent-color);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    .cs-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      margin-bottom: 80px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 60px;
+    }
+    .cs-sidebar h3 {
+      font-family: var(--font-mono);
+      color: #1a1a1a;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .cs-sidebar p {
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+      color: #111;
+    }
+    
+    .cs-content h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      color: #0d0d0d;
+    }
+    .cs-content p {
+      margin-bottom: 20px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      color: #1a1a1a;
+    }
+    @media (max-width: 768px) {
+      .cs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .full-width-image {
+      margin: 60px 0;
+      width: 100%;
+    }
+    .full-width-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    
+    .back-btn {
+      display: inline-block;
+      margin-top: 40px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      border: 1px solid var(--border-color);
+      padding: 12px 24px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: var(--accent-light);
+      border-color: var(--accent-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="Robert Van Liew Logo" class="brand-logo" />
+        </a>
+      </div>
+      
+      <button class="menu-toggle" id="hamburger" aria-label="Toggle navigation">
+        <span class="hamburger-icon"></span>
+      </button>
+
+      <nav class="main-nav" id="folderTabs">
+        <ul class="nav-links">
+          <li><a href="index.html#work" class="nav-link">Work</a></li>
+          <li><a href="index.html#services" class="nav-link">Capabilities</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="case-study-hero">
+      <div class="container">
+        <h1>DMC Canada '26</h1>
+        <p class="tags">UI/UX DESIGN | FULL STACK DEV | E-COMMERCE</p>
+      </div>
+    </section>
+
+    <div class="container">
+
+      
+      <div class="cs-grid">
+        <div class="cs-sidebar">
+          <h3>Role</h3>
+          <p>Product Designer & Lead Engineer</p>
+          
+          <h3>Timeline</h3>
+          <p>1 Week Sprint</p>
+          
+          <h3>Tech Stack</h3>
+          <p>React, Next.js, Stripe, TailwindCSS</p>
+          
+          <h3>Deliverables</h3>
+          <p>Web App, E-Commerce Flow, CMS</p>
+        </div>
+        
+        <div class="cs-content">
+          <h2>The Challenge</h2>
+          <p>
+            The DMC World DJ Championships needed a robust digital overhaul for their Canadian division. The challenge was to create an immersive platform that captured the raw, underground energy of battle DJing while providing an incredibly smooth e-commerce experience for ticket sales and official merchandise.
+          </p>
+          <p>
+            The legacy system was fragmented and didn't perform well on mobile devices, leading to cart abandonment during high-traffic ticket drops. My goal was to unify the brand and the checkout experience into a highly performant web app.
+          </p>
+          
+          <h2>The Solution</h2>
+          <p>
+            I architected a dark-themed, glassmorphic UI system utilizing stark red contrasts to evoke a sense of competition and energy. To solve the conversion issues, I rebuilt the entire e-commerce flow, placing emphasis on native mobile UX principles.
+          </p>
+          
+          <h2>Checkout Friction & Payment Routing</h2>
+          <p>
+            To handle high-traffic ticket drops, I migrated the payment infrastructure to Stripe. The payment flow was restructured to preempt errors: inline zip code validation prevents late-stage declines, and explicit error states guide users through card rejections without clearing their cart. By integrating Apple Pay and Google Pay directly into a persistent checkout drawer, the number of required tap interactions was dramatically reduced, directly increasing conversion rates and mitigating cart abandonment.
+          </p>
+          
+          <a href="index.html#work" class="back-btn">← Back to Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-cta">
+          <h2>Ready to build something lasting?</h2>
+          <p>Available for freelance opportunities and full-time inquiries.</p>
+          <a href="mailto:contact@example.com" class="btn-primary">Get in Touch</a>
+        </div>
+        <div class="footer-socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">X / Twitter</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Robert Van Liew. All rights reserved.</p>
+        <p class="footer-note">Designed & Engineered with precision.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

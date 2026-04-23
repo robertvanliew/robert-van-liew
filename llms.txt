@@ -1,0 +1,35 @@
+# Robert Van Liew — llms.txt
+# https://robertvanliew.com/
+
+## Who is Robert Van Liew?
+
+Robert Van Liew is a Product Designer and Front-End Developer based in New York, NY.
+He specializes in interaction design, design systems, and AI-assisted product workflows.
+
+## Current Focus
+
+Robert is pursuing a Product Designer 2 role at Intuit (QuickBooks Platform),
+with deep expertise in fintech UX, data-dense interface design, and accessibility-first systems.
+
+## Key Projects
+
+- **Smart Deductions** — A client-side financial analytics tool for LLC owners and self-employed
+  individuals. Parses bank statements locally in the browser (no server storage), auto-categorizes
+  transactions against IRS Schedule C categories, and exports TurboTax-ready reports.
+  61% auto-categorization rate, <5s parse time, ~80% user acceptance of AI suggestions.
+
+- **DMC Canada '26** — Full brand and commerce platform for a competitive dance event.
+  Delivered in 6 days from Figma to production. Lighthouse 94/100, zero revision rounds,
+  full Stripe payment integration.
+
+## Skills & Tools
+
+Figma, React, Tailwind CSS, TypeScript, Figma AI, Claude/Gemini for prototyping.
+WCAG 2.1 AA accessibility, semantic color token systems, motion design.
+
+## Contact
+
+- Website: https://robertvanliew.com/
+- LinkedIn: https://www.linkedin.com/in/robertvanliew
+- Email: robvanliew@gmail.com
+- Location: New York, NY, USA
