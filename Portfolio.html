@@ -1336,13 +1336,85 @@
       .cs-section-title { font-size: 22px; }
       .cs-section-body { font-size: 15px; }
 
-      /* Inline grids in case studies (3-col stat cards etc.) */
-      .cs-section [style*="grid-template-columns: repeat(3"] {
+      /* Services */
+      .service-title { font-size: 22px; }
+    }
+
+    /* ── Responsive: Case study inline overrides (tablet + phone) ── */
+    @media (max-width: 820px) {
+
+      /* Force ALL inline grid-template-columns to single column */
+      .cs-section [style*="grid-template-columns:repeat(3"],
+      .cs-section [style*="grid-template-columns: repeat(3"],
+      .cs-section [style*="grid-template-columns:repeat(2"],
+      .cs-section [style*="grid-template-columns: repeat(2"],
+      .cs-section [style*="grid-template-columns:1fr 1.5fr"],
+      .cs-section [style*="grid-template-columns:1fr 1fr"],
+      .cs-section [style*="grid-template-columns: 1fr 1fr"],
+      .cs-section [style*="grid-template-columns:auto 1fr"],
+      .cs-section [style*="grid-template-columns: auto 1fr"],
+      .cs-section [style*="grid-template-columns:200px 1fr"],
+      .cs-section [style*="grid-template-columns: 200px 1fr"],
+      .panel [style*="grid-template-columns:repeat(3"],
+      .panel [style*="grid-template-columns: repeat(3"],
+      .panel [style*="grid-template-columns:repeat(2,1fr)"],
+      .panel [style*="grid-template-columns: repeat(2,1fr)"] {
         grid-template-columns: 1fr !important;
       }
 
-      /* Services */
-      .service-title { font-size: 22px; }
+      /* Interactive chart panels — stack donut above bar */
+      .cs-section [style*="grid-template-columns:1fr 1.5fr"] > div {
+        border-right: none !important;
+        border-bottom: 1px solid #1e2130;
+      }
+      .cs-section [style*="grid-template-columns:1fr 1.5fr"] > div:last-child {
+        border-bottom: none;
+      }
+
+      /* Constrain all images and mockup visuals */
+      .cs-section img,
+      .cs-section svg,
+      .cs-section video {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      /* Mockup containers — no fixed widths */
+      .cs-section [style*="width:"] {
+        max-width: 100% !important;
+      }
+
+      /* Phone mockup frames */
+      .cs-section [style*="aspect-ratio:9/19.5"],
+      .cs-section [style*="aspect-ratio: 9/19.5"] {
+        max-width: 260px !important;
+        margin: 0 auto;
+      }
+
+      /* Side-by-side flex layouts in case studies → stack */
+      .cs-section [style*="display:flex"][style*="gap"] {
+        flex-wrap: wrap !important;
+      }
+
+      /* Browser window mockup containers */
+      .cs-section [style*="box-shadow"][style*="border-radius:10px"] {
+        max-width: 100% !important;
+      }
+
+      /* Stat cards — ensure padding doesn't cramp */
+      .cs-section [style*="background:var(--content-2)"][style*="border-radius:12px"] {
+        padding: 16px !important;
+      }
+
+      /* Trade-offs / constraints auto-fit grids */
+      .cs-section [style*="grid-template-columns:repeat(auto-fit"],
+      .cs-section [style*="grid-template-columns: repeat(auto-fit"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Prevent horizontal overflow on the whole page */
+      html, body { overflow-x: hidden !important; }
+      .content { overflow-x: hidden; }
     }
   </style>
 </head>
