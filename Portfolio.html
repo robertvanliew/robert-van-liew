@@ -1222,84 +1222,127 @@
       border-radius: 4px;
     }
 
-    /* ── Responsive ── */
+    /* ── Responsive: Tablet ── */
     @media (max-width: 820px) {
-      .cs-hero {
-        margin: 0 -20px 36px;
-      }
+      body { overflow: auto; height: auto; }
+      .window { overflow: visible; }
 
-      .cs-intro {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-
-      .cs-split,
-      .cs-split.flip {
-        grid-template-columns: 1fr;
-      }
-
-      .cs-3col {
-        grid-template-columns: 1fr;
-      }
-
-      .cs-2col {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 820px) {
       .content {
         padding: 24px 20px 48px;
       }
 
-      .meta-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .project-card,
-      .project-card.flip {
-        grid-template-columns: 1fr;
-        direction: ltr;
-        gap: 24px;
-      }
-
-      .project-card.flip>* {
-        direction: ltr;
-      }
-
-      .project-card .mockup {
-        min-height: 200px;
-      }
-
-      .service-card {
-        grid-template-columns: 1fr;
-      }
-
-      .sketches {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
+      /* Tab strip: hide scrollbar, keep swipe */
       .tabs {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
       }
+      .tabs::-webkit-scrollbar { display: none; }
 
       .tab {
         min-width: 110px;
         flex-shrink: 0;
       }
+      .tab .label { font-size: 10px; }
+      .tab .x { display: none; }
 
-      .tab .label {
-        font-size: 10px;
+      /* Toolbar: stack breadcrumb and theme selector */
+      .toolbar {
+        flex-wrap: wrap;
+        gap: 4px 10px;
+        padding: 6px 16px;
+      }
+      .theme-toggles { margin-left: auto; }
+
+      /* About meta grid */
+      .meta-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .tab .x {
-        display: none;
+      /* Work: project cards → single column */
+      .project-card,
+      .project-card.flip {
+        grid-template-columns: 1fr !important;
+        direction: ltr;
+        gap: 24px;
       }
+      .project-card.flip > * { direction: ltr; }
+      .project-card .mockup { min-height: 200px; }
+
+      /* Services / Systems & Craft */
+      .service-card {
+        grid-template-columns: 1fr;
+      }
+
+      /* Sketches / Playground */
+      .sketches {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      /* Contact */
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Case study layouts */
+      .cs-hero {
+        margin: 0 -20px 36px;
+      }
+      .cs-intro {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .cs-split,
+      .cs-split.flip {
+        grid-template-columns: 1fr;
+      }
+      .cs-3col { grid-template-columns: 1fr; }
+      .cs-2col { grid-template-columns: 1fr; }
+    }
+
+    /* ── Responsive: Phone ── */
+    @media (max-width: 480px) {
+      .content { padding: 20px 16px 40px; }
+
+      /* Smaller title */
+      h1.title { font-size: clamp(28px, 8vw, 42px); }
+      p.lede { font-size: 17px; }
+
+      /* Meta grid → single column */
+      .meta-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      /* Tabs even smaller */
+      .tab { min-width: 90px; padding: 0 14px; height: 34px; }
+      .tabstrip { height: 40px; padding: 6px 0 0 0; }
+
+      /* Toolbar compact */
+      .toolbar { font-size: 11px; padding: 6px 12px; }
+      .toolbar .crumb { font-size: 11px; }
+      .theme-toggles label { display: none; }
+
+      /* Project card text */
+      .project-card h2 { font-size: 22px; }
+      .project-card p { font-size: 14px; }
+      .project-card .mockup { min-height: 180px; }
+
+      /* Sketches → single column */
+      .sketches { grid-template-columns: 1fr; }
+
+      /* Case study */
+      .cs-hero { margin: 0 -16px 28px; }
+      .cs-section-title { font-size: 22px; }
+      .cs-section-body { font-size: 15px; }
+
+      /* Inline grids in case studies (3-col stat cards etc.) */
+      .cs-section [style*="grid-template-columns: repeat(3"] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Services */
+      .service-title { font-size: 22px; }
     }
   </style>
 </head>
