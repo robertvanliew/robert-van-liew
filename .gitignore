@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Dev tools
+.gemini/
+Skills/
+
+# Python scripts & output
+*.py
+render_frames/
+__pycache__/
+
+# Temp files
+*.png.tmp
+text_final_check.png
+capture_mobile.py
+create_mockup*.py
+create_pro_mockup.py
+create_ultra_mockup.py
+create_website_gif.py
+process_bg.py
+_AGENTS.md
+
+# OS
+.DS_Store
+Thumbs.db
