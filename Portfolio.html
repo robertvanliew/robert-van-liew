@@ -1469,21 +1469,15 @@
           <span class="label">Work — Selected Projects</span>
           <span class="x" aria-label="Close Work tab">×</span>
         </button>
-        <button class="tab" id="tab-services" data-idx="2" data-target="services" data-host="services" role="tab"
-          aria-selected="false" aria-controls="services" tabindex="-1">
+        <button class="tab" id="tab-services" data-idx="2" data-target="systems-craft" data-host="systems-craft" role="tab"
+          aria-selected="false" aria-controls="systems-craft" tabindex="-1">
           <span class="fav" aria-hidden="true"></span>
           <span class="label">Systems & Craft</span>
           <span class="x" aria-label="Close Systems & Craft tab">×</span>
         </button>
-        <button class="tab" id="tab-contact" data-idx="3" data-target="contact" data-host="contact" role="tab"
-          aria-selected="false" aria-controls="contact" tabindex="-1">
-          <span class="fav" aria-hidden="true"></span>
-          <span class="label">Contact</span>
-          <span class="x" aria-label="Close Contact tab">×</span>
-        </button>
 
       </div>
-      <div class="new-tab" title="New Tab" aria-label="New Tab">+</div>
+      <div class="new-tab" id="btn-new-tab" title="Contact Me" aria-label="Contact Me">+</div>
     </div>
 
     <!-- Toolbar -->
@@ -1745,7 +1739,7 @@
       </section>
 
       <!-- Systems & Craft -->
-      <section class="panel" id="services" role="tabpanel" aria-labelledby="tab-services" tabindex="0">
+      <section class="panel" id="systems-craft" role="tabpanel" aria-labelledby="tab-services" tabindex="0">
         <h1 class="title">Systems <em>& Craft.</em></h1>
         <p class="lede">Demonstrating scalable design tokens and accessible component architecture built for enterprise
           environments.</p>
@@ -3864,7 +3858,8 @@
     const panels = Array.from(document.querySelectorAll('.panel'));
     const addrPath = document.getElementById('addr-path');
 
-    function activate(idx) {
+    function activate(idx, updatePath = true) {
+      if (idx < 0 || idx >= tabs.length) return;
       tabs.forEach(t => {
         const active = +t.dataset.idx === idx;
         t.classList.toggle('active', active);
@@ -3875,17 +3870,64 @@
       panels.forEach(p => p.classList.toggle('active', p.id === tgt));
       addrPath.textContent = tabs[idx].dataset.host;
       localStorage.setItem('portfolio:tab', String(idx));
-      document.querySelector('.content').scrollTop = 0;
+      
+      if (updatePath) {
+        const path = '/' + tgt;
+        if (window.location.pathname !== path) {
+          window.history.pushState(null, null, path);
+        }
+      }
+      
+      const content = document.querySelector('.content');
+      if (content) content.scrollTop = 0;
     }
 
-    function navigateTo(panelId) {
+    function navigateTo(panelId, updatePath = true) {
       const tabIdx = tabs.findIndex(t => t.dataset.target === panelId);
-      if (tabIdx >= 0) { activate(tabIdx); return; }
+      if (tabIdx >= 0) {
+        activate(tabIdx, updatePath);
+        return;
+      }
       // Panel without a tab (e.g. case study) — deselect all tabs, show panel
       tabs.forEach(t => t.classList.remove('active'));
       panels.forEach(p => p.classList.toggle('active', p.id === panelId));
       addrPath.textContent = panelId;
-      document.querySelector('.content').scrollTop = 0;
+      
+      if (updatePath) {
+        const path = '/' + panelId;
+        if (window.location.pathname !== path) {
+          window.history.pushState(null, null, path);
+        }
+      }
+      
+      const content = document.querySelector('.content');
+      if (content) content.scrollTop = 0;
+    }
+
+    function handleRouting() {
+      const path = window.location.pathname.substring(1).replace(/\/$/, '');
+      if (path) {
+        // Try tabs first
+        const tabIdx = tabs.findIndex(t => t.dataset.target === path);
+        if (tabIdx >= 0) {
+          activate(tabIdx, false);
+          return;
+        }
+        // Try panels
+        const panel = panels.find(p => p.id === path);
+        if (panel) {
+          navigateTo(path, false);
+          return;
+        }
+      }
+      
+      // Fallback to saved or default
+      const saved = parseInt(localStorage.getItem('portfolio:tab') || '0', 10);
+      if (!isNaN(saved) && saved >= 0 && saved < tabs.length) {
+        activate(saved, false);
+      } else {
+        activate(0, false);
+      }
     }
 
     tabs.forEach(t => t.addEventListener('click', (e) => {
@@ -3898,6 +3940,14 @@
       const el = e.target.closest('[data-goto]');
       if (el) navigateTo(el.dataset.goto);
     });
+
+    window.addEventListener('popstate', handleRouting);
+    window.addEventListener('load', handleRouting);
+
+    const btnNewTab = document.getElementById('btn-new-tab');
+    if (btnNewTab) {
+      btnNewTab.addEventListener('click', () => navigateTo('contact'));
+    }
 
     window.addEventListener('keydown', (e) => {
       if ((e.metaKey || e.ctrlKey) && /^[1-6]$/.test(e.key)) {
@@ -3918,9 +3968,6 @@
         }
       }
     });
-
-    const saved = parseInt(localStorage.getItem('portfolio:tab') || '0', 10);
-    if (!isNaN(saved) && saved >= 0 && saved < tabs.length) activate(saved);
 
     // Ecosystem Theme Toggle Logic
     const docRoot = document.documentElement;

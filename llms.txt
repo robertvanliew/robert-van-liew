@@ -30,6 +30,11 @@ WCAG 2.1 AA accessibility, semantic color token systems, motion design.
 ## Contact
 
 - Website: https://robertvanliew.com/
+- Work: https://robertvanliew.com/work
+- About: https://robertvanliew.com/about
+- Systems & Craft: https://robertvanliew.com/systems-craft
+- Case Study (Jersey Club): https://robertvanliew.com/jersey-club-radio
+- Case Study (DMC Canada): https://robertvanliew.com/dmc-canada-26
 - LinkedIn: https://www.linkedin.com/in/robertvanliew
 - Email: robvanliew@gmail.com
 - Location: New York, NY, USA

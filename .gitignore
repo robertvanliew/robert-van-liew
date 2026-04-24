@@ -24,3 +24,6 @@ _AGENTS.md
 # OS
 .DS_Store
 Thumbs.db
+
+# Vercel
+.vercel/
