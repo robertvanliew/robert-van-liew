@@ -1,10 +1,14 @@
 {
+  "redirects": [
+    { "source": "/tax-analyzer", "destination": "/smart-deductions-case-study", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/Portfolio.html" },
     { "source": "/about", "destination": "/Portfolio.html" },
     { "source": "/work", "destination": "/Portfolio.html" },
     { "source": "/systems-craft", "destination": "/Portfolio.html" },
     { "source": "/contact", "destination": "/Portfolio.html" },
+    { "source": "/smart-deductions-case-study", "destination": "/Portfolio.html" },
     { "source": "/jersey-club-radio", "destination": "/case-study-jersey-club.html" },
     { "source": "/dmc-canada-26", "destination": "/case-study-dmc.html" }
   ],
