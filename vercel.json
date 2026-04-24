@@ -1,6 +1,8 @@
 {
   "redirects": [
-    { "source": "/tax-analyzer", "destination": "/smart-deductions-case-study", "permanent": true }
+    { "source": "/tax-analyzer", "destination": "/smart-deductions-case-study", "permanent": true },
+    { "source": "/jersey-club-radio", "destination": "/jersey-club-radio-case-study", "permanent": true },
+    { "source": "/dmc-canada-26", "destination": "/dmc-dj-canada-case-study", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/Portfolio.html" },
@@ -9,8 +11,8 @@
     { "source": "/systems-craft", "destination": "/Portfolio.html" },
     { "source": "/contact", "destination": "/Portfolio.html" },
     { "source": "/smart-deductions-case-study", "destination": "/Portfolio.html" },
-    { "source": "/jersey-club-radio", "destination": "/case-study-jersey-club.html" },
-    { "source": "/dmc-canada-26", "destination": "/case-study-dmc.html" }
+    { "source": "/jersey-club-radio-case-study", "destination": "/case-study-jersey-club.html" },
+    { "source": "/dmc-dj-canada-case-study", "destination": "/case-study-dmc.html" }
   ],
   "headers": [
     {
