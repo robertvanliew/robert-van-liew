@@ -1,5 +1,5 @@
 # Robert Van Liew — llms.txt
-# https://robertvanliew.com/
+# https://www.robertvanliew.com/
 
 ## Who is Robert Van Liew?
 
@@ -29,12 +29,12 @@ WCAG 2.1 AA accessibility, semantic color token systems, motion design.
 
 ## Contact
 
-- Website: https://robertvanliew.com/
-- Work: https://robertvanliew.com/work
-- About: https://robertvanliew.com/about
-- Systems & Craft: https://robertvanliew.com/systems-craft
-- Case Study (Jersey Club): https://robertvanliew.com/jersey-club-radio-case-study
-- Case Study (DMC Canada): https://robertvanliew.com/dmc-dj-canada-case-study
+- Website: https://www.robertvanliew.com/
+- Work: https://www.robertvanliew.com/work
+- About: https://www.robertvanliew.com/about
+- Systems & Craft: https://www.robertvanliew.com/systems-craft
+- Case Study (Jersey Club): https://www.robertvanliew.com/jersey-club-radio-case-study
+- Case Study (DMC Canada): https://www.robertvanliew.com/dmc-dj-canada-case-study
 - LinkedIn: https://www.linkedin.com/in/robertvanliew
 - Email: robvanliew@gmail.com
 - Location: New York, NY, USA
