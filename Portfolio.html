@@ -1850,6 +1850,42 @@
             </div>
           </div>
 
+          <!-- SEO and Schema card -->
+          <div class="service-card">
+            <div class="service-visual" style="padding:24px;background:var(--content-2);font-family:'JetBrains Mono',monospace;display:flex;flex-direction:column;gap:8px;">
+              <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;">julieschatzmusic.com &middot; JSON-LD graph</div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:10px;color:var(--ink-soft);">@type: LocalBusiness</span>
+                <span style="font-size:9px;color:var(--accent);">#business</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:10px;color:var(--ink-soft);">@type: MusicGroup</span>
+                <span style="font-size:9px;color:var(--accent);">#business</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:10px;color:var(--ink-soft);">@type: Person</span>
+                <span style="font-size:9px;color:var(--accent);">#julie</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:10px;color:var(--ink-soft);">@type: Service &times; 8</span>
+                <span style="font-size:9px;color:var(--ink-faint);">provider &rarr; #business</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:10px;color:var(--ink-soft);">@type: Event &times; 14</span>
+                <span style="font-size:9px;color:var(--ink-faint);">performer &rarr; #julie</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:10px;color:var(--ink-soft);">@type: Review &times; 10 + AggregateRating</span>
+                <span style="font-size:9px;color:var(--ink-faint);">itemReviewed &rarr; #business</span>
+              </div>
+            </div>
+            <div class="service-body">
+              <div class="service-label">SEO &amp; Structured Data</div>
+              <h2 class="service-title">Discoverable <em>by Design</em></h2>
+              <p class="service-desc">Search visibility is a design surface, not an afterthought. The Julie Schatz site carries 17 JSON-LD blocks wired together through <code>@id</code> references, so Google reads one connected entity instead of seventeen disconnected ones. LocalBusiness and MusicGroup share an identity. Eight Service entries point back to the business. Fourteen Event entries point to the Person. Ten Reviews drive an AggregateRating computed from real counts, never fabricated. Schema markup is a contract with the search engine, and treating it like a token system means the contract holds at scale.</p>
+            </div>
+          </div>
+
           <!-- Semantic Color Tokens card -->
           <div class="service-card">
             <div class="service-visual" style="padding:28px 24px;display:flex;flex-direction:column;gap:8px;background:var(--content-2);font-family:'JetBrains Mono',monospace;">
@@ -1893,6 +1929,38 @@
               <div class="service-label">Motion System</div>
               <h2 class="service-title">Named Easing, <em>Purposeful Duration</em></h2>
               <p class="service-desc">Three duration tokens: micro (hover lifts), macro (card transitions), staging (staggered entrances), share one named easing curve: <strong>ease-fluid</strong> (<code>cubic-bezier(.22,.68,0,1)</code>). It produces a snappy initial response with a soft settle, avoiding the mechanical feel of <code>ease-in-out</code>. All motion is wrapped in <code>prefers-reduced-motion: reduce</code> at the token level, so no individual component needs to handle it.</p>
+            </div>
+          </div>
+
+          <!-- Local-First State card -->
+          <div class="service-card">
+            <div class="service-visual" style="padding:24px;background:var(--content-2);font-family:'JetBrains Mono',monospace;display:flex;flex-direction:column;gap:10px;">
+              <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;">Cross-surface draft &middot; ceremony picker</div>
+              <div style="display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:9px;color:var(--ink-faint);width:14px;">01</span>
+                <span style="font-size:10px;color:var(--ink-soft);flex:1;">/wedding-ceremony-songs/ &middot; pick</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:9px;color:var(--accent);width:14px;">&darr;</span>
+                <span style="font-size:10px;color:var(--ink-soft);flex:1;">localStorage &middot; julieschatz.ceremony.v1</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:9px;color:var(--ink-faint);width:14px;">02</span>
+                <span style="font-size:10px;color:var(--ink-soft);flex:1;">/ &middot; inquiry drawer &middot; surface</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--content);border:1px solid var(--edge-soft);border-radius:6px;">
+                <span style="font-size:9px;color:var(--ink-faint);width:14px;">03</span>
+                <span style="font-size:10px;color:var(--ink-soft);flex:1;">capture-phase submit &middot; attach</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--content);border:1px solid var(--accent);border-radius:6px;">
+                <span style="font-size:9px;color:var(--accent);width:14px;">04</span>
+                <span style="font-size:10px;color:var(--ink);flex:1;">success only &middot; clear</span>
+              </div>
+            </div>
+            <div class="service-body">
+              <div class="service-label">Local-First State</div>
+              <h2 class="service-title">State without <em>a Server</em></h2>
+              <p class="service-desc">Draft work should follow the user across pages without requiring an account, a sync layer, or a database round-trip. On <a href="https://julieschatzmusic.com" target="_blank" rel="noopener" style="color:var(--accent);">julieschatzmusic.com</a> a couple builds their ceremony song selections on one page and the draft surfaces inside the booking form on any other page through one namespaced <code>localStorage</code> key. A <code>MutationObserver</code> watches the inquiry drawer for the active state, reads the draft, and renders it inline. A capture-phase submit listener serializes the draft into a hidden field before the form handler reads <code>FormData</code>. The draft only clears on confirmed submission success, so validation errors, network failures, and disposable-email rejections all leave the work intact. The pattern generalizes to any flow where the cost of losing user input is higher than the cost of carrying it.</p>
             </div>
           </div>
 
