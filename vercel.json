@@ -12,7 +12,8 @@
     { "source": "/contact", "destination": "/Portfolio.html" },
     { "source": "/smart-deductions-case-study", "destination": "/case-study-smart-deductions.html" },
     { "source": "/jersey-club-radio-case-study", "destination": "/case-study-jersey-club.html" },
-    { "source": "/dmc-dj-canada-case-study", "destination": "/case-study-dmc.html" }
+    { "source": "/dmc-dj-canada-case-study", "destination": "/case-study-dmc.html" },
+    { "source": "/julie-schatz-case-study", "destination": "/case-study-julie-schatz.html" }
   ],
   "headers": [
     {
