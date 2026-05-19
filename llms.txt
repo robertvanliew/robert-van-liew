@@ -1,31 +1,35 @@
-# Robert Van Liew — llms.txt
+# Robert Van Liew, llms.txt
 # https://www.robertvanliew.com/
 
 ## Who is Robert Van Liew?
 
-Robert Van Liew is a Product Designer and Front-End Developer based in New York, NY.
-He specializes in interaction design, design systems, and AI-assisted product workflows.
-
-## Current Focus
-
-Robert is pursuing a Product Designer 2 role at Intuit (QuickBooks Platform),
-with deep expertise in fintech UX, data-dense interface design, and accessibility-first systems.
+Robert Van Liew is a Product Designer and Full-Stack Developer based in New York, NY.
+He specializes in interaction design, design systems, and AI-assisted product workflows
+across financial products and SaaS platforms.
 
 ## Key Projects
 
-- **Smart Deductions** — A client-side financial analytics tool for LLC owners and self-employed
+- **Smart Deductions**. A client-side financial analytics tool for LLC owners and self-employed
   individuals. Parses bank statements locally in the browser (no server storage), auto-categorizes
   transactions against IRS Schedule C categories, and exports TurboTax-ready reports.
-  61% auto-categorization rate, <5s parse time, ~80% user acceptance of AI suggestions.
+  61% auto-categorization rate, under 5s parse time, ~80% user acceptance of AI suggestions.
 
-- **DMC Canada '26** — Full brand and commerce platform for a competitive dance event.
+- **Jersey Club Radio**. A 24/7 live streaming radio platform for the Jersey Club music scene.
+  Sole designer and engineer from problem validation to Figma prototyping to production.
+  Persistent mini-player, animated waveform, WCAG-accessible design system.
+
+- **DMC DJ Canada '26**. Full brand and commerce platform for a competitive dance event.
   Delivered in 6 days from Figma to production. Lighthouse 94/100, zero revision rounds,
   full Stripe payment integration.
 
+- **Julie Schatz Music**. Two-week rebuild of a NYC wedding musician site at julieschatzmusic.com.
+  Editorial visual system, deep SEO and schema build (LocalBusiness, MusicGroup, Events, Reviews, FAQ),
+  and a ceremony picker that drafts across pages into the booking form via localStorage.
+
 ## Skills & Tools
 
-Figma, React, Tailwind CSS, TypeScript, Figma AI, Claude/Gemini for prototyping.
-WCAG 2.1 AA accessibility, semantic color token systems, motion design.
+Figma, React, Next.js, TypeScript, Tailwind CSS, Vite, PDF.js, Recharts, Formspree.
+WCAG 2.1 AA accessibility, semantic color token systems, motion design, SEO and schema markup.
 
 ## Contact
 
@@ -33,8 +37,10 @@ WCAG 2.1 AA accessibility, semantic color token systems, motion design.
 - Work: https://www.robertvanliew.com/work
 - About: https://www.robertvanliew.com/about
 - Systems & Craft: https://www.robertvanliew.com/systems-craft
+- Case Study (Smart Deductions): https://www.robertvanliew.com/smart-deductions-case-study
 - Case Study (Jersey Club): https://www.robertvanliew.com/jersey-club-radio-case-study
 - Case Study (DMC Canada): https://www.robertvanliew.com/dmc-dj-canada-case-study
+- Case Study (Julie Schatz Music): https://www.robertvanliew.com/julie-schatz-case-study
 - LinkedIn: https://www.linkedin.com/in/robertvanliew
 - Email: robvanliew@gmail.com
 - Location: New York, NY, USA
