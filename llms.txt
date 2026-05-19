@@ -43,5 +43,6 @@ Specialized: PDF.js, Recharts, Formspree, Schema.org / JSON-LD, WCAG 2.1 AA acce
 - Case Study (DMC Canada): https://www.robertvanliew.com/dmc-dj-canada-case-study
 - Case Study (Julie Schatz Music): https://www.robertvanliew.com/julie-schatz-case-study
 - LinkedIn: https://www.linkedin.com/in/robertvanliew
+- GitHub: https://github.com/robertvanliew
 - Email: robvanliew@gmail.com
 - Location: New York, NY, USA
