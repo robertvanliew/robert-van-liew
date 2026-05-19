@@ -28,8 +28,9 @@ across financial products and SaaS platforms.
 
 ## Skills & Tools
 
-Figma, React, Next.js, TypeScript, Tailwind CSS, Vite, PDF.js, Recharts, Formspree.
-WCAG 2.1 AA accessibility, semantic color token systems, motion design, SEO and schema markup.
+Design: Figma, design systems, motion design, semantic color token systems.
+Front-end: Semantic HTML, modern CSS (Grid, Flexbox, custom properties, container queries, :focus-visible, prefers-reduced-motion), React, Next.js, TypeScript, Tailwind CSS, Vite.
+Specialized: PDF.js, Recharts, Formspree, Schema.org / JSON-LD, WCAG 2.1 AA accessibility, AI-assisted workflows.
 
 ## Contact
 
