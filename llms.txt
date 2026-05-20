@@ -4,7 +4,7 @@
 ## Who is Robert Van Liew?
 
 Robert Van Liew is a Product Designer and Full-Stack Developer based in New York, NY.
-He specializes in interaction design, design systems, and AI-assisted product workflows
+He specializes in interaction design, design systems, and end-to-end product engineering
 across financial products and SaaS platforms.
 
 ## Key Projects
