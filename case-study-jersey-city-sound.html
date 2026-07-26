@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Jersey City Sound, Case Study, Robert Van Liew</title>
+<meta name="description" content="Case study: a static encyclopedia-archive of Jersey City music culture. 248 entries generated from one data file, a cite-or-cut editorial standard, and a schema layer built to be cited by search engines and language models.">
+<meta name="author" content="Robert Van Liew">
+<link rel="canonical" href="https://www.robertvanliew.com/jersey-city-sound-case-study">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.robertvanliew.com/jersey-city-sound-case-study">
+<meta property="og:title" content="The Jersey City Sound, Case Study, Robert Van Liew">
+<meta property="og:description" content="248 entries generated from one data file, a cite-or-cut editorial standard, and a schema layer built to be cited by search engines and language models.">
+<meta property="og:image" content="https://www.robertvanliew.com/images/og-cover.png">
+<meta property="og:site_name" content="Robert Van Liew">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.robertvanliew.com/jersey-city-sound-case-study">
+<meta name="twitter:title" content="The Jersey City Sound, Case Study, Robert Van Liew">
+<meta name="twitter:description" content="248 entries generated from one data file, a cite-or-cut editorial standard, and a schema layer built to be cited by search engines and language models.">
+<meta name="twitter:image" content="https://www.robertvanliew.com/images/og-cover.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CreativeWork",
+      "@id": "https://www.robertvanliew.com/jersey-city-sound-case-study#creativework",
+      "name": "The Jersey City Sound, Case Study",
+      "url": "https://www.robertvanliew.com/jersey-city-sound-case-study",
+      "description": "Case study covering the design and build of jerseycitysound.com. Information architecture where every entry lives in one data file, a Python generator that writes the entire site, a cite-or-cut editorial standard, and a schema layer built for citation by search engines and language models.",
+      "datePublished": "2026-07-25",
+      "dateModified": "2026-07-25",
+      "author": {
+        "@type": "Person",
+        "name": "Robert Van Liew",
+        "url": "https://www.robertvanliew.com/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.robertvanliew.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.robertvanliew.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://www.robertvanliew.com/#work" },
+        { "@type": "ListItem", "position": 3, "name": "The Jersey City Sound", "item": "https://www.robertvanliew.com/jersey-city-sound-case-study" }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-chrome:   #e2e4e3;
+    --bg-chrome-2: #d4d7d4;
+    --tab-inactive:#dcdedc;
+    --tab-hover:   #e8eae8;
+    --tab-active:  #f3f5f2;
+    --content:     #f3f5f2;
+    --content-2:   #e9ebe8;
+    --edge:        #c0c4c1;
+    --edge-soft:   #d4d7d3;
+    --ink:         #202522;
+    --ink-soft:    #5f6561;
+    --ink-faint:   #9ba1a0;
+    --accent:      #9C7A14;
+    --accent-warm: #C9A227;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Fraunces", Georgia, serif;
+    color: var(--ink);
+    background: var(--content);
+    min-height: 100vh;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--content);
+    border-bottom: 1px solid var(--edge-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 72px;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color .15s, border-color .15s;
+  }
+  .nav-back:hover { color: var(--ink); border-color: var(--edge); }
+  .nav-crumb {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .nav-tag {
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 4px 10px;
+    border: 1px solid var(--edge-soft);
+    border-radius: 4px;
+  }
+
+  .page {
+    padding: 56px 72px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .project-eyebrow {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .project-eyebrow .crumb-cur {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .project-eyebrow .sep { color: var(--edge); font-family: "JetBrains Mono", monospace; font-size: 11px; }
+
+  h1.title {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  h1.title em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 28px;
+  }
+  .project-tags span {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 5px 11px;
+    border: 1px solid var(--edge-soft);
+    border-radius: 4px;
+  }
+
+  .cs-intro {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 56px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--edge-soft);
+  }
+  .cs-desc {
+    font-size: 18px;
+    line-height: 1.65;
+    color: #332e24;
+    text-wrap: pretty;
+  }
+  .cs-desc em { color: var(--accent); font-style: italic; }
+  .cs-desc a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .cs-meta-list { display: flex; flex-direction: column; gap: 18px; }
+  .cs-meta-item .k {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .cs-meta-item .v {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .cs-meta-item .v a { color: var(--accent); text-decoration: none; }
+  .cs-meta-item .v a:hover { text-decoration: underline; }
+
+  .cs-section { margin-bottom: 60px; }
+  .cs-section-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cs-section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--edge-soft);
+  }
+  .cs-section-title {
+    font-family: "Fraunces", serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .cs-section-body {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    text-wrap: pretty;
+    margin-bottom: 14px;
+  }
+  .cs-section-body strong { color: var(--ink); font-weight: 600; }
+  .cs-section-body a { color: var(--accent); }
+  .cs-section-body code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    background: var(--content-2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  .schema-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .schema-pill {
+    border: 1px solid var(--edge-soft);
+    border-radius: 8px;
+    padding: 14px 18px;
+    background: #fff;
+  }
+  .schema-pill .k {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+  .schema-pill .v {
+    font-family: "Fraunces", serif;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .schema-pill .sub {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  .flow-card {
+    margin-top: 28px;
+    background: #fff;
+    border: 1px solid var(--edge-soft);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .flow-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--edge-soft);
+    align-items: start;
+  }
+  .flow-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .flow-row:first-child { padding-top: 0; }
+  .flow-step {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 3px;
+  }
+  .flow-body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .flow-body code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+    background: var(--content-2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  .cs-figure {
+    margin: 28px 0 14px;
+  }
+  .cs-figure__frame {
+    background: #0E0E10;
+    border: 1px solid rgba(201, 162, 39, 0.22);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 18px 48px rgba(11, 11, 12, 0.22);
+  }
+  .cs-figure__frame img,
+  .cs-figure__frame video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .cs-figure__caption {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    margin-top: 10px;
+    line-height: 1.55;
+  }
+  .cs-figure__caption strong { color: var(--ink-soft); font-weight: 600; }
+  .cs-figure--phone {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cs-figure--phone .cs-figure__caption {
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .outro {
+    border-top: 1px solid var(--edge-soft);
+    padding-top: 36px;
+    margin-top: 40px;
+  }
+  .outro-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .outro-cta {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 3px;
+  }
+  .outro-cta:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  @media (max-width: 820px) {
+    nav { padding: 12px 20px; }
+    .nav-crumb { display: none; }
+    .page { padding: 36px 20px 80px; }
+    .cs-intro { grid-template-columns: 1fr; gap: 28px; }
+    .schema-grid { grid-template-columns: 1fr; }
+    .flow-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-back">&larr; Portfolio</a>
+  <span class="nav-crumb">case study / jersey-city-sound</span>
+  <span class="nav-tag">Archive &middot; 2026</span>
+</nav>
+
+<div class="page">
+
+  <div class="project-eyebrow">
+    <a href="/" class="nav-back">&larr; Work</a>
+    <span class="sep">/</span>
+    <span class="crumb-cur">The Jersey City Sound</span>
+  </div>
+
+  <h1 class="title">The Jersey City <em>Sound</em></h1>
+
+  <div class="project-tags">
+    <span>Information Architecture</span>
+    <span>Static Generation</span>
+    <span>Editorial Standards</span>
+    <span>Schema &amp; AEO</span>
+    <span>End-to-End</span>
+  </div>
+
+  <div class="cs-intro">
+    <div class="cs-desc">
+      Jersey City has produced DJs, producers, and artists for fifty years, and almost none of it has been written down in one place. The Jersey City Sound is the archive that fixes that. It documents the people, venues, crews, and labels that built the scene, with a source attached to every claim. The site has to outlive its own maintenance, so it is static HTML with no framework, no bundler, and no database. I founded it, designed it, and built it at <a href="https://jerseycitysound.com" target="_blank" rel="noopener">jerseycitysound.com</a>. This case study covers the two decisions that carry the project: an information architecture where every entry lives in one data file and the whole site is generated from it, and a discovery layer built so that search engines and language models cite the archive by name.
+    </div>
+    <div class="cs-meta-list">
+      <div class="cs-meta-item">
+        <div class="k">Role</div>
+        <div class="v">Founder, Designer &amp; Engineer</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="k">Owner</div>
+        <div class="v">Frankpella LLC</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="k">Stack</div>
+        <div class="v">Static HTML, CSS, Python, GitHub Actions, GitHub Pages</div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="k">Live</div>
+        <div class="v"><a href="https://jerseycitysound.com" target="_blank" rel="noopener">jerseycitysound.com &nearr;</a></div>
+      </div>
+      <div class="cs-meta-item">
+        <div class="k">Scope</div>
+        <div class="v">Brand system, information architecture, entry template, generator, search, schema, memorial wing</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">01 &middot; Information Architecture</div>
+    <h2 class="cs-section-title">248 Entries, One Source of Truth</h2>
+    <p class="cs-section-body">An archive fails in one of two ways. It either becomes a CMS nobody maintains, or it becomes a pile of hand-edited pages that drift out of sync with each other. The decision here was to make the data the site. Every entry, with its facts, sources, roles, years active, cross-links, and galleries, lives in a single file at <code>data/entries.json</code>. Nothing about an entry is stored in its page, because the page does not exist until the generator writes it.</p>
+    <p class="cs-section-body">One Python file, <code>execution/generate_entry_pages.py</code>, reads that data and writes the site. Every entry page, the A to Z archive index, the Legends memorial wing, the Sources bibliography, the search index, the sitemap, <code>robots.txt</code>, and <code>llms.txt</code>. It also deletes orphans, so an entry removed from the data disappears from the site instead of lingering as a dead URL. A correction from a family member is a one-line edit and a commit, not a content migration.</p>
+    <p class="cs-section-body">The archive currently holds <strong>248</strong> entries. <strong>247</strong> of them are generated. The last one, <code>entry-dj-dx.html</code>, is hand-authored, and the generator is written to leave it alone. That exception is the proof the template is right: a page written by hand and a page written by the script are indistinguishable in the browser. That was the standard the entry template had to meet before I let it generate anything.</p>
+
+    <div class="schema-grid">
+      <div class="schema-pill">
+        <div class="k">Source of truth</div>
+        <div class="v">One JSON file</div>
+        <div class="sub">Facts, sources, roles, years, genres, galleries per entry</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">Generator</div>
+        <div class="v">One script, whole site</div>
+        <div class="sub">Entries, archive, Legends, sources, sitemap, robots, llms.txt</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">Editorial standard</div>
+        <div class="v">Cite or cut</div>
+        <div class="sub">Numbered sources built into the template, not optional</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">Legends wing</div>
+        <div class="v">10 memorial entries</div>
+        <div class="sub">Night and gold inversion, same logo, same grid</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">Search</div>
+        <div class="v">Generated index</div>
+        <div class="sub">archive-data.js, client-side, no server, no query cost</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">Deployment</div>
+        <div class="v">Push to publish</div>
+        <div class="sub">GitHub Actions ships the built folder to Pages on every push</div>
+      </div>
+    </div>
+
+    <figure class="cs-figure">
+      <div class="cs-figure__frame">
+        <img src="images/jcs-archive.png" alt="The Jersey City Sound A to Z archive index on archival paper, with a filter field and category chips" loading="lazy">
+      </div>
+      <figcaption class="cs-figure__caption"><strong>Fig 1.</strong> The A to Z index. Every entry the generator has written, filtered by People, Groups, Venues, or Films, searching against a client-side index built from the same data file. The count in the middle is read from the data, so it cannot fall out of step with the list beneath it.</figcaption>
+    </figure>
+
+    <p class="cs-section-body" style="margin-top:28px;">The entry template is the core unit, so it got the most attention. Breadcrumb, entry number set in letterspaced caps, name in a display serif, a one-line descriptor, then era and genre chips. The Record Card sits in the right rail holding the structured facts: portrait, years active, roles, genres, notable works, affiliations, and official links behind a gold hairline frame. Below that a lead paragraph, then Career, Notable Works, Credits and Receipts, In the Community, Gallery, numbered Sources, a claim bar, and three related entries.</p>
+
+    <p class="cs-section-body">The lead paragraph is written to a specific brief: forty to sixty words, self-contained, answering who this person is with no surrounding context needed. That is the passage a reader skims and the passage a language model quotes. Everything above it exists to frame it, and everything below it exists to support it.</p>
+
+    <figure class="cs-figure">
+      <div class="cs-figure__frame">
+        <img src="images/jcs-entry.png" alt="An entry page showing the breadcrumb, entry number, era chips, drop-cap lead paragraph, and the Record Card in the right rail" loading="lazy">
+      </div>
+      <figcaption class="cs-figure__caption"><strong>Fig 2.</strong> Entry № 001. The Record Card carries the structured facts in the right rail, the lead paragraph opens on a drop cap and is written to stand alone, and the era chips sit above the rule so the period is legible before a word is read.</figcaption>
+    </figure>
+
+    <p class="cs-section-body" style="margin-top:28px;">The editorial standard is cite or cut. Nothing enters the archive without a source. That is a design constraint before it is an editorial one, because it forces the numbered sources block into the template as a permanent section rather than an optional footer. It also sets the tone: museum label, not music blog. Factual, warm, no hype, no beef. Receipts instead of adjectives.</p>
+
+    <p class="cs-section-body">The site runs two themes. Archival paper by default, warm and slightly off-white, with hairline rules instead of boxes and gold used like gilding at roughly five percent of any page. The Legends memorial wing inverts to night and gold. Same logo, same typefaces, same grid, same spacing. Ten entries live there. The inversion is enough to make the wing feel like a different room without making it a second brand, which matters because these are memorial pages for people the community lost and they should not read like a themed microsite.</p>
+
+    <figure class="cs-figure">
+      <div class="cs-figure__frame">
+        <img src="images/jcs-legends.png" alt="The Legends memorial wing rendered in the night and gold theme, with entry numbers and names in memoriam" loading="lazy">
+      </div>
+      <figcaption class="cs-figure__caption"><strong>Fig 3.</strong> The Legends wing. The theme inverts to night and gold and everything else holds, so the memorial pages read as part of the same building rather than a separate site.</figcaption>
+    </figure>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">02 &middot; Discovery</div>
+    <h2 class="cs-section-title">Built to Be Cited</h2>
+    <p class="cs-section-body">An archive nobody finds is a private document. The goal was blunter than ranking. When someone asks who the first Jersey City DJs were, whether they ask a search engine or a model, the answer should come from the people who were actually there. That means writing for extraction, not only for keywords.</p>
+    <p class="cs-section-body">Every entry ships <strong>Person</strong> or <strong>MusicGroup</strong> schema with <code>sameAs</code> links out to official sites, streaming profiles, and Wikidata, plus a <strong>BreadcrumbList</strong>. Sitewide there is <strong>Organization</strong> with <code>areaServed</code> set to Jersey City, and a <strong>WebSite</strong> graph. Pillar and history pages carry <strong>FAQPage</strong> blocks phrased the way people actually ask. The sitemap is generated alongside the pages, so it cannot fall behind the content it describes.</p>
+    <p class="cs-section-body">The writing does the rest. Claims are countable. Years active, residencies with date ranges, release numbers, each with a source next to it. "Legendary" is not a fact and does not appear anywhere in the archive. Language models extract passages rather than pages, so the lead paragraph on every entry is built as a standalone definition and the citations sit inline where they can be seen. <code>llms.txt</code> and <code>llms-full.txt</code> sit at the root, and <code>robots.txt</code> explicitly welcomes GPTBot, ClaudeBot, PerplexityBot, and Google-Extended rather than defaulting them out.</p>
+
+    <div class="schema-grid">
+      <div class="schema-pill">
+        <div class="k">Person / MusicGroup</div>
+        <div class="v">Per entry</div>
+        <div class="sub">sameAs out to official sites, streaming, and Wikidata</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">Organization</div>
+        <div class="v">Geographic anchor</div>
+        <div class="sub">areaServed Jersey City, founder linked, WebSite graph sitewide</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">Lead paragraph</div>
+        <div class="v">Extractable by design</div>
+        <div class="sub">40 to 60 words, self-contained, written to be quoted</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">Sources</div>
+        <div class="v">Numbered, on the page</div>
+        <div class="sub">Visible citations, not a link to a bibliography elsewhere</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">llms.txt</div>
+        <div class="v">Two files</div>
+        <div class="sub">A short index and a full dump, both generated</div>
+      </div>
+      <div class="schema-pill">
+        <div class="k">robots.txt</div>
+        <div class="v">Crawlers welcomed</div>
+        <div class="sub">GPTBot, ClaudeBot, PerplexityBot, Google-Extended allowed</div>
+      </div>
+    </div>
+
+    <div class="flow-card">
+      <div class="flow-row">
+        <div class="flow-step">01 &middot; Document</div>
+        <div class="flow-body">A name comes in from the community, often through Instagram or a family member. Facts get checked against a real source. If there is no source, it does not ship. The entry is added to <code>data/entries.json</code> with its citations attached.</div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">02 &middot; Generate</div>
+        <div class="flow-body">One command rewrites every page from the data. The entry page, the archive index, the Legends wing if the entry is memorial, the sources bibliography, the search index, the sitemap, and both llms files. Orphaned pages are removed in the same pass.</div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">03 &middot; Publish</div>
+        <div class="flow-body">Push to main. GitHub Actions ships the built folder to Pages behind the custom domain. There is no build server to maintain and no database to migrate, which is the whole point when the requirement is permanence.</div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-step">04 &middot; Get cited</div>
+        <div class="flow-body">Each documented name is a query with almost no competition. Every one that surfaces feeds authority back to the head terms, and the structured lead paragraph gives a model something clean to quote when the question arrives in natural language.</div>
+      </div>
+    </div>
+
+    <figure class="cs-figure cs-figure--phone">
+      <div class="cs-figure__frame">
+        <img src="images/jcs-entry-mobile.png" alt="An entry page on a phone, with the navigation stacked and the Record Card moved out of the right rail into the single column" loading="lazy">
+      </div>
+      <figcaption class="cs-figure__caption"><strong>Fig 4.</strong> On mobile the Record Card leaves the right rail and drops into the single column directly under the entry header, so the structured facts still arrive before the prose rather than after all of it.</figcaption>
+    </figure>
+  </div>
+
+  <div class="outro">
+    <div class="cs-section-label">Outro</div>
+    <p class="outro-body">This one is a monument, not a media site. Static HTML with no dependencies means it still loads in twenty years, which is the actual requirement when the subject is people's history. The generator means a correction becomes a live page in one commit. The schema means the archive answers the question wherever the question gets asked. The hardest part was never the code. It was holding the line on cite or cut when a good story arrived without a source.</p>
+    <a class="outro-cta" href="https://jerseycitysound.com" target="_blank" rel="noopener">Visit the live site &nearr;</a>
+  </div>
+
+</div>
+
+</body>
+</html>
