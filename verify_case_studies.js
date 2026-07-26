@@ -105,10 +105,26 @@ for (const route of ROUTES) {
 if (pf.includes('—')) fail('Portfolio.html contains an em dash');
 else pass('Portfolio.html no em dashes');
 
-for (const img of ['images/jcs-logo.png', 'images/lily-card.jpg']) {
+for (const img of ['images/jcs-logo.png']) {
   if (pf.includes(img) && fs.existsSync(img)) pass('Portfolio card image ' + img);
   else fail('Portfolio card image missing: ' + img);
 }
+
+// Card 07 is the interactive candle rather than a static image, so check the
+// widget's moving parts are all present and wired instead of an image path.
+const CANDLE_PARTS = [
+  'id="lsCandle"', 'id="lsToggle"', 'id="lsMessage"', 'id="lsHint"',
+  'ls-candle__flame', 'ls-candle__smoke', 'ls-candle__msg', 'ls-candle__label',
+  'is-lit', 'is-smoking', '@keyframes ls-flick', '@keyframes ls-smoke',
+];
+const missingParts = CANDLE_PARTS.filter(s => !pf.includes(s));
+if (missingParts.length) fail('candle widget missing: ' + missingParts.join(', '));
+else pass('candle widget markup, styles, and states present');
+
+// The candle owns the click, so this card must not also navigate on click.
+const card07 = pf.slice(pf.indexOf('<!-- 07 '), pf.indexOf('<!-- 07 ') + 4000);
+if (/class="mockup ls-stage"[^>]*onclick=/.test(card07)) fail('candle mockup still has an onclick that would fight the toggle');
+else pass('candle mockup does not navigate on click');
 
 console.log('');
 console.log(failures ? failures + ' FAILURE(S)' : 'ALL CHECKS PASSED');

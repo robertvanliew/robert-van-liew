@@ -1447,6 +1447,205 @@
       html, body { overflow-x: hidden !important; }
       .content { overflow-x: hidden; }
     }
+
+    /* ============================================================
+       Lily's Secret interactive candle (work card 07)
+       Ported from the live site's CSS, namespaced .ls- so it cannot
+       collide with the portfolio's own classes. Two state classes do
+       all the work: .is-lit and .is-smoking.
+       ============================================================ */
+    .ls-stage {
+      --ls-gold: #C9A24B;
+      --ls-gold-bright: #E6C67E;
+      --ls-wine-600: #5E1626;
+      --ls-wine-800: #3A0A15;
+      --ls-ease: cubic-bezier(.22, .61, .36, 1);
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      padding: 26px 20px 20px;
+      background:
+        radial-gradient(120% 80% at 50% 8%, rgba(201, 162, 75, .10), transparent 62%),
+        linear-gradient(180deg, #3A0A15 0%, #2B0710 100%);
+      overflow: hidden;
+    }
+
+    .ls-candle { position: relative; width: min(190px, 60%); aspect-ratio: 3/4; }
+
+    .ls-candle__glow {
+      position: absolute; left: 50%; top: 32%; width: 160%; height: 125%;
+      transform: translate(-50%, -50%); z-index: 0; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(closest-side, rgba(255, 180, 86, .42), rgba(255, 150, 60, .14) 46%, transparent 72%);
+      opacity: 0; transition: opacity 1.3s var(--ls-ease); filter: blur(4px);
+    }
+    .ls-candle.is-lit .ls-candle__glow { opacity: 1; }
+
+    .ls-candle__jar {
+      position: absolute; left: 0; right: 0; bottom: 0; top: 15%; z-index: 2;
+      border-radius: 16px 16px 22px 22px / 12px 12px 30px 30px;
+    }
+    .ls-candle__inner {
+      position: absolute; inset: 0; overflow: hidden; border-radius: inherit;
+      background: linear-gradient(100deg, rgba(255,255,255,.16), rgba(255,255,255,.03) 22%, rgba(255,255,255,.12) 50%, rgba(255,255,255,.02) 74%, rgba(255,255,255,.10));
+      border: 1.5px solid rgba(255, 255, 255, .22);
+      box-shadow: inset 0 0 30px rgba(255,255,255,.05), 0 30px 70px -25px rgba(43,7,16,.5);
+    }
+
+    .ls-candle__wax {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 80%;
+      background: linear-gradient(180deg, #f3e7ce 0%, #eaddbf 46%, #e0d0ac 100%);
+      box-shadow: inset 16px 0 26px rgba(255,246,224,.55), inset -16px 0 26px rgba(150,110,60,.16);
+      transition: filter 1.2s var(--ls-ease);
+    }
+    .ls-candle.is-lit .ls-candle__wax { filter: brightness(1.07) saturate(1.05); }
+    .ls-candle__wax::before {
+      content: ""; position: absolute; top: -4%; left: 0; right: 0; height: 9%; border-radius: 50%;
+      background: radial-gradient(ellipse at 50% 60%, #f7ecd6, #e7d6b4 72%, #d8c49c);
+    }
+
+    .ls-candle__pool {
+      position: absolute; top: -3%; left: 16%; right: 16%; height: 10%; border-radius: 50%; z-index: 2;
+      background: radial-gradient(ellipse at 50% 45%, #f6ecd6, #e4d2ac 70%, #d3bd93);
+      box-shadow: inset 0 2px 5px rgba(150,110,60,.35);
+      transition: background 1s, box-shadow 1s;
+    }
+    .ls-candle.is-lit .ls-candle__pool {
+      background: radial-gradient(ellipse at 50% 45%, #fff2d4, #f0dcac 58%, #e2c78d);
+      box-shadow: inset 0 2px 7px rgba(150,100,50,.4), 0 0 20px rgba(255,190,110,.55);
+    }
+
+    .ls-candle__label {
+      position: absolute; left: 50%; top: 37%; transform: translateX(-50%); z-index: 3;
+      width: 62%; text-align: center; border: 1.5px solid var(--ls-gold); border-radius: 3px;
+      background: linear-gradient(160deg, #5b1224, #401019); color: var(--ls-gold-bright);
+      padding: .55rem .4rem; box-shadow: 0 2px 10px rgba(0,0,0,.28);
+      transition: opacity .8s var(--ls-ease);
+    }
+    .ls-candle.is-lit .ls-candle__label { opacity: 0; }
+    .ls-candle__label-brand {
+      font-family: "JetBrains Mono", monospace; font-size: 6px; letter-spacing: .24em;
+      display: block; margin-bottom: .35rem; color: var(--ls-gold);
+    }
+    .ls-candle__label-line {
+      font-family: "Fraunces", Georgia, serif; font-size: 8px; line-height: 1.25;
+      text-transform: uppercase; letter-spacing: .05em;
+    }
+
+    .ls-candle__msg {
+      position: absolute; left: 50%; bottom: 16%; transform: translateX(-50%); z-index: 4;
+      width: 84%; text-align: center; color: var(--ls-wine-800);
+      opacity: 0; transition: opacity .5s var(--ls-ease);
+      padding: .9rem .5rem; border-radius: 46% / 38%;
+      background: radial-gradient(58% 92% at 50% 50%, rgba(255,243,214,.99), rgba(255,239,203,.82) 48%, rgba(255,239,203,.35) 68%, transparent 82%);
+    }
+    .ls-candle.is-lit .ls-candle__msg { opacity: 1; transition: opacity 1.1s var(--ls-ease) .9s; }
+    .ls-candle__fleur { color: var(--ls-wine-600); font-size: .7rem; display: block; line-height: 1; }
+    .ls-candle__message {
+      font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 12.5px;
+      line-height: 1.34; margin: .3rem 0; color: var(--ls-wine-800);
+    }
+
+    .ls-candle__rim {
+      position: absolute; top: -1.5%; left: 4%; right: 4%; height: 8%; z-index: 5; border-radius: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,.32), rgba(255,255,255,.04));
+      border: 1.5px solid rgba(255,255,255,.28);
+      box-shadow: inset 0 3px 6px rgba(255,255,255,.3), inset 0 -5px 9px rgba(120,80,40,.16);
+    }
+    .ls-candle__gloss {
+      position: absolute; inset: 0; z-index: 6; border-radius: inherit; pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.4), rgba(255,255,255,0) 9%),
+        linear-gradient(90deg, rgba(255,255,255,0) 84%, rgba(255,255,255,.1) 91%, rgba(255,255,255,0));
+      opacity: .8;
+    }
+
+    .ls-candle__wick {
+      position: absolute; left: 50%; top: 14%; transform: translateX(-50%); z-index: 5;
+      width: 3px; height: 6%; border-radius: 2px; background: linear-gradient(#241610, #4a2f1c);
+    }
+
+    .ls-candle__flame {
+      position: absolute; left: 50%; top: 1%; transform: translateX(-50%) scale(0);
+      transform-origin: bottom center; transition: transform .5s var(--ls-ease); z-index: 5;
+      width: 17px; height: 35px; pointer-events: none;
+    }
+    .ls-candle.is-lit .ls-candle__flame { transform: translateX(-50%) scale(1); }
+    .ls-candle__flame::before {
+      content: ""; position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%);
+      width: 90px; height: 108px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,174,74,.5), rgba(255,140,44,.13) 46%, transparent 70%);
+      filter: blur(3px);
+    }
+    .ls-candle__flame i {
+      position: absolute; inset: 0; border-radius: 50% 50% 50% 50% / 62% 62% 40% 40%;
+      background: radial-gradient(ellipse at 50% 74%, #fff 0 7%, #ffe6a0 20%, #ffb43c 48%, #ff7a1a 72%, #dd460d 94%);
+      box-shadow: 0 -2px 12px rgba(255,150,40,.6);
+      animation: ls-flick 1.4s ease-in-out infinite alternate; transform-origin: 50% 92%;
+    }
+    .ls-candle__flame i::after {
+      content: ""; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+      width: 54%; height: 30%; border-radius: 50%;
+      background: radial-gradient(ellipse at 50% 35%, rgba(130,170,255,.85), rgba(90,130,255,.2) 68%, transparent);
+      mix-blend-mode: screen;
+    }
+    @keyframes ls-flick {
+      0%   { transform: scaleY(1) scaleX(1) rotate(-1.5deg); opacity: .95; }
+      50%  { transform: scaleY(1.09) scaleX(.93) rotate(1.5deg); opacity: 1; }
+      100% { transform: scaleY(.97) scaleX(1.03) rotate(-1deg); opacity: .9; }
+    }
+
+    .ls-candle__smoke {
+      position: absolute; left: 50%; top: 2%; transform: translateX(-50%);
+      width: 20px; height: 50px; z-index: 8; pointer-events: none;
+    }
+    .ls-candle__smoke span {
+      position: absolute; left: 50%; bottom: 0; width: 9px; height: 9px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,238,233,.9), rgba(220,216,208,0) 72%);
+      opacity: 0; filter: blur(2.5px); will-change: transform, opacity;
+    }
+    .ls-candle.is-smoking .ls-candle__smoke span { animation: ls-smoke 1.8s ease-out forwards; }
+    .ls-candle.is-smoking .ls-candle__smoke span:nth-child(2) { animation-delay: .2s; }
+    .ls-candle.is-smoking .ls-candle__smoke span:nth-child(3) { animation-delay: .42s; }
+    @keyframes ls-smoke {
+      0%   { opacity: 0;   transform: translate(-50%, 4px) scale(.5); }
+      15%  { opacity: .95; }
+      50%  { opacity: .75; transform: translate(-74%, -30px) scale(1.7); }
+      100% { opacity: 0;   transform: translate(-34%, -64px) scale(2.8); }
+    }
+
+    /* the control */
+    .ls-toggle {
+      all: unset; box-sizing: border-box; cursor: pointer;
+      font-family: "JetBrains Mono", monospace; font-size: 10px;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: #2B0710; background: linear-gradient(180deg, #E6C67E, #C9A24B);
+      padding: 9px 16px; border-radius: 999px; text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      transition: transform .18s var(--ls-ease), box-shadow .18s var(--ls-ease);
+    }
+    .ls-toggle:hover { transform: translateY(-1px); box-shadow: 0 5px 16px rgba(0, 0, 0, .38); }
+    .ls-toggle:focus-visible { outline: 2px solid #E6C67E; outline-offset: 3px; }
+    .ls-hint {
+      font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(230, 198, 126, .62); text-align: center;
+      max-width: 100%; overflow-wrap: break-word; line-height: 1.5;
+    }
+    /* The hint is the widest thing in the stage, so it is the first to run out
+       of room when the card narrows. */
+    @media (max-width: 560px) {
+      .ls-stage { padding: 22px 14px 16px; }
+      .ls-hint { font-size: 8px; letter-spacing: .08em; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ls-candle__flame i { animation: none; }
+      .ls-candle__msg { transition-duration: .4s; }
+      .ls-candle.is-smoking .ls-candle__smoke span { animation: none; }
+    }
   </style>
 </head>
 
@@ -1811,13 +2010,89 @@
 
           <!-- 07 Lily's Secret -->
           <div class="project-card">
-            <div class="mockup"
-              style="cursor:pointer;background:#2B0710;border:1px solid rgba(201,162,75,0.22);padding:0;overflow:hidden;display:block;line-height:0;aspect-ratio:16/9;"
-              onclick="window.location='/lilys-secret-case-study'">
-              <img src="images/lily-card.jpg" alt="A Lily's Secret candle with the gold wax seal"
-                style="width:100% !important;height:100% !important;min-height:unset !important;display:block;object-fit:cover;object-position:center 20%;transition:transform .4s ease;"
-                onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+            <!-- Interactive candle. The card image is the product demo here, so
+                 this mockup does not navigate; the heading and the case study
+                 link below carry that job. -->
+            <div class="mockup ls-stage"
+              style="background:#2B0710;border:1px solid rgba(201,162,75,0.22);padding:0;overflow:hidden;">
+              <div class="ls-candle" id="lsCandle" role="img"
+                aria-label="Interactive candle that reveals a hidden message when lit">
+                <div class="ls-candle__glow" aria-hidden="true"></div>
+                <div class="ls-candle__jar">
+                  <div class="ls-candle__inner">
+                    <div class="ls-candle__wax"><div class="ls-candle__pool" aria-hidden="true"></div></div>
+                    <div class="ls-candle__label" aria-hidden="true">
+                      <span class="ls-candle__label-brand">LILY'S SECRET</span>
+                      <span class="ls-candle__label-line">Patience brings the light<br>the flame reveals the secret</span>
+                    </div>
+                    <div class="ls-candle__msg">
+                      <span class="ls-candle__fleur" aria-hidden="true">&#9884;</span>
+                      <p class="ls-candle__message" id="lsMessage">Your message, hidden here.</p>
+                      <span class="ls-candle__fleur" aria-hidden="true">&#9884;</span>
+                    </div>
+                  </div>
+                  <div class="ls-candle__wick" aria-hidden="true"></div>
+                  <div class="ls-candle__flame" aria-hidden="true"><i></i></div>
+                  <div class="ls-candle__smoke" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <div class="ls-candle__rim" aria-hidden="true"></div>
+                  <div class="ls-candle__gloss" aria-hidden="true"></div>
+                </div>
+              </div>
+              <button type="button" class="ls-toggle" id="lsToggle" aria-pressed="false">Light the candle</button>
+              <p class="ls-hint" id="lsHint">Press to light the flame</p>
             </div>
+            <script>
+              (function () {
+                var candle = document.getElementById('lsCandle');
+                var toggle = document.getElementById('lsToggle');
+                var message = document.getElementById('lsMessage');
+                var hint = document.getElementById('lsHint');
+                if (!candle || !toggle || !message || !hint) return;
+
+                // The same suggested phrases the live site ships.
+                var MESSAGES = [
+                  'A single flame of your heart illuminates the entire universe.',
+                  'Espresso yourself, or just slow down.',
+                  'Your potential is endless. Keep shining!',
+                  'As this candle dispels the darkness, your smile lights up my heart.',
+                  'Habibi, your future is glowing.'
+                ];
+                var index = -1;
+                var lit = false;
+                var smokeTimer;
+
+                function light() {
+                  index = (index + 1) % MESSAGES.length;
+                  message.textContent = MESSAGES[index];
+                  candle.classList.remove('is-smoking');
+                  clearTimeout(smokeTimer);
+                  candle.classList.add('is-lit');
+                  lit = true;
+                  toggle.textContent = 'Blow it out';
+                  toggle.setAttribute('aria-pressed', 'true');
+                  hint.textContent = 'Light it again for another message';
+                }
+
+                function blowOut() {
+                  candle.classList.remove('is-lit');
+                  candle.classList.add('is-smoking');
+                  clearTimeout(smokeTimer);
+                  smokeTimer = setTimeout(function () {
+                    candle.classList.remove('is-smoking');
+                  }, 1900);
+                  lit = false;
+                  toggle.textContent = 'Light the candle';
+                  toggle.setAttribute('aria-pressed', 'false');
+                  hint.textContent = 'Press to light the flame';
+                }
+
+                function flip() { lit ? blowOut() : light(); }
+
+                toggle.addEventListener('click', flip);
+                candle.addEventListener('click', flip);
+                candle.style.cursor = 'pointer';
+              })();
+            </script>
             <div class="info">
               <h2>Lily's <em>Secret</em></h2>
               <div class="tags">Brand site &nbsp;·&nbsp; Interactive demo &nbsp;·&nbsp; Six-language i18n &nbsp;·&nbsp;
