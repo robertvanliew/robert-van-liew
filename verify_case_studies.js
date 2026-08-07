@@ -105,7 +105,7 @@ for (const route of ROUTES) {
 if (pf.includes('—')) fail('Portfolio.html contains an em dash');
 else pass('Portfolio.html no em dashes');
 
-for (const img of ['images/jcs-logo.png']) {
+for (const img of ['images/jcs-logo.webp']) {
   if (pf.includes(img) && fs.existsSync(img)) pass('Portfolio card image ' + img);
   else fail('Portfolio card image missing: ' + img);
 }

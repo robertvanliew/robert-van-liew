@@ -24,12 +24,14 @@ async function shoot(page, url, viewport, file, opts = {}) {
   await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
   await settle(page);
   if (opts.before) await opts.before(page);
+  // WebP at q92 is visually lossless on these screenshots and roughly 90%
+  // smaller than PNG at the same 2x resolution. Do not switch back to PNG:
+  // the case study pages were 7 MB of images before this.
   const target = path.join(OUT, file);
-  const isJpeg = file.endsWith('.jpg');
   await page.screenshot({
     path: target,
-    type: isJpeg ? 'jpeg' : 'png',
-    quality: isJpeg ? 85 : undefined,
+    type: 'webp',
+    quality: 92,
     fullPage: false,
   });
   console.log('captured', file);
@@ -37,18 +39,18 @@ async function shoot(page, url, viewport, file, opts = {}) {
 
 async function captureJcs(page) {
   const base = 'https://jerseycitysound.com';
-  await shoot(page, base + '/archive.html', DESKTOP, 'jcs-archive.png');
-  await shoot(page, base + '/entry-dj-dx.html', DESKTOP, 'jcs-entry.png');
-  await shoot(page, base + '/legends.html', DESKTOP, 'jcs-legends.png');
-  await shoot(page, base + '/entry-dj-dx.html', MOBILE, 'jcs-entry-mobile.png');
+  await shoot(page, base + '/archive.html', DESKTOP, 'jcs-archive.webp');
+  await shoot(page, base + '/entry-dj-dx.html', DESKTOP, 'jcs-entry.webp');
+  await shoot(page, base + '/legends.html', DESKTOP, 'jcs-legends.webp');
+  await shoot(page, base + '/entry-dj-dx.html', MOBILE, 'jcs-entry-mobile.webp');
 }
 
 async function captureLily(page) {
   const base = 'https://www.lilysecretcandles.com';
 
-  await shoot(page, base + '/', DESKTOP, 'lily-hero.jpg');
+  await shoot(page, base + '/', DESKTOP, 'lily-hero.webp');
 
-  await shoot(page, base + '/', DESKTOP, 'lily-reveal.jpg', {
+  await shoot(page, base + '/', DESKTOP, 'lily-reveal.webp', {
     before: async p => {
       await p.evaluate(() => {
         const s = document.getElementById('secret');
@@ -63,7 +65,7 @@ async function captureLily(page) {
     },
   });
 
-  await shoot(page, base + '/', DESKTOP, 'lily-builder.jpg', {
+  await shoot(page, base + '/', DESKTOP, 'lily-builder.webp', {
     before: async p => {
       // Sections carry a .reveal class driven by an IntersectionObserver, so
       // content is transparent until it has been scrolled past once. Walk the
@@ -97,7 +99,7 @@ async function captureLily(page) {
     },
   });
 
-  await shoot(page, base + '/', MOBILE, 'lily-rtl.jpg', {
+  await shoot(page, base + '/', MOBILE, 'lily-rtl.webp', {
     before: async p => {
       // The menu items are buttons carrying data-lang. Click the button, not
       // the li that wraps it, or the language never changes.
