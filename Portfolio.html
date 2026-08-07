@@ -2821,11 +2821,14 @@
       const vidMobile = document.getElementById('vid-mobile-cs');
       if (!vidDesktop && !vidMobile) return;
 
-      // Start paused, set slow playback
+      // Start paused, set slow playback.
+      // Do NOT set currentTime here. Seeking forces the browser to fetch video
+      // data, which overrides preload="metadata" and made every visitor
+      // download both clips (7.4 MB) on page load, hover or not. A fresh video
+      // element is already at 0, so the assignment was redundant anyway.
       [vidDesktop, vidMobile].forEach(v => {
         if (!v) return;
         v.pause();
-        v.currentTime = 0;
         v.playbackRate = 0.5;
       });
 
