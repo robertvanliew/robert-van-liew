@@ -195,10 +195,10 @@
           <p>1 Week Sprint</p>
           
           <h3>Tech Stack</h3>
-          <p>React, Next.js, Stripe, TailwindCSS</p>
+          <p>Squarespace, custom CSS and JS (code injection), Stripe</p>
           
           <h3>Deliverables</h3>
-          <p>Web App, E-Commerce Flow, CMS</p>
+          <p>Brand System, Custom Code, Shop and Ticketing</p>
         </div>
         
         <div class="cs-content">
@@ -207,17 +207,17 @@
             The DMC World DJ Championships needed a full digital overhaul for their Canadian division. The brief was to build a platform that captured the underground energy of battle DJing while running a clean e-commerce flow for tickets and official merchandise.
           </p>
           <p>
-            The legacy system was fragmented and didn't perform well on mobile devices, leading to cart abandonment during high-traffic ticket drops. My goal was to unify the brand and the checkout experience into a highly performant web app.
+            The legacy system was fragmented and didn't perform well on mobile devices, leading to cart abandonment during high-traffic ticket drops. My goal was to unify the brand and the checkout experience in one site the organizers could keep running themselves on Squarespace.
           </p>
           
           <h2>The Solution</h2>
           <p>
-            I architected a dark-themed, glassmorphic UI system utilizing stark red contrasts to evoke a sense of competition and energy. To solve the conversion issues, I rebuilt the entire e-commerce flow, placing emphasis on native mobile UX principles.
+            I designed a dark-themed, glassmorphic UI system with stark red contrasts to evoke competition and energy, then built it as custom CSS and JavaScript injected site-wide through Squarespace's header code injection: Bebas Neue and Barlow, an injected hero, a contact panel, and a live ticker. The shop, product pages, and cart were restyled mobile-first, because most ticket buyers arrive on a phone.
           </p>
           
-          <h2>Checkout Friction & Payment Routing</h2>
+          <h2>Payments Left Where They Can't Break</h2>
           <p>
-            To handle high-traffic ticket drops, I migrated the payment infrastructure to Stripe. The payment flow was restructured to preempt errors: inline zip code validation prevents late-stage declines, and explicit error states guide users through card rejections without clearing their cart. By integrating Apple Pay and Google Pay directly into a persistent checkout drawer, the number of required tap interactions was dramatically reduced, directly increasing conversion rates and mitigating cart abandonment.
+            Squarespace doesn't let custom code touch its checkout, and for a ticket drop that is a feature: the payment path is the one part of the site that can't be broken by a design change. I connected Stripe as the payment processor and turned on Apple Pay and Google Pay, so buyers on a phone can pay without typing a card number. My custom code stops at the cart; checkout stays on the platform.
           </p>
           
           <a href="/work" class="back-btn">← Back to Portfolio</a>
@@ -233,12 +233,11 @@
         <div class="footer-cta">
           <h2>Ready to build something lasting?</h2>
           <p>Available for freelance opportunities and full-time inquiries.</p>
-          <a href="mailto:contact@example.com" class="btn-primary">Get in Touch</a>
+          <a href="mailto:design@robertvanliew.com" class="btn-primary">Get in Touch</a>
         </div>
         <div class="footer-socials">
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
-          <a href="#">X / Twitter</a>
+          <a href="https://www.linkedin.com/in/robert-vanliew" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/robertvanliew" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
       <div class="footer-bottom">

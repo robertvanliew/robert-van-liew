@@ -52,7 +52,7 @@
         "jobTitle": "Senior Product Designer",
         "seeks": {
           "@type": "Demand",
-          "name": "Senior Product Design roles, New York or remote"
+          "name": "Product Design and Creative Developer roles, New York or remote"
         },
         "description": "Product Designer and Full-Stack Developer based in New York, specializing in interaction design, design systems, and end-to-end product engineering. Creator of Smart Deductions, a client-side financial analytics tool for LLC owners.",
         "address": {
@@ -593,6 +593,42 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+    }
+
+    /* Why / how / what broke. Collapsed so the card stays scannable. */
+    .project-card .story {
+      border-top: 1px solid var(--edge-soft, #d4d7d3);
+      padding-top: 10px;
+    }
+    .project-card .story summary {
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .project-card .story summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .project-card .story dl {
+      margin: 12px 0 0;
+      display: grid;
+      gap: 8px;
+    }
+    .project-card .story dt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .project-card .story dd {
+      margin: 0 0 4px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-soft);
     }
 
     .project-card .idx {
@@ -1744,7 +1780,7 @@
       <section class="panel active" id="about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
         <h1 class="title">A designer who makes complex systems <em>feel</em> obvious.</h1>
         <p class="lede">
-          I'm <em>Robert Van Liew</em>, a product designer who also writes the code and owns the semantic architecture.
+          I'm <em>Robert Van Liew</em>, a designer who builds. I design interfaces, then write the code, motion, and semantic architecture that make them feel right in the browser.
           I specialize in end-to-end experiences for financial products and SaaS platforms,
           using motion and transitions to make complex workflows feel cohesive.
           I take designs from low-fidelity flows all the way to production
@@ -1759,13 +1795,13 @@
             <div class="k">Discipline</div>Product Design · Interaction Design · Front-End
           </div>
           <div>
-            <div class="k">Status</div>Open to Senior Product Design roles · New York or remote
+            <div class="k">Status</div>Open to Product Design and Creative Developer roles · New York or remote
           </div>
           <div>
             <div class="k">Profiles</div><a href="https://www.linkedin.com/in/robert-vanliew" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s;" onmouseover="this.style.borderColor='currentColor'" onmouseout="this.style.borderColor='transparent'">LinkedIn</a> · <a href="https://github.com/robertvanliew" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s;" onmouseover="this.style.borderColor='currentColor'" onmouseout="this.style.borderColor='transparent'">GitHub</a> · <a href="/resume" style="color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s;" onmouseover="this.style.borderColor='currentColor'" onmouseout="this.style.borderColor='transparent'">Resume</a> · <a href="Robert_Van_Liew_Resume.pdf" download style="color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s;" onmouseover="this.style.borderColor='currentColor'" onmouseout="this.style.borderColor='transparent'">PDF</a>
           </div>
           <div>
-            <div class="k">Tools</div>Figma · Semantic HTML · Modern CSS (Grid, Custom Properties, :focus-visible) · React · TypeScript · Tailwind · Schema.org · Claude · Gemini
+            <div class="k">Tools</div>Figma · Semantic HTML · Modern CSS (Grid, Custom Properties, :focus-visible) · React · TypeScript · Tailwind · GSAP · Framer Motion · WebGL shaders · Schema.org · Claude · Gemini
           </div>
           <div>
             <div class="k">Strengths</div>Fintech SaaS · Ecosystem Patterns · Systems Thinking
@@ -1785,12 +1821,217 @@
 
           <!-- Tier 1 label -->
           <div class="work-tier work-tier--lead">
-            <h2 class="work-tier__title">Product &amp; systems work</h2>
-            <p class="work-tier__note">End-to-end product design and engineering, where the problem was architecture, state, and scale rather than a page.</p>
+            <h2 class="work-tier__title">Selected work</h2>
+            <p class="work-tier__note">Designed and engineered end to end, from brand and interaction to state, checkout, and scale.</p>
           </div>
 
-          <!-- 01 Financial SaaS. leads because Intuit is fintech -->
-          <div class="project-card flip" style="grid-template-columns:1.3fr 0.7fr;align-items:center;">
+          <!-- 07 Lily's Secret -->
+          <div class="project-card">
+            <!-- Interactive candle. The card image is the product demo here, so
+                 this mockup does not navigate; the heading and the case study
+                 link below carry that job. -->
+            <div class="mockup ls-stage"
+              style="background:#2B0710;border:1px solid rgba(201,162,75,0.22);padding:0;overflow:hidden;">
+              <div class="ls-candle" id="lsCandle" role="img"
+                aria-label="Interactive candle that reveals a hidden message when lit">
+                <div class="ls-candle__glow" aria-hidden="true"></div>
+                <div class="ls-candle__jar">
+                  <div class="ls-candle__inner">
+                    <div class="ls-candle__wax"><div class="ls-candle__pool" aria-hidden="true"></div></div>
+                    <div class="ls-candle__label" aria-hidden="true">
+                      <span class="ls-candle__label-brand">LILY'S SECRET</span>
+                      <span class="ls-candle__label-line">Patience brings the light<br>the flame reveals the secret</span>
+                    </div>
+                    <div class="ls-candle__msg">
+                      <span class="ls-candle__fleur" aria-hidden="true">&#9884;</span>
+                      <p class="ls-candle__message" id="lsMessage">Your message, hidden here.</p>
+                      <span class="ls-candle__fleur" aria-hidden="true">&#9884;</span>
+                    </div>
+                  </div>
+                  <div class="ls-candle__wick" aria-hidden="true"></div>
+                  <div class="ls-candle__flame" aria-hidden="true"><i></i></div>
+                  <div class="ls-candle__smoke" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <div class="ls-candle__rim" aria-hidden="true"></div>
+                  <div class="ls-candle__gloss" aria-hidden="true"></div>
+                </div>
+              </div>
+              <button type="button" class="ls-toggle" id="lsToggle" aria-pressed="false">Light the candle</button>
+              <p class="ls-hint" id="lsHint">Press to light the flame</p>
+            </div>
+            <script>
+              (function () {
+                var candle = document.getElementById('lsCandle');
+                var toggle = document.getElementById('lsToggle');
+                var message = document.getElementById('lsMessage');
+                var hint = document.getElementById('lsHint');
+                if (!candle || !toggle || !message || !hint) return;
+
+                // The same suggested phrases the live site ships.
+                var MESSAGES = [
+                  'A single flame of your heart illuminates the entire universe.',
+                  'Espresso yourself, or just slow down.',
+                  'Your potential is endless. Keep shining!',
+                  'As this candle dispels the darkness, your smile lights up my heart.',
+                  'Habibi, your future is glowing.'
+                ];
+                var index = -1;
+                var lit = false;
+                var smokeTimer;
+
+                function light() {
+                  index = (index + 1) % MESSAGES.length;
+                  message.textContent = MESSAGES[index];
+                  candle.classList.remove('is-smoking');
+                  clearTimeout(smokeTimer);
+                  candle.classList.add('is-lit');
+                  lit = true;
+                  toggle.textContent = 'Blow it out';
+                  toggle.setAttribute('aria-pressed', 'true');
+                  hint.textContent = 'Light it again for another message';
+                }
+
+                function blowOut() {
+                  candle.classList.remove('is-lit');
+                  candle.classList.add('is-smoking');
+                  clearTimeout(smokeTimer);
+                  smokeTimer = setTimeout(function () {
+                    candle.classList.remove('is-smoking');
+                  }, 1900);
+                  lit = false;
+                  toggle.textContent = 'Light the candle';
+                  toggle.setAttribute('aria-pressed', 'false');
+                  hint.textContent = 'Press to light the flame';
+                }
+
+                function flip() { lit ? blowOut() : light(); }
+
+                toggle.addEventListener('click', flip);
+                candle.addEventListener('click', flip);
+                candle.style.cursor = 'pointer';
+              })();
+            </script>
+            <div class="info">
+              <h2>Lily's <em>Secret</em></h2>
+              <div class="tags">Brand site &nbsp;·&nbsp; Interactive demo &nbsp;·&nbsp; Six-language i18n &nbsp;·&nbsp;
+                Arabic RTL</div>
+              <p>Design and build for a UAE candle brand whose product hides a personal message under the wax, readable
+                only once the candle has burned down. The site solves an invisible product with a candle you can light on
+                the page, ships in six languages with full Arabic right-to-left, and routes every order to the studio in
+                English no matter which language the customer wrote it in.</p>
+              <details class="story">
+                <summary>Why, how, what broke</summary>
+                <dl>
+                  <dt>Why</dt><dd>The product's whole point is invisible until the candle burns down, so photos couldn't sell it.</dd>
+                  <dt>How</dt><dd>Static HTML, CSS, and JS on Vercel with no build step. A candle you light on the page reveals a hidden message. Six languages, including full Arabic RTL, and every order reaches the studio in English.</dd>
+                  <dt>What broke</dt><dd>Orders ran through pre-filled mailto links, which silently fail on many phones and webmail setups. When the client asked for Apple Pay, a bigger problem surfaced: a bespoke product with no fixed price can't be charged instantly.</dd>
+                  <dt>Next time</dt><dd>Settle the pricing model and use a real form endpoint on day one instead of mailto.</dd>
+                </dl>
+              </details>
+              <button class="case-link" onclick="window.location='/lilys-secret-case-study'"
+                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
+                Case Study &rarr;</button>
+            </div>
+          </div>
+
+
+          <!-- 04 DMC Canada -->
+          <div class="project-card flip">
+            <div class="mockup"
+              style="background:none;border:none;box-shadow:none;cursor:pointer;padding:0;overflow:visible;display:block;"
+              data-goto="dmc-dj-canada-case-study">
+
+              <!-- mockup image -->
+              <div style="line-height:0;">
+                <img src="images/dmc_pro_mockup.webp" alt="DMC Canada desktop and mobile mockup"
+                  style="width:100% !important;height:auto !important;min-height:unset !important;display:block;object-fit:unset;mix-blend-mode:multiply;">
+              </div>
+
+            </div>
+            <div class="info">
+              <h2>DMC Canada <em>'26</em></h2>
+              <div class="tags">UI/UX design &nbsp;·&nbsp; Custom code on Squarespace &nbsp;·&nbsp; E-commerce &nbsp;·&nbsp; Brand
+                system</div>
+              <p>Sole designer and developer for the Canadian division of the DMC World DJ Championships, shipped in a
+                1-week sprint. The client runs on Squarespace, so I designed the full brand system and built it as custom
+                code on top of the platform: a dark competition theme, injected hero, contact panel, and live ticker, with
+                the shop and ticketing wired to Stripe, Apple Pay, and Google Pay.</p>
+              <details class="story">
+                <summary>Why, how, what broke</summary>
+                <dl>
+                  <dt>Why</dt><dd>The event needed ticketing, merch, and registration under one dark, competition-ready brand before a hard deadline.</dd>
+                  <dt>How</dt><dd>The client runs on Squarespace, so I reskinned the whole site through custom header code injection: dark theme, Bebas Neue and Barlow, DMC red, an injected hero, contact panel, and ticker. Payments run through Squarespace checkout with Stripe, Apple Pay, and Google Pay connected. Shipped in about a week.</dd>
+                  <dt>What broke</dt><dd>Working inside Squarespace means fighting its markup. Every custom element sits on top of a template I don't control, so selectors can break when the platform updates.</dd>
+                  <dt>Next time</dt><dd>Push for a custom build the client owns, so the design isn't at the mercy of the platform.</dd>
+                </dl>
+              </details>
+              <button class="case-link" data-goto="dmc-dj-canada-case-study"
+                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
+                Case Study →</button>
+            </div>
+          </div>
+
+
+          <!-- 05 Take Me Back Bingo -->
+          <div class="project-card">
+            <div class="mockup"
+              style="cursor:pointer;background:#141111;border:1px solid rgba(201,150,43,0.22);display:flex;align-items:center;justify-content:center;padding:48px 36px;"
+              onclick="window.location='/take-me-back-bingo-case-study'">
+              <img src="images/tmb-logo.png" alt="Take Me Back Bingo logo"
+                style="width:80%;max-width:340px;height:auto;object-fit:contain;transition:transform .3s ease;"
+                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div class="info">
+              <h2>Take Me Back <em>Bingo</em></h2>
+              <div class="tags">Editorial identity &nbsp;·&nbsp; In-browser game &nbsp;·&nbsp; Event &amp; FAQ schema &nbsp;·&nbsp; Share &amp; inquiry systems</div>
+              <p>A live-events brand that had to keep converting during the dark periods between announced calendars. I built the whole site as one state machine: every primary CTA carries its live behavior in data attributes, and a single feature flag rewrites the entire site between "Buy Tickets" and "Get Notified" with no duplicated markup. Also shipped a free in-browser 5x5 game, a share flow that works around an iOS Safari user-activation constraint, and Event plus FAQ schema tuned for People Also Ask.</p>
+              <details class="story">
+                <summary>Why, how, what broke</summary>
+                <dl>
+                  <dt>Why</dt><dd>The brand had to keep converting in the gaps between announced event dates.</dd>
+                  <dt>How</dt><dd>Built the site as one state machine. A single feature flag flips every CTA between &ldquo;Buy Tickets&rdquo; and &ldquo;Get Notified&rdquo; with no duplicated markup. The free bingo game shuffles cards with Fisher-Yates, detects wins, and crossfades audio between two decks.</dd>
+                  <dt>What broke</dt><dd>I first built the game as song-recognition bingo. The client meant artist-recognition (you mark an artist when you hear any of their songs), so the card and play logic needed a full rethink. Separately, the share flow failed on iOS Safari because of its user-activation rule, so I restructured it.</dd>
+                  <dt>Next time</dt><dd>Pin down the game rules with the client before writing any logic.</dd>
+                </dl>
+              </details>
+              <button class="case-link" onclick="window.location='/take-me-back-bingo-case-study'"
+                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
+                Case Study &rarr;</button>
+            </div>
+          </div>
+
+
+          <!-- 02 Jersey Club Radio -->
+          <div class="project-card flip">
+            <div class="mockup"
+              style="cursor:pointer;background:transparent;border:none;box-shadow:none;display:flex;align-items:center;justify-content:center;"
+              onclick="window.location='/jersey-club-radio-case-study'">
+              <img src="Jersey Club Wireframe/jc-club-logo-gradient.webp" alt="Jersey Club Radio logo"
+                style="width:80%;max-width:320px;height:auto;object-fit:contain;mix-blend-mode:multiply;transition:transform .3s ease;"
+                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div class="info">
+              <h2>Jersey Club <em>Radio</em></h2>
+              <div class="tags">UX/UI design &nbsp;·&nbsp; Wireframing &nbsp;·&nbsp; Audio streaming &nbsp;·&nbsp; React
+                · Vite</div>
+              <p>Sole designer and engineer on a 24/7 live radio streaming platform for Jersey Club music. From hand
+                sketches and Figma wireframes to a production Beta. Persistent mini-player, animated waveform, accessible
+                playlist, and a WCAG-accessible dark UI. Three months in development. Beta currently offline for updates.</p>
+              <button class="case-link" onclick="window.location='/jersey-club-radio-case-study'"
+                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
+                Case Study →</button>
+            </div>
+          </div>
+
+
+          <!-- Tier 2 divider -->
+          <div class="work-tier">
+            <h2 class="work-tier__title">More work</h2>
+            <p class="work-tier__note">Product tools, archives, and editorial builds.</p>
+          </div>
+
+
+          <!-- Financial SaaS -->
+          <div class="project-card" style="grid-template-columns:1.3fr 0.7fr;align-items:center;">
 
             <!-- mockup: exactly 2 children in the grid -->
             <div class="mockup"
@@ -1899,6 +2140,15 @@
                 get an IRS-ready, auto-categorized CSV export in under 5 seconds. Zero servers. Zero accounts. Complete
                 privacy. Designed and built end-to-end with 9 Schedule C categories, dual chart views, and a command
                 palette.</p>
+              <details class="story">
+                <summary>Why, how, what broke</summary>
+                <dl>
+                  <dt>Why</dt><dd>Small business owners and 1099 contractors lose deductions because they don't have tax expertise. I built it with Julie, who brought the operations and finance side.</dd>
+                  <dt>How</dt><dd>Local-first, zero servers. PDF statements parse in the browser into IRS-ready, auto-categorized CSVs in under five seconds, across nine Schedule C categories.</dd>
+                  <dt>What broke</dt><dd>Every bank formats PDF statements differently, so a parser that works for one bank can misread another.</dd>
+                  <dt>Next time</dt><dd>Build a test set of real statement formats first, then write the parser against it.</dd>
+                </dl>
+              </details>
               <button class="case-link" onclick="window.location='/smart-deductions-case-study'"
                 style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
                 Case Study →</button>
@@ -1933,29 +2183,6 @@
           </script>
 
 
-          <!-- 02 Jersey Club Radio -->
-          <div class="project-card flip">
-            <div class="mockup"
-              style="cursor:pointer;background:transparent;border:none;box-shadow:none;display:flex;align-items:center;justify-content:center;"
-              onclick="window.location='/jersey-club-radio-case-study'">
-              <img src="Jersey Club Wireframe/jc-club-logo-gradient.webp" alt="Jersey Club Radio logo"
-                style="width:80%;max-width:320px;height:auto;object-fit:contain;mix-blend-mode:multiply;transition:transform .3s ease;"
-                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-            </div>
-            <div class="info">
-              <h2>Jersey Club <em>Radio</em></h2>
-              <div class="tags">UX/UI design &nbsp;·&nbsp; Wireframing &nbsp;·&nbsp; Audio streaming &nbsp;·&nbsp; React
-                · Next.js</div>
-              <p>Sole designer and engineer on a 24/7 live radio streaming platform for Jersey Club music. From hand
-                sketches and Figma wireframes to a production Beta. Persistent mini-player, animated waveform, accessible
-                playlist, and a WCAG-accessible dark UI. Three months in development, currently live in Beta.</p>
-              <button class="case-link" onclick="window.location='/jersey-club-radio-case-study'"
-                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
-                Case Study →</button>
-            </div>
-          </div>
-
-
           <!-- 06 The Jersey City Sound -->
           <div class="project-card flip">
             <div class="mockup"
@@ -1974,6 +2201,15 @@
                 the Legends memorial wing, the sources bibliography, the search index, and the sitemap from one data
                 file. Static HTML with no framework and no database, because the requirement is that it still loads in
                 twenty years.</p>
+              <details class="story">
+                <summary>Why, how, what broke</summary>
+                <dl>
+                  <dt>Why</dt><dd>Jersey City's music history had no permanent home online.</dd>
+                  <dt>How</dt><dd>One Python script generates all 248 entry pages, the A to Z index, search, and sitemap from a single data file. Static HTML, no framework, built to still load in twenty years.</dd>
+                  <dt>What broke</dt><dd>Generating everything from one script means one bad rule spreads everywhere. URL formats drifted between canonicals, internal links, and the sitemap, and one artist's chart credit was wrong: a Billboard 200 album listed as a Hot 100 single.</dd>
+                  <dt>Next time</dt><dd>Add a validation pass that checks URLs and facts before the build writes any pages.</dd>
+                </dl>
+              </details>
               <button class="case-link" onclick="window.location='/jersey-city-sound-case-study'"
                 style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
                 Case Study &rarr;</button>
@@ -1981,61 +2217,8 @@
           </div>
 
 
-          <!-- 05 Take Me Back Bingo -->
-          <div class="project-card flip">
-            <div class="mockup"
-              style="cursor:pointer;background:#141111;border:1px solid rgba(201,150,43,0.22);display:flex;align-items:center;justify-content:center;padding:48px 36px;"
-              onclick="window.location='/take-me-back-bingo-case-study'">
-              <img src="images/tmb-logo.png" alt="Take Me Back Bingo logo"
-                style="width:80%;max-width:340px;height:auto;object-fit:contain;transition:transform .3s ease;"
-                onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-            </div>
-            <div class="info">
-              <h2>Take Me Back <em>Bingo</em></h2>
-              <div class="tags">Editorial identity &nbsp;·&nbsp; In-browser game &nbsp;·&nbsp; Event &amp; FAQ schema &nbsp;·&nbsp; Share &amp; inquiry systems</div>
-              <p>A live-events brand that had to keep converting during the dark periods between announced calendars. I built the whole site as one state machine: every primary CTA carries its live behavior in data attributes, and a single feature flag rewrites the entire site between "Buy Tickets" and "Get Notified" with no duplicated markup. Also shipped a free in-browser 5x5 game, a share flow that works around an iOS Safari user-activation constraint, and Event plus FAQ schema tuned for People Also Ask.</p>
-              <button class="case-link" onclick="window.location='/take-me-back-bingo-case-study'"
-                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
-                Case Study &rarr;</button>
-            </div>
-          </div>
-
-          <!-- Tier 2 divider -->
-          <div class="work-tier">
-            <h2 class="work-tier__title">Selected brand &amp; identity work</h2>
-            <p class="work-tier__note">Shorter engagements where the brief was identity, launch, and conversion rather than product systems.</p>
-          </div>
-
-
-          <!-- 04 DMC Canada -->
-          <div class="project-card">
-            <div class="mockup"
-              style="background:none;border:none;box-shadow:none;cursor:pointer;padding:0;overflow:visible;display:block;"
-              data-goto="dmc-dj-canada-case-study">
-
-              <!-- mockup image -->
-              <div style="line-height:0;">
-                <img src="images/dmc_pro_mockup.webp" alt="DMC Canada desktop and mobile mockup"
-                  style="width:100% !important;height:auto !important;min-height:unset !important;display:block;object-fit:unset;mix-blend-mode:multiply;">
-              </div>
-
-            </div>
-            <div class="info">
-              <h2>DMC Canada <em>'26</em></h2>
-              <div class="tags">UI/UX design &nbsp;·&nbsp; Full-stack dev &nbsp;·&nbsp; E-commerce &nbsp;·&nbsp; Motion
-                design</div>
-              <p>Sole designer and developer for the Canadian division of the DMC World DJ Championships. Built and
-                shipped in a 1-week sprint. Designed the full brand system, purposeful micro-interactions, and
-                e-commerce flow, then engineered it to production using React, Next.js, and Stripe.</p>
-              <button class="case-link" data-goto="dmc-dj-canada-case-study"
-                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
-                Case Study →</button>
-            </div>
-          </div>
-
-
           <!-- 03 Julie Schatz Music -->
-          <div class="project-card flip">
+          <div class="project-card">
             <div class="mockup"
               style="cursor:pointer;background:#0f0a1a;border:1px solid rgba(168,85,247,0.18);"
               onclick="window.location='/julie-schatz-case-study'">
@@ -2056,106 +2239,6 @@
                 LocalBusiness, MusicGroup, Events, Reviews, and FAQ, and a ceremony picker that drafts across pages into
                 the booking form so couples arrive at the inquiry with their music already chosen.</p>
               <button class="case-link" onclick="window.location='/julie-schatz-case-study'"
-                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
-                Case Study &rarr;</button>
-            </div>
-          </div>
-
-
-          <!-- 07 Lily's Secret -->
-          <div class="project-card">
-            <!-- Interactive candle. The card image is the product demo here, so
-                 this mockup does not navigate; the heading and the case study
-                 link below carry that job. -->
-            <div class="mockup ls-stage"
-              style="background:#2B0710;border:1px solid rgba(201,162,75,0.22);padding:0;overflow:hidden;">
-              <div class="ls-candle" id="lsCandle" role="img"
-                aria-label="Interactive candle that reveals a hidden message when lit">
-                <div class="ls-candle__glow" aria-hidden="true"></div>
-                <div class="ls-candle__jar">
-                  <div class="ls-candle__inner">
-                    <div class="ls-candle__wax"><div class="ls-candle__pool" aria-hidden="true"></div></div>
-                    <div class="ls-candle__label" aria-hidden="true">
-                      <span class="ls-candle__label-brand">LILY'S SECRET</span>
-                      <span class="ls-candle__label-line">Patience brings the light<br>the flame reveals the secret</span>
-                    </div>
-                    <div class="ls-candle__msg">
-                      <span class="ls-candle__fleur" aria-hidden="true">&#9884;</span>
-                      <p class="ls-candle__message" id="lsMessage">Your message, hidden here.</p>
-                      <span class="ls-candle__fleur" aria-hidden="true">&#9884;</span>
-                    </div>
-                  </div>
-                  <div class="ls-candle__wick" aria-hidden="true"></div>
-                  <div class="ls-candle__flame" aria-hidden="true"><i></i></div>
-                  <div class="ls-candle__smoke" aria-hidden="true"><span></span><span></span><span></span></div>
-                  <div class="ls-candle__rim" aria-hidden="true"></div>
-                  <div class="ls-candle__gloss" aria-hidden="true"></div>
-                </div>
-              </div>
-              <button type="button" class="ls-toggle" id="lsToggle" aria-pressed="false">Light the candle</button>
-              <p class="ls-hint" id="lsHint">Press to light the flame</p>
-            </div>
-            <script>
-              (function () {
-                var candle = document.getElementById('lsCandle');
-                var toggle = document.getElementById('lsToggle');
-                var message = document.getElementById('lsMessage');
-                var hint = document.getElementById('lsHint');
-                if (!candle || !toggle || !message || !hint) return;
-
-                // The same suggested phrases the live site ships.
-                var MESSAGES = [
-                  'A single flame of your heart illuminates the entire universe.',
-                  'Espresso yourself, or just slow down.',
-                  'Your potential is endless. Keep shining!',
-                  'As this candle dispels the darkness, your smile lights up my heart.',
-                  'Habibi, your future is glowing.'
-                ];
-                var index = -1;
-                var lit = false;
-                var smokeTimer;
-
-                function light() {
-                  index = (index + 1) % MESSAGES.length;
-                  message.textContent = MESSAGES[index];
-                  candle.classList.remove('is-smoking');
-                  clearTimeout(smokeTimer);
-                  candle.classList.add('is-lit');
-                  lit = true;
-                  toggle.textContent = 'Blow it out';
-                  toggle.setAttribute('aria-pressed', 'true');
-                  hint.textContent = 'Light it again for another message';
-                }
-
-                function blowOut() {
-                  candle.classList.remove('is-lit');
-                  candle.classList.add('is-smoking');
-                  clearTimeout(smokeTimer);
-                  smokeTimer = setTimeout(function () {
-                    candle.classList.remove('is-smoking');
-                  }, 1900);
-                  lit = false;
-                  toggle.textContent = 'Light the candle';
-                  toggle.setAttribute('aria-pressed', 'false');
-                  hint.textContent = 'Press to light the flame';
-                }
-
-                function flip() { lit ? blowOut() : light(); }
-
-                toggle.addEventListener('click', flip);
-                candle.addEventListener('click', flip);
-                candle.style.cursor = 'pointer';
-              })();
-            </script>
-            <div class="info">
-              <h2>Lily's <em>Secret</em></h2>
-              <div class="tags">Brand site &nbsp;·&nbsp; Interactive demo &nbsp;·&nbsp; Six-language i18n &nbsp;·&nbsp;
-                Arabic RTL</div>
-              <p>Design and build for a UAE candle brand whose product hides a personal message under the wax, readable
-                only once the candle has burned down. The site solves an invisible product with a candle you can light on
-                the page, ships in six languages with full Arabic right-to-left, and routes every order to the studio in
-                English no matter which language the customer wrote it in.</p>
-              <button class="case-link" onclick="window.location='/lilys-secret-case-study'"
                 style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
                 Case Study &rarr;</button>
             </div>
@@ -2210,7 +2293,7 @@
               <h2 class="service-title">Responsive <em>Architecture</em></h2>
               <p class="service-desc">Components are engineered to adapt flawlessly across viewports. For example,
                 complex data tables collapse into highly legible mobile cards using modern CSS flex and grid logic,
-                ensuring the Shared Experiences team can deploy once and run anywhere.</p>
+                so a component ships once and holds up on every screen.</p>
             </div>
           </div>
 
@@ -2293,7 +2376,7 @@
             <div class="service-body">
               <div class="service-label">Semantic Color Tokens</div>
               <h2 class="service-title">Color = <em>Category. Always.</em></h2>
-              <p class="service-desc">The Schedule C category colors are a design system, not a theme. Each token is referenced exactly once, in the token file, and consumed across the donut chart, bar chart, transaction badge, CSV export column header, and tooltip. "Purple always means Subscriptions" becomes internalized within a single session. This is the color-as-grammar pattern QBO uses across its own reporting surfaces.</p>
+              <p class="service-desc">The Schedule C category colors are a design system, not a theme. Each token is referenced exactly once, in the token file, and consumed across the donut chart, bar chart, transaction badge, CSV export column header, and tooltip. "Purple always means Subscriptions" becomes internalized within a single session. Color works as grammar: the user learns it once and reads it everywhere.</p>
             </div>
           </div>
 
@@ -2373,7 +2456,7 @@
         <h1 class="title">DMC Canada <em>'26</em></h1>
         <div class="project-tags">
           <span>UI/UX Design</span>
-          <span>Full-Stack Dev</span>
+          <span>Custom Code</span>
           <span>E-Commerce</span>
         </div>
 
@@ -2381,9 +2464,9 @@
         <div class="cs-intro">
           <div class="cs-desc">
             Sole designer and developer for the <em>Canadian division of the DMC World DJ Championships</em>. Designed
-            and shipped a full platform. Brand system, ticketing, merchandise, and event info, in a 1-week sprint.
-            Every interaction, transition, and checkout flow was both designed and built by hand, from Figma to
-            production.
+            and shipped the full site. Brand system, ticketing, merchandise, and event info, in a 1-week sprint.
+            The client runs on Squarespace, so every custom section, transition, and style override was written by
+            hand as code layered on top of the platform, from Figma to production.
           </div>
           <div class="cs-meta-list">
             <div class="cs-meta-item">
@@ -2396,7 +2479,7 @@
             </div>
             <div class="cs-meta-item">
               <div class="k">Stack</div>
-              <div class="v">React · Next.js · Stripe · Tailwind</div>
+              <div class="v">Squarespace · Custom CSS + JS (code injection) · Stripe</div>
             </div>
             <div class="cs-meta-item">
               <div class="k">Timeline</div>
@@ -2435,7 +2518,7 @@
               <p class="cs-section-body">The DMC World DJ Championships needed a full digital overhaul for their
                 Canadian division. The legacy system was fragmented and didn't perform well on mobile devices, leading
                 to cart abandonment during high-traffic ticket drops. The goal was to unify the brand and checkout
-                experience into a single, highly performant web app.</p>
+                experience in one site the organizers could keep running themselves on Squarespace.</p>
             </div>
           </div>
         </div>
@@ -2445,9 +2528,10 @@
           <div class="cs-split flip">
             <div class="cs-text">
               <h2 class="cs-section-title">Dark-Themed, Competition-Ready UI</h2>
-              <p class="cs-section-body">I architected a dark-themed, glassmorphic UI system utilizing stark red
-                contrasts to evoke a sense of competition and energy. Bold typography and full-bleed imagery set the
-                tone for an event that's all about performance and precision.</p>
+              <p class="cs-section-body">I designed a dark-themed, glassmorphic UI system with stark red contrasts to
+                evoke competition and energy, then built it as custom CSS and JavaScript injected site-wide through
+                Squarespace's header code injection. Bebas Neue and Barlow, full-bleed imagery, an injected hero, a
+                contact panel, and a live ticker set the tone for an event that's all about performance and precision.</p>
             </div>
             <div>
               <div class="iphone-mockup" style="max-width:220px;margin:0 auto;position:relative;">
@@ -2489,10 +2573,10 @@
         <div class="cs-section">
           <div class="cs-section-label">03 · E-Commerce Overhaul</div>
           <h2 class="cs-section-title">Friction-Free Purchase Funnel</h2>
-          <p class="cs-section-body">To solve the conversion issues, I rebuilt the entire e-commerce flow with emphasis
-            on native mobile UX principles. Key touch targets were enlarged, complex forms were broken into step-by-step
-            interactions, and Apple Pay / Google Pay were integrated deeply into the checkout drawer. The result
-            significantly reduced cart abandonment.</p>
+          <p class="cs-section-body">Most ticket buyers arrive on a phone, so the shop, product pages, and cart were
+            restyled mobile-first: larger touch targets, a clearer product hierarchy, and a short path from the event
+            page to the cart. All of it is custom code on top of Squarespace's commerce templates, so the organizers
+            still manage products and tickets in the tools they already know.</p>
           <div class="cs-2col">
             <div>
               <div class="cs-img"><img src="images/dmc_mac_mockup.webp" alt="DMC Canada desktop view"></div>
@@ -2530,13 +2614,8 @@
 
         <div class="cs-section">
           <div class="cs-section-label">04 · Checkout Friction & Payment Routing</div>
-          <h2 class="cs-section-title">Migrating to Stripe for Resilience</h2>
-          <p class="cs-section-body">To handle high-traffic ticket drops, I migrated the payment infrastructure to
-            Stripe. The payment flow was restructured to preempt errors: inline zip code validation prevents late-stage
-            declines, and explicit error states guide users through card rejections without clearing their cart. By
-            integrating Apple Pay and Google Pay directly into a persistent checkout drawer, the number of required tap
-            interactions was dramatically reduced, directly increasing conversion rates and mitigating cart abandonment.
-          </p>
+          <h2 class="cs-section-title">Payments Left Where They Can't Break</h2>
+          <p class="cs-section-body">Squarespace doesn't let custom code touch its checkout, and for a ticket drop that is a feature: the payment path is the one part of the site that can't be broken by a design change. I connected Stripe as the payment processor and turned on Apple Pay and Google Pay, so buyers on a phone can pay without typing a card number. My custom code stops at the cart; checkout stays on the platform.</p>
         </div>
 
         <!-- ── DMC OUTCOMES ── -->
@@ -2580,7 +2659,7 @@
         <div style="margin-top:32px;max-width:600px;">
           <div class="aside-note" style="border-left:1px solid var(--edge);padding-left:24px;font-family:inherit;font-style:normal;font-size:inherit;">
 
-            <p style="font-family:'Fraunces',serif;font-style:italic;font-size:22px;line-height:1.4;color:var(--ink);margin:0 0 28px;">Open to Senior Product Design roles in New York or remote. Recruiters and hiring managers, I reply within one business day.</p>
+            <p style="font-family:'Fraunces',serif;font-style:italic;font-size:22px;line-height:1.4;color:var(--ink);margin:0 0 28px;">Open to Product Design and Creative Developer roles in New York or remote. Recruiters and hiring managers, I reply within one business day.</p>
 
             <form id="contact-form" action="https://formspree.io/f/xreroazy" method="POST" style="display:flex;flex-direction:column;gap:0;">
               <input type="hidden" id="cf-intent-hidden" name="intent" value="Role opportunity">
