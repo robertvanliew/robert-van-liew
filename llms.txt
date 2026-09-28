@@ -60,7 +60,7 @@ Specialized: PDF.js, Recharts, Formspree, Schema.org / JSON-LD, WCAG 2.1 AA acce
 - Case Study (Take Me Back Bingo): https://www.robertvanliew.com/take-me-back-bingo-case-study
 - Case Study (The Jersey City Sound): https://www.robertvanliew.com/jersey-city-sound-case-study
 - Case Study (Lily's Secret): https://www.robertvanliew.com/lilys-secret-case-study
-- LinkedIn: https://www.linkedin.com/in/robertvanliew
+- LinkedIn: https://www.linkedin.com/in/robert-vanliew
 - GitHub: https://github.com/robertvanliew
 - Email: robvanliew@gmail.com
 - Location: New York, NY, USA
