@@ -61,8 +61,22 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap"></noscript>
 <style>
+  img { max-width: 100%; height: auto; }
+  /* Georgia scaled to Fraunces' width, so serif text keeps its line breaks when the web font loads. */
+  @font-face {
+    font-family: 'Fraunces Fallback';
+    src: local('Georgia');
+    size-adjust: 104.3%;
+  }
+  /* Fallback with JetBrains Mono's 0.6em advance, so mono text wraps the same before
+     and after the web font arrives (no layout shift on load). */
+  @font-face {
+    font-family: 'JBM Fallback';
+    src: local('Courier New'), local('Cousine'), local('Liberation Mono'), local('Nimbus Mono PS');
+  }
   :root{
     --bg-chrome:   #e2e4e3;
     --bg-chrome-2: #d4d7d4;
@@ -75,14 +89,14 @@
     --edge-soft:   #d4d7d3;
     --ink:         #202522;
     --ink-soft:    #5f6561;
-    --ink-faint:   #9ba1a0;
-    --accent:      #9C7A14;
+    --ink-faint:   #646a67;
+    --accent:      #86690F;
     --accent-warm: #C9A227;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: "Fraunces", Georgia, serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     color: var(--ink);
     background: var(--content);
     min-height: 100vh;
@@ -98,7 +112,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 14px 72px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
   }
   .nav-back {
     display: inline-flex;
@@ -143,13 +157,13 @@
     margin-bottom: 14px;
   }
   .project-eyebrow .crumb-cur {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ink-soft);
   }
-  .project-eyebrow .sep { color: var(--edge); font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  .project-eyebrow .sep { color: var(--edge); font-family: "JetBrains Mono", "JBM Fallback", monospace; font-size: 11px; }
 
   h1.title {
     font-family: "Fraunces", serif;
@@ -169,7 +183,7 @@
     margin: 16px 0 28px;
   }
   .project-tags span {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -198,7 +212,7 @@
   .cs-desc a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
   .cs-meta-list { display: flex; flex-direction: column; gap: 18px; }
   .cs-meta-item .k {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -206,7 +220,7 @@
     margin-bottom: 4px;
   }
   .cs-meta-item .v {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 13px;
     color: var(--ink);
   }
@@ -215,7 +229,7 @@
 
   .cs-section { margin-bottom: 60px; }
   .cs-section-label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -250,7 +264,7 @@
   .cs-section-body strong { color: var(--ink); font-weight: 600; }
   .cs-section-body a { color: var(--accent); }
   .cs-section-body code {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 13px;
     background: var(--content-2);
     padding: 1px 6px;
@@ -271,7 +285,7 @@
     background: #fff;
   }
   .schema-pill .k {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 9.5px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -279,13 +293,13 @@
     margin-bottom: 6px;
   }
   .schema-pill .v {
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     font-size: 17px;
     color: var(--ink);
     font-weight: 500;
   }
   .schema-pill .sub {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     color: var(--ink-soft);
     margin-top: 4px;
@@ -309,7 +323,7 @@
   .flow-row:last-child { border-bottom: none; padding-bottom: 0; }
   .flow-row:first-child { padding-top: 0; }
   .flow-step {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -322,7 +336,7 @@
     color: var(--ink);
   }
   .flow-body code {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 12.5px;
     background: var(--content-2);
     padding: 1px 6px;
@@ -347,7 +361,7 @@
     height: auto;
   }
   .cs-figure__caption {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     letter-spacing: 0.04em;
     color: var(--ink-faint);
@@ -383,7 +397,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -500,7 +514,7 @@
 
     <figure class="cs-figure">
       <div class="cs-figure__frame">
-        <img src="images/jcs-archive.webp" alt="The Jersey City Sound A to Z archive index on archival paper, with a filter field and category chips" loading="lazy">
+        <img src="images/jcs-archive.webp" alt="The Jersey City Sound A to Z archive index on archival paper, with a filter field and category chips" loading="lazy" width="2880" height="1800">
       </div>
       <figcaption class="cs-figure__caption"><strong>Fig 1.</strong> The A to Z index. Every entry the generator has written, filtered by People, Groups, Venues, or Films, searching against a client-side index built from the same data file. The count in the middle is read from the data, so it cannot fall out of step with the list beneath it.</figcaption>
     </figure>
@@ -511,7 +525,7 @@
 
     <figure class="cs-figure">
       <div class="cs-figure__frame">
-        <img src="images/jcs-entry.webp" alt="An entry page showing the breadcrumb, entry number, era chips, drop-cap lead paragraph, and the Record Card in the right rail" loading="lazy">
+        <img src="images/jcs-entry.webp" alt="An entry page showing the breadcrumb, entry number, era chips, drop-cap lead paragraph, and the Record Card in the right rail" loading="lazy" width="2880" height="1800">
       </div>
       <figcaption class="cs-figure__caption"><strong>Fig 2.</strong> Entry № 001. The Record Card carries the structured facts in the right rail, the lead paragraph opens on a drop cap and is written to stand alone, and the era chips sit above the rule so the period is legible before a word is read.</figcaption>
     </figure>
@@ -522,7 +536,7 @@
 
     <figure class="cs-figure">
       <div class="cs-figure__frame">
-        <img src="images/jcs-legends.webp" alt="The Legends memorial wing rendered in the night and gold theme, with entry numbers and names in memoriam" loading="lazy">
+        <img src="images/jcs-legends.webp" alt="The Legends memorial wing rendered in the night and gold theme, with entry numbers and names in memoriam" loading="lazy" width="2880" height="1800">
       </div>
       <figcaption class="cs-figure__caption"><strong>Fig 3.</strong> The Legends wing. The theme inverts to night and gold and everything else holds, so the memorial pages read as part of the same building rather than a separate site.</figcaption>
     </figure>
@@ -589,7 +603,7 @@
 
     <figure class="cs-figure cs-figure--phone">
       <div class="cs-figure__frame">
-        <img src="images/jcs-entry-mobile.webp" alt="An entry page on a phone, with the navigation stacked and the Record Card moved out of the right rail into the single column" loading="lazy">
+        <img src="images/jcs-entry-mobile.webp" alt="An entry page on a phone, with the navigation stacked and the Record Card moved out of the right rail into the single column" loading="lazy" width="1170" height="2532">
       </div>
       <figcaption class="cs-figure__caption"><strong>Fig 4.</strong> On mobile the Record Card leaves the right rail and drops into the single column directly under the entry header, so the structured facts still arrive before the prose rather than after all of it.</figcaption>
     </figure>

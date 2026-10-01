@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Jersey Club Radio, Case Study · Robert Van Liew</title>
-<meta name="description" content="Jersey Club Radio case study: designing a 24/7 streaming radio interface for a regional dance music scene. Interaction design, brand system, and front-end build.">
+<meta name="description" content="Jersey Club Radio case study: UX and front-end build for a 24/7 dance music streaming station, with a persistent mini-player and an accessible dark UI.">
 <meta name="author" content="Robert Van Liew">
 <link rel="canonical" href="https://www.robertvanliew.com/jersey-club-radio-case-study">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -61,8 +61,22 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap"></noscript>
 <style>
+  img { max-width: 100%; height: auto; }
+  /* Georgia scaled to Fraunces' width, so serif text keeps its line breaks when the web font loads. */
+  @font-face {
+    font-family: 'Fraunces Fallback';
+    src: local('Georgia');
+    size-adjust: 104.3%;
+  }
+  /* Fallback with JetBrains Mono's 0.6em advance, so mono text wraps the same before
+     and after the web font arrives (no layout shift on load). */
+  @font-face {
+    font-family: 'JBM Fallback';
+    src: local('Courier New'), local('Cousine'), local('Liberation Mono'), local('Nimbus Mono PS');
+  }
   :root{
     --bg-chrome:   #e2e4e3;
     --bg-chrome-2: #d4d7d4;
@@ -75,13 +89,13 @@
     --edge-soft:   #d4d7d3;
     --ink:         #202522;
     --ink-soft:    #5f6561;
-    --ink-faint:   #9ba1a0;
+    --ink-faint:   #646a67;
     --accent:      #30604a;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: "Fraunces", Georgia, serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     color: var(--ink);
     background: var(--content);
     min-height: 100vh;
@@ -98,7 +112,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 14px 72px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
   }
 
   .nav-back {
@@ -150,7 +164,7 @@
   .project-eyebrow .back-btn {
     all: unset;
     cursor: pointer;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -163,8 +177,8 @@
     transition: color .15s, border-color .15s;
   }
   .project-eyebrow .back-btn:hover { color: var(--ink); border-color: var(--edge); }
-  .project-eyebrow .sep { color: var(--edge); font-family: "JetBrains Mono", monospace; font-size: 11px; }
-  .project-eyebrow .crumb-cur { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); }
+  .project-eyebrow .sep { color: var(--edge); font-family: "JetBrains Mono", "JBM Fallback", monospace; font-size: 11px; }
+  .project-eyebrow .crumb-cur { font-family: "JetBrains Mono", "JBM Fallback", monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); }
 
   /* ── TITLE ── */
   h1.title {
@@ -186,7 +200,7 @@
     margin: 16px 0 28px;
   }
   .project-tags span {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -282,19 +296,19 @@
   .cs-desc em { color: var(--accent); font-style: italic; }
   .cs-meta-list { display: flex; flex-direction: column; gap: 18px; }
   .cs-meta-item .k {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--ink-faint);
     margin-bottom: 4px;
   }
-  .cs-meta-item .v { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--ink); }
+  .cs-meta-item .v { font-family: "JetBrains Mono", "JBM Fallback", monospace; font-size: 13px; color: var(--ink); }
 
   /* ── SECTIONS ── */
   .cs-section { margin-bottom: 60px; }
   .cs-section-label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -334,7 +348,7 @@
   }
   .cs-img img { display: block; width: 100%; height: auto; }
   .cs-img-caption {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     color: var(--ink-faint);
     margin-top: 10px;
@@ -364,14 +378,14 @@
     padding: 28px 22px;
   }
   .process-step .num {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     letter-spacing: 0.2em;
     color: var(--ink-faint);
     margin-bottom: 10px;
   }
   .process-step .step-title {
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     font-size: 17px;
     font-weight: 500;
     color: var(--ink);
@@ -398,14 +412,14 @@
     padding: 28px 24px;
   }
   .decision-card .d-num {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.2em;
     color: var(--ink-faint);
     margin-bottom: 10px;
   }
   .decision-card .d-title {
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     font-size: 17px;
     font-weight: 500;
     color: var(--ink);
@@ -465,7 +479,7 @@
     pointer-events: none;
   }
   .iphone-caption {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -497,7 +511,7 @@
     background: #f5f5f5;
     border: 1px solid #d8d8d8;
     border-radius: 4px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     color: #666;
     padding: 3px 10px;
@@ -554,7 +568,7 @@
   .thumb:hover { opacity: 0.9; }
 
   .slide-caption {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.08em;
     color: var(--ink-faint);
@@ -574,7 +588,7 @@
       0 0 0 1px rgba(217,70,239,0.18),
       0 32px 64px rgba(0,0,0,0.55),
       0 0 48px rgba(217,70,239,0.06);
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 12px;
   }
 
@@ -682,7 +696,7 @@
   }
   @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
-  .p-mix { font-size: 19px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #f0eaf8; text-align: center; margin-bottom: 2px; font-family: "Fraunces", serif; font-style: italic; }
+  .p-mix { font-size: 19px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #f0eaf8; text-align: center; margin-bottom: 2px; font-family: "Fraunces", "Fraunces Fallback", serif; font-style: italic; }
   .p-dj { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: #5a4e72; text-align: center; margin-bottom: 14px; }
 
   .p-waveform {
@@ -745,7 +759,7 @@
     justify-content: space-between;
     border-top: 1px solid rgba(255,255,255,0.05);
   }
-  .p-playlist-title { font-family: "Fraunces", serif; font-size: 14px; font-style: italic; color: #c8b8e8; }
+  .p-playlist-title { font-family: "Fraunces", "Fraunces Fallback", serif; font-size: 14px; font-style: italic; color: #c8b8e8; }
   .p-play-all {
     background: rgba(217,70,239,0.12);
     border: 1px solid rgba(217,70,239,0.25);
@@ -756,7 +770,7 @@
     text-transform: uppercase;
     color: #d946ef;
     cursor: pointer;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
   }
 
   .p-tracks { max-height: 160px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #2a2040 transparent; }
@@ -846,7 +860,7 @@
     text-align: center;
   }
   .outcome-stat .num {
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     font-size: 44px;
     font-weight: 500;
     font-style: italic;
@@ -855,7 +869,7 @@
     margin-bottom: 8px;
   }
   .outcome-stat .label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -872,7 +886,7 @@
     justify-content: space-between;
   }
   .back-row p {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -882,7 +896,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -911,7 +925,7 @@
   }
   .iter-frame { display: flex; flex-direction: column; gap: 8px; }
   .iter-tag {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 9px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -926,14 +940,14 @@
 
   .iteration-annotation { padding-top: 8px; display: flex; flex-direction: column; gap: 10px; }
   .annot-label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 9px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--ink-faint);
   }
   .annot-title {
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     font-size: 20px;
     font-weight: 500;
     color: var(--ink);
@@ -954,7 +968,7 @@
     margin-top: 4px;
   }
   .annot-tags span {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 9px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -1022,7 +1036,7 @@
       <div class="macbook-screen-wrap">
         <div class="macbook-camera"></div>
         <div class="macbook-display">
-          <img src="Jersey Club Wireframe/Version Three - Final Product.webp" alt="Jersey Club Radio, full desktop dashboard">
+          <img src="Jersey Club Wireframe/Version Three - Final Product.webp" alt="Jersey Club Radio, full desktop dashboard" width="1914" height="938">
         </div>
       </div>
     </div>
@@ -1074,7 +1088,7 @@
     <div class="cs-section-label">01 · From Sketch to Wireframe</div>
     <div class="cs-split">
       <div class="cs-img">
-        <img src="Jersey Club Wireframe/Wireframe from Figma.webp" alt="Jersey Club Radio hand sketch and Figma wireframe side by side">
+        <img src="Jersey Club Wireframe/Wireframe from Figma.webp" alt="Jersey Club Radio hand sketch and Figma wireframe side by side" width="1304" height="717">
         <div class="cs-img-caption">Hand sketch to Figma wireframe, annotated with layout decisions</div>
       </div>
       <div class="cs-text">
@@ -1095,7 +1109,7 @@
         <p class="cs-section-body">Dark purple-black base with magenta accent keeps the UI rooted in club culture without sacrificing legibility. Every text element passes WCAG AA contrast.</p>
       </div>
       <div class="cs-img">
-        <img src="Jersey Club Wireframe/Jersey Club Playlist.webp" alt="Jersey Club Radio playlist in production">
+        <img src="Jersey Club Wireframe/Jersey Club Playlist.webp" alt="Jersey Club Radio playlist in production" width="1105" height="469">
         <div class="cs-img-caption">Live playlist, 99+ tracks</div>
       </div>
     </div>
@@ -1113,13 +1127,13 @@
         <div class="iter-frame">
           <div class="iter-tag v1">Version 1</div>
           <div class="cs-img">
-            <img src="Jersey Club Wireframe/First version -Player.webp" alt="Version 1, circular badge logo, text-only player">
+            <img src="Jersey Club Wireframe/First version -Player.webp" alt="Version 1, circular badge logo, text-only player" width="1894" height="934">
           </div>
         </div>
         <div class="iter-frame">
           <div class="iter-tag v2">Version 2</div>
           <div class="cs-img">
-            <img src="Jersey Club Wireframe/Second Version Player.webp" alt="Version 2, gradient clover logo introduced">
+            <img src="Jersey Club Wireframe/Second Version Player.webp" alt="Version 2, gradient clover logo introduced" width="1915" height="940">
           </div>
         </div>
       </div>
@@ -1141,13 +1155,13 @@
         <div class="iter-frame">
           <div class="iter-tag v2">Version 2 · Mobile</div>
           <div class="cs-img" style="background:#0a0710;">
-            <img src="Jersey Club Wireframe/Screenshot 2026-02-27 203933.webp" alt="Version 2 mobile, circular badge, no waveform">
+            <img src="Jersey Club Wireframe/Screenshot 2026-02-27 203933.webp" alt="Version 2 mobile, circular badge, no waveform" width="565" height="810">
           </div>
         </div>
         <div class="iter-frame">
           <div class="iter-tag v3">Version 3 · Mobile</div>
           <div class="cs-img" style="background:#0a0710;">
-            <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004952.webp" alt="Version 3 mobile, clover logo, live waveform, persistent mini-player">
+            <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004952.webp" alt="Version 3 mobile, clover logo, live waveform, persistent mini-player" width="493" height="685">
           </div>
         </div>
       </div>
@@ -1169,7 +1183,7 @@
       <div class="iter-frame" style="flex:1;">
         <div class="iter-tag v3">Final · Desktop</div>
         <div class="cs-img">
-          <img src="Jersey Club Wireframe/Version Three - Final Product.webp" alt="Final desktop, full dashboard with sidebar, player, playlist, top songs">
+          <img src="Jersey Club Wireframe/Version Three - Final Product.webp" alt="Final desktop, full dashboard with sidebar, player, playlist, top songs" width="1914" height="938">
         </div>
       </div>
       <div class="iteration-annotation">
@@ -1214,7 +1228,7 @@
           </svg>
           <!-- actual screenshot inside -->
           <div class="iphone-screen">
-            <img id="iphoneScreen" src="Jersey Club Wireframe/Screenshot 2026-04-19 004952.webp" alt="Jersey Club Radio mobile player" loading="lazy">
+            <img id="iphoneScreen" src="Jersey Club Wireframe/Screenshot 2026-04-19 004952.webp" alt="Jersey Club Radio mobile player" loading="lazy" width="493" height="685">
           </div>
           <!-- reflection sheen -->
           <div class="iphone-sheen" aria-hidden="true"></div>
@@ -1237,19 +1251,19 @@
           <!-- carousel slides -->
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-slide active">
-              <img src="Jersey Club Wireframe/Version Three - Final Product.webp" alt="Full desktop dashboard, Jersey Club Radio">
+              <img src="Jersey Club Wireframe/Version Three - Final Product.webp" alt="Full desktop dashboard, Jersey Club Radio" width="1914" height="938">
             </div>
             <div class="carousel-slide">
-              <img src="Jersey Club Wireframe/Second Version Player.webp" alt="Desktop player, Bills by DJ Tim Dolla x DJ Problem">
+              <img src="Jersey Club Wireframe/Second Version Player.webp" alt="Desktop player, Bills by DJ Tim Dolla x DJ Problem" width="1915" height="940">
             </div>
             <div class="carousel-slide">
-              <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004903.webp" alt="Live player bar, All Night by DJ Smallz 732">
+              <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004903.webp" alt="Live player bar, All Night by DJ Smallz 732" width="1627" height="306">
             </div>
             <div class="carousel-slide">
-              <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004923.webp" alt="Jersey Club Playlist, 100 tracks">
+              <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004923.webp" alt="Jersey Club Playlist, 100 tracks" width="1091" height="431">
             </div>
             <div class="carousel-slide">
-              <img src="Jersey Club Wireframe/Screenshot 2026-04-19 005048.webp" alt="Top Songs chart">
+              <img src="Jersey Club Wireframe/Screenshot 2026-04-19 005048.webp" alt="Top Songs chart" width="535" height="438">
             </div>
           </div>
           <!-- prev/next -->
@@ -1260,19 +1274,19 @@
         <!-- thumbnail strip -->
         <div class="thumb-strip" id="thumbStrip">
           <button class="thumb active" data-idx="0" aria-label="Full dashboard">
-            <img src="Jersey Club Wireframe/Version Three - Final Product.webp" alt="">
+            <img src="Jersey Club Wireframe/Version Three - Final Product.webp" alt="" width="1914" height="938">
           </button>
           <button class="thumb" data-idx="1" aria-label="Desktop player">
-            <img src="Jersey Club Wireframe/Second Version Player.webp" alt="">
+            <img src="Jersey Club Wireframe/Second Version Player.webp" alt="" width="1915" height="940">
           </button>
           <button class="thumb" data-idx="2" aria-label="Live player bar">
-            <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004903.webp" alt="">
+            <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004903.webp" alt="" width="1627" height="306">
           </button>
           <button class="thumb" data-idx="3" aria-label="Playlist view">
-            <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004923.webp" alt="">
+            <img src="Jersey Club Wireframe/Screenshot 2026-04-19 004923.webp" alt="" width="1091" height="431">
           </button>
           <button class="thumb" data-idx="4" aria-label="Top Songs">
-            <img src="Jersey Club Wireframe/Screenshot 2026-04-19 005048.webp" alt="">
+            <img src="Jersey Club Wireframe/Screenshot 2026-04-19 005048.webp" alt="" width="535" height="438">
           </button>
         </div>
 
@@ -1287,7 +1301,7 @@
   <div class="cs-section">
     <div class="cs-section-label">05 · Research &amp; User Insights</div>
 
-    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-faint);letter-spacing:.04em;margin-bottom:8px;">METHODOLOGY</p>
+    <p style="font-family:'JetBrains Mono','JBM Fallback',monospace;font-size:13px;color:var(--ink-faint);letter-spacing:.04em;margin-bottom:8px;">METHODOLOGY</p>
     <h2 style="font-size:clamp(22px,3vw,30px);font-weight:500;margin-bottom:16px;line-height:1.2;">Listening data &amp; geographic analytics shaped every major design call.</h2>
     <p style="font-size:17px;line-height:1.7;color:var(--ink-soft);max-width:680px;margin-bottom:48px;">In collaboration with the marketing and growth team, we instrumented the platform with real-time listener tracking, capturing geographic distribution, session depth, and engagement patterns. The data was reviewed weekly and directly informed prioritization decisions across the product roadmap.</p>
 
@@ -1297,18 +1311,18 @@
       <!-- Heatmap 1 -->
       <div>
         <div style="background:var(--content-2);border-radius:12px;overflow:hidden;border:1px solid var(--edge-soft);margin-bottom:16px;">
-          <img src="Jersey Club Wireframe/Final Design Heatmap.webp" alt="Listener geographic heatmap, US East Coast concentration" style="width:100%;display:block;object-fit:cover;">
+          <img src="Jersey Club Wireframe/Final Design Heatmap.webp" alt="Listener geographic heatmap, US East Coast concentration" style="width:100%;display:block;object-fit:cover;" width="517" height="260">
         </div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:6px;">LISTENER HEATMAP · GEOGRAPHIC CONCENTRATION</p>
+        <p style="font-family:'JetBrains Mono','JBM Fallback',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:6px;">LISTENER HEATMAP · GEOGRAPHIC CONCENTRATION</p>
         <p style="font-size:15px;line-height:1.6;color:var(--ink-soft);">Heatmap data confirmed the primary listener base is concentrated in the US Northeast corridor: New Jersey, New York, and Philadelphia. This aligned directly with Jersey Club music's cultural roots. This validated prioritizing English-first UI copy, EST-aligned stream scheduling, and mobile-first layout given the commuter audience profile.</p>
       </div>
 
       <!-- Heatmap 2. Global Reach feature -->
       <div>
         <div style="background:var(--content-2);border-radius:12px;overflow:hidden;border:1px solid var(--edge-soft);margin-bottom:16px;">
-          <img src="Jersey Club Wireframe/Second step to final heatmap.webp" alt="Global Reach analytics tab, live visitor counter" style="width:100%;display:block;object-fit:cover;">
+          <img src="Jersey Club Wireframe/Second step to final heatmap.webp" alt="Global Reach analytics tab, live visitor counter" style="width:100%;display:block;object-fit:cover;" width="545" height="431">
         </div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:6px;">GLOBAL REACH TAB · LIVE ANALYTICS FEATURE</p>
+        <p style="font-family:'JetBrains Mono','JBM Fallback',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:6px;">GLOBAL REACH TAB · LIVE ANALYTICS FEATURE</p>
         <p style="font-size:15px;line-height:1.6;color:var(--ink-soft);">Research revealed DJs and promoters were asking "who's actually listening?" We designed the Global Reach tab as a real-time dashboard, showing active visitors, countries reached, and live listener count, giving artists visibility into their growing footprint. This feature directly addressed DJ retention, making them more likely to promote the platform to their audiences.</p>
       </div>
 
@@ -1316,7 +1330,7 @@
 
     <!-- KEY INSIGHTS STRIP -->
     <div style="background:var(--content-2);border-radius:12px;padding:32px 36px;border:1px solid var(--edge-soft);margin-bottom:52px;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:24px;">KEY RESEARCH FINDINGS</p>
+      <p style="font-family:'JetBrains Mono','JBM Fallback',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:24px;">KEY RESEARCH FINDINGS</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
         <div>
           <div style="font-size:28px;font-weight:600;color:var(--accent);margin-bottom:6px;">87%</div>
@@ -1336,16 +1350,16 @@
     <!-- TOP SONGS COMPONENT -->
     <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:start;">
       <div>
-        <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:12px;">TOP SONGS COMPONENT · DATA-DRIVEN DESIGN</p>
+        <p style="font-family:'JetBrains Mono','JBM Fallback',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;margin-bottom:12px;">TOP SONGS COMPONENT · DATA-DRIVEN DESIGN</p>
         <h3 style="font-size:20px;font-weight:500;margin-bottom:14px;">Listener engagement data surfaced the Top Songs component</h3>
         <p style="font-size:15px;line-height:1.7;color:var(--ink-soft);margin-bottom:18px;">Play-count analytics showed listeners were repeatedly returning to the same tracks, particularly DJ Sliink and DJ Jayhood edits. Rather than surfacing this data only in internal dashboards, the growth team recommended exposing it directly in the UI as a social signal.</p>
         <p style="font-size:15px;line-height:1.7;color:var(--ink-soft);">The Top Songs ranked list was designed as a lightweight, scannable component: track name, artist, and rank number. No album art, no noise. The ranking updates dynamically based on weekly play data, creating a leaderboard mechanic that incentivizes DJs to submit exclusives.</p>
       </div>
       <div>
         <div style="background:var(--content-2);border-radius:12px;overflow:hidden;border:1px solid var(--edge-soft);">
-          <img src="Jersey Club Wireframe/Top Songs final Component.webp" alt="Top Songs ranked component, Jersey Club Radio" style="width:100%;display:block;object-fit:cover;">
+          <img src="Jersey Club Wireframe/Top Songs final Component.webp" alt="Top Songs ranked component, Jersey Club Radio" style="width:100%;display:block;object-fit:cover;" width="528" height="460">
         </div>
-        <p style="font-size:13px;color:var(--ink-faint);margin-top:10px;font-family:'JetBrains Mono',monospace;">Top Songs · weekly play-count ranking</p>
+        <p style="font-size:13px;color:var(--ink-faint);margin-top:10px;font-family:'JetBrains Mono','JBM Fallback',monospace;">Top Songs · weekly play-count ranking</p>
       </div>
     </div>
 

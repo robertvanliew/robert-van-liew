@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Julie Schatz Music, Case Study, Robert Van Liew</title>
-<meta name="description" content="Case study: a NYC wedding musician site rebuilt in two weeks with editorial design, deep SEO and schema, and a ceremony picker that drafts into the booking form.">
+<meta name="description" content="Musician website design case study: a NYC wedding violinist's site rebuilt in two weeks with editorial design, deep schema, and a smarter booking flow.">
 <meta name="author" content="Robert Van Liew">
 <link rel="canonical" href="https://www.robertvanliew.com/julie-schatz-case-study">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -61,8 +61,21 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap"></noscript>
 <style>
+  /* Georgia scaled to Fraunces' width, so serif text keeps its line breaks when the web font loads. */
+  @font-face {
+    font-family: 'Fraunces Fallback';
+    src: local('Georgia');
+    size-adjust: 104.3%;
+  }
+  /* Fallback with JetBrains Mono's 0.6em advance, so mono text wraps the same before
+     and after the web font arrives (no layout shift on load). */
+  @font-face {
+    font-family: 'JBM Fallback';
+    src: local('Courier New'), local('Cousine'), local('Liberation Mono'), local('Nimbus Mono PS');
+  }
   :root{
     --bg-chrome:   #e2e4e3;
     --bg-chrome-2: #d4d7d4;
@@ -75,13 +88,13 @@
     --edge-soft:   #d4d7d3;
     --ink:         #202522;
     --ink-soft:    #5f6561;
-    --ink-faint:   #9ba1a0;
+    --ink-faint:   #646a67;
     --accent:      #5b2a8a;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: "Fraunces", Georgia, serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     color: var(--ink);
     background: var(--content);
     min-height: 100vh;
@@ -97,7 +110,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 14px 72px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
   }
   .nav-back {
     display: inline-flex;
@@ -142,13 +155,13 @@
     margin-bottom: 14px;
   }
   .project-eyebrow .crumb-cur {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ink-soft);
   }
-  .project-eyebrow .sep { color: var(--edge); font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  .project-eyebrow .sep { color: var(--edge); font-family: "JetBrains Mono", "JBM Fallback", monospace; font-size: 11px; }
 
   h1.title {
     font-family: "Fraunces", serif;
@@ -168,7 +181,7 @@
     margin: 16px 0 28px;
   }
   .project-tags span {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -197,7 +210,7 @@
   .cs-desc a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
   .cs-meta-list { display: flex; flex-direction: column; gap: 18px; }
   .cs-meta-item .k {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -205,7 +218,7 @@
     margin-bottom: 4px;
   }
   .cs-meta-item .v {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 13px;
     color: var(--ink);
   }
@@ -214,7 +227,7 @@
 
   .cs-section { margin-bottom: 60px; }
   .cs-section-label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -256,7 +269,7 @@
     border-radius: 12px;
     padding: 28px 24px;
     color: #f4efe6;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 12.5px;
     line-height: 1.7;
     box-shadow: 0 16px 48px rgba(15,10,26,0.35);
@@ -269,7 +282,7 @@
     margin-bottom: 14px;
   }
   .figure-frame pre {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11.5px;
     line-height: 1.65;
     white-space: pre;
@@ -278,7 +291,7 @@
     margin: 0;
   }
   .figure-caption {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     color: var(--ink-faint);
     margin-top: 10px;
@@ -298,7 +311,7 @@
     background: #fff;
   }
   .schema-pill .k {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 9.5px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -306,13 +319,13 @@
     margin-bottom: 6px;
   }
   .schema-pill .v {
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", "Fraunces Fallback", serif;
     font-size: 17px;
     color: var(--ink);
     font-weight: 500;
   }
   .schema-pill .sub {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     color: var(--ink-soft);
     margin-top: 4px;
@@ -336,7 +349,7 @@
   .flow-row:last-child { border-bottom: none; padding-bottom: 0; }
   .flow-row:first-child { padding-top: 0; }
   .flow-step {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 10px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -349,7 +362,7 @@
     color: var(--ink);
   }
   .flow-body code {
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 12.5px;
     background: var(--content-2);
     padding: 1px 6px;
@@ -373,7 +386,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: "JetBrains Mono", monospace;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -500,7 +513,7 @@
     <div class="cs-section-label">02 &middot; Booking Flow</div>
     <h2 class="cs-section-title">A Ceremony Picker That Drafts Into the Inquiry</h2>
     <p class="cs-section-body">The hardest part of booking a wedding musician is the music decisions. Couples land on a violinist's site, fall in love with the idea, then realize they have to pick a processional, a recessional, a unity moment song, and a first dance before they can even ask for a quote. Most sites push that decision off to email, which means days of back and forth before Julie can give a number. The decision here was to let couples build the ceremony before they ever send the inquiry.</p>
-    <p class="cs-section-body">The repertoire page at <code style="font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--content-2);padding:1px 6px;border-radius:3px;">/wedding-ceremony-songs/</code> lets a couple pick a song for each ceremony moment from a list of 200+ tracks Julie actually plays. They can also add custom songs that fall outside the repertoire, with a clear note about the lead time and the fee. The full draft saves to localStorage under one namespaced key. When the couple opens the inquiry form on any page, a banner appears with a summary of what they picked and a checkbox asking if they want to attach the draft to this inquiry. Default is on.</p>
+    <p class="cs-section-body">The repertoire page at <code style="font-family:'JetBrains Mono','JBM Fallback',monospace;font-size:13px;background:var(--content-2);padding:1px 6px;border-radius:3px;">/wedding-ceremony-songs/</code> lets a couple pick a song for each ceremony moment from a list of 200+ tracks Julie actually plays. They can also add custom songs that fall outside the repertoire, with a clear note about the lead time and the fee. The full draft saves to localStorage under one namespaced key. When the couple opens the inquiry form on any page, a banner appears with a summary of what they picked and a checkbox asking if they want to attach the draft to this inquiry. Default is on.</p>
 
     <div class="flow-card">
       <div class="flow-row">

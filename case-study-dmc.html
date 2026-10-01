@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Study: DMC Canada '26 | Robert Van Liew</title>
-  <meta name="description" content="Case study: designing the DMC DJ Canada '26 brand and event identity. Visual system, motion, and front-end build by Robert Van Liew.">
+  <title>DMC Canada '26: DJ Event Website Case Study | Robert Van Liew</title>
+  <meta name="description" content="DJ event website case study: DMC World DJ Championships Canada, rebranded in one week with custom code on Squarespace, mobile-first shop, and Apple Pay.">
   <meta name="author" content="Robert Van Liew">
   <link rel="canonical" href="https://www.robertvanliew.com/dmc-dj-canada-case-study">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -15,14 +15,14 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://www.robertvanliew.com/dmc-dj-canada-case-study">
   <meta property="og:title" content="Case Study: DMC DJ Canada '26 · Robert Van Liew">
-  <meta property="og:description" content="Designing the DMC DJ Canada '26 brand and event identity. Visual system, motion, and front-end build.">
+  <meta property="og:description" content="DJ event website case study: DMC World DJ Championships Canada, rebranded in one week with custom code on Squarespace, mobile-first shop, and Apple Pay.">
   <meta property="og:image" content="https://www.robertvanliew.com/images/og-cover.png">
   <meta property="og:site_name" content="Robert Van Liew">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://www.robertvanliew.com/dmc-dj-canada-case-study">
   <meta name="twitter:title" content="Case Study: DMC DJ Canada '26 · Robert Van Liew">
-  <meta name="twitter:description" content="Designing the DMC DJ Canada '26 brand and event identity. Visual system, motion, and front-end build.">
+  <meta name="twitter:description" content="DJ event website case study: DMC World DJ Championships Canada, rebranded in one week with custom code on Squarespace, mobile-first shop, and Apple Pay.">
   <meta name="twitter:image" content="https://www.robertvanliew.com/images/og-cover.png">
 
   <script type="application/ld+json">
@@ -34,9 +34,9 @@
         "@id": "https://www.robertvanliew.com/dmc-dj-canada-case-study#creativework",
         "name": "DMC DJ Canada '26, Case Study",
         "url": "https://www.robertvanliew.com/dmc-dj-canada-case-study",
-        "description": "Case study covering the brand and event identity design for DMC DJ Canada '26.",
+        "description": "Case study: the DMC World DJ Championships Canada '26 site, rebranded in one week with custom code on Squarespace and a mobile-first shop.",
         "datePublished": "2026-04-23",
-        "dateModified": "2026-05-19",
+        "dateModified": "2026-10-01",
         "author": {
           "@type": "Person",
           "name": "Robert Van Liew",
@@ -179,7 +179,7 @@
     <section class="case-study-hero">
       <div class="container">
         <h1>DMC Canada '26</h1>
-        <p class="tags">UI/UX DESIGN | FULL STACK DEV | E-COMMERCE</p>
+        <p class="tags">UI/UX DESIGN | CUSTOM CODE ON SQUARESPACE | E-COMMERCE</p>
       </div>
     </section>
 
@@ -199,6 +199,9 @@
           
           <h3>Deliverables</h3>
           <p>Brand System, Custom Code, Shop and Ticketing</p>
+
+          <h3>Live</h3>
+          <p><a href="https://www.dmcdjcanada.com/" target="_blank" rel="noopener">dmcdjcanada.com</a></p>
         </div>
         
         <div class="cs-content">
@@ -215,11 +218,38 @@
             I designed a dark-themed, glassmorphic UI system with stark red contrasts to evoke competition and energy, then built it as custom CSS and JavaScript injected site-wide through Squarespace's header code injection: Bebas Neue and Barlow, an injected hero, a contact panel, and a live ticker. The shop, product pages, and cart were restyled mobile-first, because most ticket buyers arrive on a phone.
           </p>
           
+          <figure class="full-width-image">
+            <img src="images/dmc_mac_mockup.webp" alt="DMC Canada '26 homepage on desktop: dark theme, red accents, injected hero and event ticker" width="2000" height="925" loading="lazy" decoding="async">
+          </figure>
+
+          <h2>How the Custom Code Works</h2>
+          <p>
+            Everything custom lives in Squarespace's header code injection. It defines a small set of DMC color tokens (black, red, grey, white), restyles Squarespace's own sections to match the competition brand, and runs a short script that injects what the template can't make on its own: a hero overlay with two calls to action, Enter The Battle and View Bootcamps, and a red ticker under the hero that loops "DMC Canada '26 · Battle Ready · Online, Open To DJs Worldwide · Register Now."
+          </p>
+          <p>
+            The script checks whether each piece already exists before adding it, so nothing doubles up when Squarespace re-renders a page. Because the content itself still lives in Squarespace, the organizers keep editing events, products, and copy in the editor they already know.
+          </p>
+
           <h2>Payments Left Where They Can't Break</h2>
           <p>
             Squarespace doesn't let custom code touch its checkout, and for a ticket drop that is a feature: the payment path is the one part of the site that can't be broken by a design change. I connected Stripe as the payment processor and turned on Apple Pay and Google Pay, so buyers on a phone can pay without typing a card number. My custom code stops at the cart; checkout stays on the platform.
           </p>
           
+          <h2>What Broke</h2>
+          <p>
+            Working inside Squarespace means fighting its markup. Every custom element sits on top of a template I don't control, so selectors can break when the platform ships an update. The overrides lean on Squarespace's own section classes, which means the site needs a visual check whenever Squarespace changes its templates.
+          </p>
+
+          <h2>Sprint Results</h2>
+          <p>
+            Delivered in one week under a hard event deadline. Stakeholder sign-off came in a single design review, with no revision rounds on visual direction, and the build scored 94 on Lighthouse. The result is one dark, competition-ready brand across ticketing, official merchandise, bootcamps, event information, and battle registration.
+          </p>
+
+          <h2>Next Time</h2>
+          <p>
+            Push for a custom build the client owns, so the design isn't at the mercy of the platform.
+          </p>
+
           <a href="/work" class="back-btn">← Back to Portfolio</a>
         </div>
       </div>
