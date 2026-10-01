@@ -1,0 +1,24 @@
+name: IndexNow
+
+# After a push to main changes a page, ping IndexNow so Bing and partner
+# engines recrawl. Waits for the Vercel deploy so they fetch the new version.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Wait for the Vercel deploy
+        run: sleep 120
+      - name: Submit sitemap URLs
+        run: node indexnow.js
