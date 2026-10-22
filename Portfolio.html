@@ -2674,6 +2674,11 @@
 
             <form id="contact-form" action="https://formspree.io/f/xreroazy" method="POST" style="display:flex;flex-direction:column;gap:0;">
               <input type="hidden" id="cf-intent-hidden" name="intent" value="Role opportunity">
+              <!-- Honeypot: hidden from people, filled by bots. Formspree silently drops any submission with _gotcha set. -->
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+                <label for="cf-gotcha">Leave this field empty</label>
+                <input id="cf-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+              </div>
 
               <!-- Intent -->
               <div style="display:flex;flex-direction:column;gap:4px;border-bottom:1px solid var(--edge-soft);padding:12px 0;">
@@ -2731,9 +2736,33 @@
                 const status = document.getElementById('cf-status');
                 const btn = document.getElementById('cf-submit');
                 if (!form) return;
+                const loadedAt = Date.now();
+
+                // Spam bots fill forms instantly and stuff links into the name field.
+                // Flagged submissions get the normal success state but are never sent,
+                // so the bot has no signal to adapt to.
+                function looksLikeSpam() {
+                  const name = form.elements.name.value;
+                  const message = form.elements.message.value.trim();
+                  if (form.elements._gotcha.value) return true;
+                  if (Date.now() - loadedAt < 3000) return true;
+                  if (/https?:\/\/|www\.|\.com\b/i.test(name)) return true;
+                  if (message.length < 10 || !/\s/.test(message)) return true;
+                  return false;
+                }
+
+                function showSent() {
+                  form.reset();
+                  btn.textContent = 'Sent ✓';
+                  btn.style.background = '#2ec98e';
+                  status.textContent = 'Message received, talk soon.';
+                  status.style.opacity = '1';
+                }
+
                 form.addEventListener('submit', async function (e) {
                   e.preventDefault();
                   btn.disabled = true;
+                  if (looksLikeSpam()) { showSent(); return; }
                   btn.textContent = 'Sending…';
                   const data = new FormData(form);
                   try {
@@ -2743,11 +2772,7 @@
                       headers: { 'Accept': 'application/json' }
                     });
                     if (res.ok) {
-                      form.reset();
-                      btn.textContent = 'Sent ✓';
-                      btn.style.background = '#2ec98e';
-                      status.textContent = 'Message received, talk soon.';
-                      status.style.opacity = '1';
+                      showSent();
                     } else {
                       btn.disabled = false;
                       btn.textContent = 'Send →';
