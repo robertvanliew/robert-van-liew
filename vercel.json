@@ -2,7 +2,9 @@
   "redirects": [
     { "source": "/tax-analyzer", "destination": "/smart-deductions-case-study", "permanent": true },
     { "source": "/jersey-club-radio", "destination": "/jersey-club-radio-case-study", "permanent": true },
-    { "source": "/dmc-canada-26", "destination": "/dmc-dj-canada-case-study", "permanent": true }
+    { "source": "/dmc-canada-26", "destination": "/dmc-dj-canada-case-study", "permanent": true },
+    { "source": "/take-me-back-bingo-case-study", "destination": "/bangin-and-beats-case-study", "permanent": true },
+    { "source": "/case-study-take-me-back-bingo.html", "destination": "/bangin-and-beats-case-study", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/Portfolio.html" },
@@ -16,9 +18,9 @@
     { "source": "/jersey-club-radio-case-study", "destination": "/case-study-jersey-club.html" },
     { "source": "/dmc-dj-canada-case-study", "destination": "/case-study-dmc.html" },
     { "source": "/julie-schatz-case-study", "destination": "/case-study-julie-schatz.html" },
-    { "source": "/take-me-back-bingo-case-study", "destination": "/case-study-take-me-back-bingo.html" },
     { "source": "/jersey-city-sound-case-study", "destination": "/case-study-jersey-city-sound.html" },
-    { "source": "/lilys-secret-case-study", "destination": "/case-study-lilys-secret.html" }
+    { "source": "/lilys-secret-case-study", "destination": "/case-study-lilys-secret.html" },
+    { "source": "/bangin-and-beats-case-study", "destination": "/case-study-bangin-and-beats.html" }
   ],
   "headers": [
     {

@@ -1982,29 +1982,29 @@
           </div>
 
 
-          <!-- 05 Take Me Back Bingo -->
+          <!-- 05 Bangin' & Beats (formerly Take Me Back Bingo) -->
           <div class="project-card">
             <div class="mockup"
-              style="cursor:pointer;background:#141111;border:1px solid rgba(201,150,43,0.22);display:flex;align-items:center;justify-content:center;padding:48px 36px;"
-              onclick="window.location='/take-me-back-bingo-case-study'">
-              <img src="images/tmb-logo.png" alt="Take Me Back Bingo logo" loading="lazy" decoding="async"
+              style="cursor:pointer;background:#0A0A0A;border:1px solid rgba(212,175,55,0.28);display:flex;align-items:center;justify-content:center;padding:48px 36px;"
+              onclick="window.location='/bangin-and-beats-case-study'">
+              <img src="images/bb-logo.webp" alt="Bangin' and Beats logo: white balloon letters wrapped in a braided gold rope" width="480" height="320" loading="lazy" decoding="async"
                 style="width:80%;max-width:340px;height:auto;object-fit:contain;transition:transform .3s ease;"
                 onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
             </div>
             <div class="info">
-              <h2>Take Me Back <em>Bingo</em></h2>
-              <div class="tags">Editorial identity &nbsp;·&nbsp; In-browser game &nbsp;·&nbsp; Event &amp; FAQ schema &nbsp;·&nbsp; Share &amp; inquiry systems</div>
-              <p>A live-events brand that had to keep converting during the dark periods between announced calendars. I built the whole site as one state machine: every primary CTA carries its live behavior in data attributes, and a single feature flag rewrites the entire site between "Buy Tickets" and "Get Notified" with no duplicated markup. Also shipped a free in-browser 5x5 game, a share flow that works around an iOS Safari user-activation constraint, and Event plus FAQ schema tuned for People Also Ask.</p>
+              <h2>Bangin' &amp; <em>Beats</em></h2>
+              <div class="tags">Rebrand &amp; migration &nbsp;·&nbsp; In-browser game &nbsp;·&nbsp; Event &amp; FAQ schema &nbsp;·&nbsp; Share &amp; inquiry systems</div>
+              <p>A Hip-Hop and R&amp;B throwback party brand I built twice. The first site, as Take Me Back Bingo, ran as one state machine: a single feature flag rewrites every CTA between "Buy Tickets" and "Get Notified" with no duplicated markup, alongside a free in-browser 5x5 game and Event and FAQ schema. When that name couldn't be trademarked, I rebuilt the entire site as Bangin' &amp; Beats&trade; on a new domain, with brand-guard tests on every page and all 46 old URLs redirected so its search rankings moved with it.</p>
               <details class="story">
                 <summary>Why, how, what broke</summary>
                 <dl>
-                  <dt>Why</dt><dd>The brand had to keep converting in the gaps between announced event dates.</dd>
-                  <dt>How</dt><dd>Built the site as one state machine. A single feature flag flips every CTA between &ldquo;Buy Tickets&rdquo; and &ldquo;Get Notified&rdquo; with no duplicated markup. The free bingo game shuffles cards with Fisher-Yates, detects wins, and crossfades audio between two decks.</dd>
-                  <dt>What broke</dt><dd>I first built the game as song-recognition bingo. The client meant artist-recognition (you mark an artist when you hear any of their songs), so the card and play logic needed a full rethink. Separately, the share flow failed on iOS Safari because of its user-activation rule, so I restructured it.</dd>
-                  <dt>Next time</dt><dd>Pin down the game rules with the client before writing any logic.</dd>
+                  <dt>Why</dt><dd>The brand had to keep converting between announced event dates, then needed a new name when Take Me Back Bingo couldn't be trademarked.</dd>
+                  <dt>How</dt><dd>Built the first site as one state machine, with a single flag that flips every CTA. Then rebuilt the whole site under the new name, with a Playwright brand guard that fails the build if the old name shows up anywhere visible, and every old URL redirected in one hop.</dd>
+                  <dt>What broke</dt><dd>I first built the game as song-recognition when the client meant artist-recognition, so the card logic needed a full rethink. During the rebrand, Google's Change of Address tool kept failing until both https domains were verified as their own Search Console properties.</dd>
+                  <dt>Next time</dt><dd>Pin down the game rules before writing any logic, and confirm a name can be trademarked before building a brand around it.</dd>
                 </dl>
               </details>
-              <a class="case-link" href="/take-me-back-bingo-case-study"
+              <a class="case-link" href="/bangin-and-beats-case-study"
                 style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
                 Case Study &rarr;</a>
             </div>
