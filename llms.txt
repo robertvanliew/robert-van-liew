@@ -18,6 +18,10 @@ across financial products and SaaS platforms.
   Sole designer and engineer from problem validation to Figma prototyping to production.
   Persistent mini-player, animated waveform, WCAG-accessible design system.
 
+- **DEEJAY T-JR.** Booking site for a three-time DMC Canadian Champion turntablist, at deejaytjr.com.
+  Written for planners, promoters, and brands rather than fans; Astro build with zero layout shift; structured
+  data generated from the page content; pages in English, French, and Brazilian Portuguese; custom site editor.
+
 - **DMC DJ Canada '26**. Full brand and commerce platform for a competitive dance event.
   Delivered in 6 days from Figma to production. Lighthouse 94/100, zero revision rounds,
   full Stripe payment integration.
@@ -67,6 +71,7 @@ Specialized: PDF.js, Recharts, Formspree, Schema.org / JSON-LD, WCAG 2.1 AA acce
 - Case Study (Smart Deductions): https://www.robertvanliew.com/smart-deductions-case-study
 - Case Study (Jersey Club): https://www.robertvanliew.com/jersey-club-radio-case-study
 - Case Study (DMC Canada): https://www.robertvanliew.com/dmc-dj-canada-case-study
+- Case Study (DEEJAY T-JR.): https://www.robertvanliew.com/deejay-tjr-case-study
 - Case Study (Julie Schatz Music): https://www.robertvanliew.com/julie-schatz-case-study
 - Case Study (Bangin' & Beats, formerly Take Me Back Bingo): https://www.robertvanliew.com/bangin-and-beats-case-study
 - Case Study (The Jersey City Sound): https://www.robertvanliew.com/jersey-city-sound-case-study

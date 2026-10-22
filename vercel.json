@@ -22,7 +22,8 @@
     { "source": "/lilys-secret-case-study", "destination": "/case-study-lilys-secret.html" },
     { "source": "/bangin-and-beats-case-study", "destination": "/case-study-bangin-and-beats.html" },
     { "source": "/music-website-design", "destination": "/music-website-design.html" },
-    { "source": "/musician-website-cost", "destination": "/musician-website-cost.html" }
+    { "source": "/musician-website-cost", "destination": "/musician-website-cost.html" },
+    { "source": "/deejay-tjr-case-study", "destination": "/case-study-deejay-tjr.html" }
   ],
   "headers": [
     {
