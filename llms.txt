@@ -78,5 +78,6 @@ Specialized: PDF.js, Recharts, Formspree, Schema.org / JSON-LD, WCAG 2.1 AA acce
 - Case Study (Lily's Secret): https://www.robertvanliew.com/lilys-secret-case-study
 - LinkedIn: https://www.linkedin.com/in/robert-vanliew
 - GitHub: https://github.com/robertvanliew
+- Contra: https://contra.com/robertvanliewdesign
 - Email: robvanliew@gmail.com
 - Location: New York, NY, USA
