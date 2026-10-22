@@ -42,6 +42,16 @@ across financial products and SaaS platforms.
   a made-to-order builder with no checkout, six languages including full Arabic right-to-left, and
   an order pipeline that delivers to the studio in English whatever language the customer used.
 
+## Services
+
+Robert Van Liew designs and builds custom websites for musicians, DJs, bands, wedding and event musicians,
+and music event brands. Based in New York; works with artists in New York City and New Jersey, and remotely
+across the US. Projects start at $2,500, paid once, with no monthly fee. Includes custom design, a booking
+inquiry form, an EPK section, events, structured data for Google and AI search, and launch.
+
+- Music website design: https://www.robertvanliew.com/music-website-design
+- Musician website cost guide (2026): https://www.robertvanliew.com/musician-website-cost
+
 ## Skills & Tools
 
 Design: Figma, design systems, motion design, semantic color token systems.

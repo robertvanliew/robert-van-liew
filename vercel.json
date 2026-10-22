@@ -20,7 +20,9 @@
     { "source": "/julie-schatz-case-study", "destination": "/case-study-julie-schatz.html" },
     { "source": "/jersey-city-sound-case-study", "destination": "/case-study-jersey-city-sound.html" },
     { "source": "/lilys-secret-case-study", "destination": "/case-study-lilys-secret.html" },
-    { "source": "/bangin-and-beats-case-study", "destination": "/case-study-bangin-and-beats.html" }
+    { "source": "/bangin-and-beats-case-study", "destination": "/case-study-bangin-and-beats.html" },
+    { "source": "/music-website-design", "destination": "/music-website-design.html" },
+    { "source": "/musician-website-cost", "destination": "/musician-website-cost.html" }
   ],
   "headers": [
     {
