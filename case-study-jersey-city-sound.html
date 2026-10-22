@@ -473,7 +473,7 @@
   </div>
 
   <div class="cs-section">
-    <div class="cs-section-label">01 &middot; Information Architecture</div>
+    <div class="cs-section-label">Information Architecture</div>
     <h2 class="cs-section-title">248 Entries, One Source of Truth</h2>
     <p class="cs-section-body">An archive fails in one of two ways. It either becomes a CMS nobody maintains, or it becomes a pile of hand-edited pages that drift out of sync with each other. The decision here was to make the data the site. Every entry, with its facts, sources, roles, years active, cross-links, and galleries, lives in a single file at <code>data/entries.json</code>. Nothing about an entry is stored in its page, because the page does not exist until the generator writes it.</p>
     <p class="cs-section-body">One Python file, <code>execution/generate_entry_pages.py</code>, reads that data and writes the site. Every entry page, the A to Z archive index, the Legends memorial wing, the Sources bibliography, the search index, the sitemap, <code>robots.txt</code>, and <code>llms.txt</code>. It also deletes orphans, so an entry removed from the data disappears from the site instead of lingering as a dead URL. A correction from a family member is a one-line edit and a commit, not a content migration.</p>
@@ -516,7 +516,7 @@
       <div class="cs-figure__frame">
         <img src="images/jcs-archive.webp" alt="The Jersey City Sound A to Z archive index on archival paper, with a filter field and category chips" loading="lazy" width="2880" height="1800">
       </div>
-      <figcaption class="cs-figure__caption"><strong>Fig 1.</strong> The A to Z index. Every entry the generator has written, filtered by People, Groups, Venues, or Films, searching against a client-side index built from the same data file. The count in the middle is read from the data, so it cannot fall out of step with the list beneath it.</figcaption>
+      <figcaption class="cs-figure__caption">The A to Z index. Every entry the generator has written, filtered by People, Groups, Venues, or Films, searching against a client-side index built from the same data file. The count in the middle is read from the data, so it cannot fall out of step with the list beneath it.</figcaption>
     </figure>
 
     <p class="cs-section-body" style="margin-top:28px;">The entry template is the core unit, so it got the most attention. Breadcrumb, entry number set in letterspaced caps, name in a display serif, a one-line descriptor, then era and genre chips. The Record Card sits in the right rail holding the structured facts: portrait, years active, roles, genres, notable works, affiliations, and official links behind a gold hairline frame. Below that a lead paragraph, then Career, Notable Works, Credits and Receipts, In the Community, Gallery, numbered Sources, a claim bar, and three related entries.</p>
@@ -527,7 +527,7 @@
       <div class="cs-figure__frame">
         <img src="images/jcs-entry.webp" alt="An entry page showing the breadcrumb, entry number, era chips, drop-cap lead paragraph, and the Record Card in the right rail" loading="lazy" width="2880" height="1800">
       </div>
-      <figcaption class="cs-figure__caption"><strong>Fig 2.</strong> Entry № 001. The Record Card carries the structured facts in the right rail, the lead paragraph opens on a drop cap and is written to stand alone, and the era chips sit above the rule so the period is legible before a word is read.</figcaption>
+      <figcaption class="cs-figure__caption">Entry № 001. The Record Card carries the structured facts in the right rail, the lead paragraph opens on a drop cap and is written to stand alone, and the era chips sit above the rule so the period is legible before a word is read.</figcaption>
     </figure>
 
     <p class="cs-section-body" style="margin-top:28px;">The editorial standard is cite or cut. Nothing enters the archive without a source. That is a design constraint before it is an editorial one, because it forces the numbered sources block into the template as a permanent section rather than an optional footer. It also sets the tone: museum label, not music blog. Factual, warm, no hype, no beef. Receipts instead of adjectives.</p>
@@ -538,12 +538,12 @@
       <div class="cs-figure__frame">
         <img src="images/jcs-legends.webp" alt="The Legends memorial wing rendered in the night and gold theme, with entry numbers and names in memoriam" loading="lazy" width="2880" height="1800">
       </div>
-      <figcaption class="cs-figure__caption"><strong>Fig 3.</strong> The Legends wing. The theme inverts to night and gold and everything else holds, so the memorial pages read as part of the same building rather than a separate site.</figcaption>
+      <figcaption class="cs-figure__caption">The Legends wing. The theme inverts to night and gold and everything else holds, so the memorial pages read as part of the same building rather than a separate site.</figcaption>
     </figure>
   </div>
 
   <div class="cs-section">
-    <div class="cs-section-label">02 &middot; Discovery</div>
+    <div class="cs-section-label">Discovery</div>
     <h2 class="cs-section-title">Built to Be Cited</h2>
     <p class="cs-section-body">An archive nobody finds is a private document. The goal was blunter than ranking. When someone asks who the first Jersey City DJs were, whether they ask a search engine or a model, the answer should come from the people who were actually there. That means writing for extraction, not only for keywords.</p>
     <p class="cs-section-body">Every entry ships <strong>Person</strong> or <strong>MusicGroup</strong> schema with <code>sameAs</code> links out to official sites, streaming profiles, and Wikidata, plus a <strong>BreadcrumbList</strong>. Sitewide there is <strong>Organization</strong> with <code>areaServed</code> set to Jersey City, and a <strong>WebSite</strong> graph. Pillar and history pages carry <strong>FAQPage</strong> blocks phrased the way people actually ask. The sitemap is generated alongside the pages, so it cannot fall behind the content it describes.</p>
@@ -584,19 +584,19 @@
 
     <div class="flow-card">
       <div class="flow-row">
-        <div class="flow-step">01 &middot; Document</div>
+        <div class="flow-step">Document</div>
         <div class="flow-body">A name comes in from the community, often through Instagram or a family member. Facts get checked against a real source. If there is no source, it does not ship. The entry is added to <code>data/entries.json</code> with its citations attached.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">02 &middot; Generate</div>
+        <div class="flow-step">Generate</div>
         <div class="flow-body">One command rewrites every page from the data. The entry page, the archive index, the Legends wing if the entry is memorial, the sources bibliography, the search index, the sitemap, and both llms files. Orphaned pages are removed in the same pass.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">03 &middot; Publish</div>
+        <div class="flow-step">Publish</div>
         <div class="flow-body">Push to main. GitHub Actions ships the built folder to Pages behind the custom domain. There is no build server to maintain and no database to migrate, which is the whole point when the requirement is permanence.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">04 &middot; Get cited</div>
+        <div class="flow-step">Get cited</div>
         <div class="flow-body">Each documented name is a query with almost no competition. Every one that surfaces feeds authority back to the head terms, and the structured lead paragraph gives a model something clean to quote when the question arrives in natural language.</div>
       </div>
     </div>
@@ -605,7 +605,7 @@
       <div class="cs-figure__frame">
         <img src="images/jcs-entry-mobile.webp" alt="An entry page on a phone, with the navigation stacked and the Record Card moved out of the right rail into the single column" loading="lazy" width="1170" height="2532">
       </div>
-      <figcaption class="cs-figure__caption"><strong>Fig 4.</strong> On mobile the Record Card leaves the right rail and drops into the single column directly under the entry header, so the structured facts still arrive before the prose rather than after all of it.</figcaption>
+      <figcaption class="cs-figure__caption">On mobile the Record Card leaves the right rail and drops into the single column directly under the entry header, so the structured facts still arrive before the prose rather than after all of it.</figcaption>
     </figure>
   </div>
 

@@ -482,7 +482,7 @@
   </div>
 
   <div class="cs-section">
-    <div class="cs-section-label">01 &middot; The Original Site: Identity</div>
+    <div class="cs-section-label">The Original Site: Identity</div>
     <h2 class="cs-section-title">A Mixtape You Can Actually Play</h2>
     <p class="cs-section-body">Music bingo as a category is crowded with neon and chrome. Every competing site looks like a generic event landing page with a stock crowd photo and a CTA. The brief here was the opposite: build an identity that signals throwback at first glance, then keeps revealing detail the longer you look. The decision was to treat the whole site as a mixtape and to let the J-card be the home page.</p>
     <p class="cs-section-body">The hero is a literal cassette J-card. On the left, a hand-drawn tracklist sits inside a flippable 5x5 bingo card with daubed squares already filled in. On the right, an animated cassette body with photo-real wound-tape reels rendered as inline SVG with <code>feTurbulence</code> and <code>feDisplacementMap</code> filters, two screws with phillips-head indents, a gold tape window, and a J-card label printed in three typefaces. The whole thing spins. Below it, an editorial bio with a drop cap, a pull quote, and a rotating message slot. The type system carries it: <strong>Bungee</strong> for display, <strong>Permanent Marker</strong> for script accents, <strong>Newsreader</strong> for editorial prose, <strong>Sora</strong> for body, <strong>JetBrains Mono</strong> for spec lines. Five faces, each doing a specific job.</p>
@@ -524,7 +524,7 @@
       <div class="cs-figure__frame">
         <video src="images/tmb-gameplay.mp4" poster="images/tmb-gameplay-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="In-browser bingo game with daubed squares running as a song plays"></video>
       </div>
-      <figcaption class="cs-figure__caption"><strong>Fig 1.</strong> Custom in-browser bingo at <code>/play</code>. A 5x5 card I engineered from scratch: vanilla JS state machine, gold ink-stamp daub squares with <code>radial-gradient</code> + <code>mix-blend-mode</code>, a purple FREE space, and a yell-it-out call phrase to close a line.</figcaption>
+      <figcaption class="cs-figure__caption">Custom in-browser bingo at <code>/play</code>. A 5x5 card I engineered from scratch: vanilla JS state machine, gold ink-stamp daub squares with <code>radial-gradient</code> + <code>mix-blend-mode</code>, a purple FREE space, and a yell-it-out call phrase to close a line.</figcaption>
     </figure>
 
     <p class="cs-section-body" style="margin-top:28px;">Then the identity becomes a product. The site ships with a free in-browser game at <code>/play</code>, a real 5x5 card that daubs itself as a DJ-mixed playlist runs underneath it, with a purple FREE space, gold ink-stamp daubers, and a yell-it-out call phrase to close a line. The bingo card isn't an illustration of the brand. The bingo card <em>is</em> the brand, and people can actually play it for free, no signup, no account. That single piece of functionality answers the &ldquo;what is this&rdquo; question better than any marketing copy could.</p>
@@ -533,7 +533,7 @@
   </div>
 
   <div class="cs-section">
-    <div class="cs-section-label">02 &middot; The Original Site: Production Systems</div>
+    <div class="cs-section-label">The Original Site: Production Systems</div>
     <h2 class="cs-section-title">Discovery, Share, and the Dates-Pending Toggle</h2>
     <p class="cs-section-body">A music bingo brand lives or dies on two things, whether people can find a night and whether they tell their friends about it. The events page does the first job, the share system does the second, and a single feature flag governs the awkward third case where dates aren't yet announced. The decision was to treat all three as one production surface, not as three separate features bolted on.</p>
     <p class="cs-section-body">Discovery starts with schema. The events page carries a full <strong>Event</strong> block per night with offers, performers, venue address, and ticket URLs across SimpleTix, Eventbrite, and Posh. A <strong>BreadcrumbList</strong> wires Home / Events / Summer Jam back to the canonical brand. The homepage ships a fourteen-question <strong>FAQPage</strong> tuned for People Also Ask, plus <strong>WebSite</strong>, <strong>Organization</strong>, and <strong>Person</strong> graphs that connect the brand, the in-browser game, and the designer behind both through a shared <code>@id</code> reference network. The sitemap declares four indexable URLs with explicit <code>lastmod</code> and priority. The result is that long-tail searches like <em>music bingo near me</em>, <em>how does music bingo work</em>, or <em>music bingo Woodbridge NJ</em> all surface the right page, with the right FAQ snippet rendered inline in the SERP.</p>
@@ -577,19 +577,19 @@
 
     <div class="flow-card">
       <div class="flow-row">
-        <div class="flow-step">01 &middot; Discover</div>
+        <div class="flow-step">Discover</div>
         <div class="flow-body">Long-tail search lands on <code>/events</code>. Event schema, BreadcrumbList, and geo signals make the SERP entry rich: address, date, ticket price, and a Home / Events trail all visible before the click.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">02 &middot; Share</div>
+        <div class="flow-step">Share</div>
         <div class="flow-body">User taps the share button on a card. On mobile, <code>navigator.share()</code> fires synchronously with title, text, and URL. On desktop, a popover opens with copy-link, social destinations, and a download-flyer item that uses the card's <code>data-share-image</code> attribute.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">03 &middot; Inquire</div>
+        <div class="flow-step">Inquire</div>
         <div class="flow-body">CTAs across the site carry <code>data-inquiry-topic</code> and <code>data-inquiry-context</code>. The modal reads them, pre-selects the dropdown, rewrites the message placeholder, and exposes booking-only fields when the topic starts with &ldquo;Private booking&rdquo;.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">04 &middot; Toggle</div>
+        <div class="flow-step">Toggle</div>
         <div class="flow-body">A single <code>/dates-pending.js</code> file governs the &ldquo;Buy Tickets&rdquo; vs &ldquo;Get Notified&rdquo; copy across every CTA. Flip the constant inside it, every button on the site swaps copy and destination. Newsletter posts to <code>/api/subscribe</code>, a Resend Audience integration, with a floating toast for the confirmation.</div>
       </div>
     </div>
@@ -600,7 +600,7 @@
   </div>
 
   <div class="cs-section">
-    <div class="cs-section-label">03 &middot; The Rebrand</div>
+    <div class="cs-section-label">The Rebrand</div>
     <h2 class="cs-section-title">New Name, Same Rankings</h2>
     <p class="cs-section-body">Take Me Back Bingo couldn't be trademarked, so the brand had to change its name while it was already selling tickets and ranking in search. It became Bangin' &amp; Beats&trade;, and I rebuilt the whole website around the new logo: glossy white balloon letters wrapped in a braided gold rope. The cassette and J-card identity belonged to the old name, so it was retired, not recolored. The new system is black lacquer, braided gold, and crimson for VIP and private-party moments, carrying the owner's new copy, a strictly 30 &amp; Up audience, and $35 tickets as the one primary action on every screen.</p>
 
@@ -608,7 +608,7 @@
       <div class="cs-figure__frame">
         <img src="images/bb-home.webp" alt="The Bangin' and Beats home page: the gold rope logo over a crowd photo, the headline The Ultimate Hip-Hop and R&amp;B 90s and 00s Interactive Throwback Experience, and Get Tickets and Book a Private Party buttons" width="2160" height="1350" loading="lazy" decoding="async">
       </div>
-      <figcaption class="cs-figure__caption"><strong>Fig 2.</strong> The rebuilt home page at banginandbeats.com. The logo sets the whole palette: pearl white, braided gold, and black.</figcaption>
+      <figcaption class="cs-figure__caption">The rebuilt home page at banginandbeats.com. The logo sets the whole palette: pearl white, braided gold, and black.</figcaption>
     </figure>
 
     <p class="cs-section-body" style="margin-top:28px;">The in-browser game was renamed with the brand. It is now THE BEAT BOARD&trade;: columns spell B-E-A-T-S, the center square reads BANGIN', and a completed line ends with the shout &ldquo;THAT'S BANGIN'!&rdquo; The rounds were narrowed to four eras, 90s Rap, 90s R&amp;B, 2000s Hip-Hop, and 2000s Slow Jams. The game engine carried over. Everything a player sees changed.</p>
@@ -617,7 +617,7 @@
       <div class="cs-figure__frame">
         <img src="images/bb-play-mobile.webp" alt="THE BEAT BOARD play page on a phone, with the headline Test your throwback vibe and four era buttons" width="780" height="1688" loading="lazy" decoding="async">
       </div>
-      <figcaption class="cs-figure__caption"><strong>Fig 3.</strong> THE BEAT BOARD&trade; on a phone, the free preview that turns curiosity into a ticket.</figcaption>
+      <figcaption class="cs-figure__caption">THE BEAT BOARD&trade; on a phone, the free preview that turns curiosity into a ticket.</figcaption>
     </figure>
 
     <p class="cs-section-body" style="margin-top:28px;">The hard part of a rename is the leftovers. One stray &ldquo;bingo&rdquo; in an image description or a share preview undoes the trademark work. So the new site ships with a brand guard: a Playwright test that loads every page and checks seven surfaces, the visible text, the title, every meta tag, every link, every image description, every accessibility label, and the structured data, and fails the build if the old name, the word bingo, or the old phone number shows up in any of them. Internal code names inside the game were left alone on purpose. Nobody sees them, and renaming them risked breaking the game.</p>

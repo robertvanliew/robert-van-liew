@@ -466,7 +466,7 @@
   </div>
 
   <div class="cs-section">
-    <div class="cs-section-label">01 &middot; Discoverability</div>
+    <div class="cs-section-label">Discoverability</div>
     <h2 class="cs-section-title">SEO and Schema as the Foundation</h2>
     <p class="cs-section-body">A wedding musician site only works if couples can find it. The previous page had no meta description, no Open Graph tags, no canonical, and no structured data. To Google it was a name and a phone number floating in an empty room. The first decision was to treat SEO and schema as the foundation of the build rather than a pass at the end.</p>
     <p class="cs-section-body">The homepage carries seventeen JSON-LD blocks. Each one answers a specific question Google asks when it tries to understand a local service business. <strong>LocalBusiness</strong> and <strong>MusicGroup</strong> establish the dual identity, a service business that also performs as an artist. <strong>Person</strong> ties Julie to her ISNI, MusicBrainz, Spotify, and Apple Music identifiers so search engines treat her as the same entity across the open web. Eight separate <strong>Service</strong> entries describe what she actually offers, from solo ceremony violin to the Soul Shades duo to beat licensing. <strong>Event</strong> entries cover fourteen confirmed upcoming bookings with town-level locations and performer references. <strong>Review</strong> entries carry ten verbatim five-star testimonials with an <strong>AggregateRating</strong> derived from the actual count, never fabricated. <strong>FAQPage</strong> covers the eight questions that come up in every booking call. <strong>VideoObject</strong> entries surface the five performance clips for Google video search.</p>
@@ -510,26 +510,26 @@
   </div>
 
   <div class="cs-section">
-    <div class="cs-section-label">02 &middot; Booking Flow</div>
+    <div class="cs-section-label">Booking Flow</div>
     <h2 class="cs-section-title">A Ceremony Picker That Drafts Into the Inquiry</h2>
     <p class="cs-section-body">The hardest part of booking a wedding musician is the music decisions. Couples land on a violinist's site, fall in love with the idea, then realize they have to pick a processional, a recessional, a unity moment song, and a first dance before they can even ask for a quote. Most sites push that decision off to email, which means days of back and forth before Julie can give a number. The decision here was to let couples build the ceremony before they ever send the inquiry.</p>
     <p class="cs-section-body">The repertoire page at <code style="font-family:'JetBrains Mono','JBM Fallback',monospace;font-size:13px;background:var(--content-2);padding:1px 6px;border-radius:3px;">/wedding-ceremony-songs/</code> lets a couple pick a song for each ceremony moment from a list of 200+ tracks Julie actually plays. They can also add custom songs that fall outside the repertoire, with a clear note about the lead time and the fee. The full draft saves to localStorage under one namespaced key. When the couple opens the inquiry form on any page, a banner appears with a summary of what they picked and a checkbox asking if they want to attach the draft to this inquiry. Default is on.</p>
 
     <div class="flow-card">
       <div class="flow-row">
-        <div class="flow-step">01 &middot; Pick</div>
+        <div class="flow-step">Pick</div>
         <div class="flow-body">Couple visits <code>/wedding-ceremony-songs/</code> and selects songs for processional, recessional, unity, first dance, parent dances. Each pick saves to <code>localStorage</code> under <code>julieschatz.ceremony.v1</code>.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">02 &middot; Surface</div>
+        <div class="flow-step">Surface</div>
         <div class="flow-body">Inquiry drawer opens on any page. A <code>MutationObserver</code> watches the drawer for the <code>.active</code> class. When it appears, the draft is read from <code>localStorage</code> and rendered inline as a summary banner.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">03 &middot; Attach</div>
+        <div class="flow-step">Attach</div>
         <div class="flow-body">Checkbox defaults to attached. On submit, a capture-phase listener serializes the draft into a hidden <code>ceremony_selections</code> field before the form handler reads <code>FormData</code>. Order matters here, capture phase runs before the bubble-phase hardened-form handler.</div>
       </div>
       <div class="flow-row">
-        <div class="flow-step">04 &middot; Clear</div>
+        <div class="flow-step">Clear</div>
         <div class="flow-body">Draft only clears on confirmed submission success. A <code>MutationObserver</code> watches for the success state replacing the form. Validation errors, disposable email rejection, and network failures all leave the draft intact so the couple does not lose their work.</div>
       </div>
     </div>
