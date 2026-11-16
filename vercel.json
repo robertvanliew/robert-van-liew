@@ -25,7 +25,10 @@
     { "source": "/musician-website-cost", "destination": "/musician-website-cost.html" },
     { "source": "/what-to-put-on-a-dj-website", "destination": "/what-to-put-on-a-dj-website.html" },
     { "source": "/squarespace-vs-bandzoogle-vs-custom", "destination": "/squarespace-vs-bandzoogle-vs-custom.html" },
-    { "source": "/deejay-tjr-case-study", "destination": "/case-study-deejay-tjr.html" }
+    { "source": "/deejay-tjr-case-study", "destination": "/case-study-deejay-tjr.html" },
+    { "source": "/holland-tunnel-gallery-case-study", "destination": "/case-study-holland-tunnel-gallery.html" },
+    { "source": "/minimo-activities-case-study", "destination": "/case-study-minimo-activities.html" },
+    { "source": "/soul-shades-case-study", "destination": "/case-study-soul-shades.html" }
   ],
   "headers": [
     {

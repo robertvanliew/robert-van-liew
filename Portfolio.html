@@ -2288,6 +2288,91 @@
                 Case Study &rarr;</a>
             </div>
           </div>
+
+
+          <!-- Holland Tunnel Gallery -->
+          <div class="project-card">
+            <div class="mockup"
+              style="cursor:pointer;background:#faf8f6;border:1px solid rgba(231,93,24,0.35);padding:0;overflow:hidden;line-height:0;"
+              onclick="window.location='/holland-tunnel-gallery-case-study'">
+              <img src="images/htg-redesign-home.webp" alt="Holland Tunnel Gallery home page with the show title Unframed in large black type beside a wall of landscape paintings" width="2160" height="1350" loading="lazy" decoding="async"
+                style="width:100%;height:auto;display:block;transition:transform .3s ease;"
+                onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div class="info">
+              <h2>Holland Tunnel <em>Gallery</em></h2>
+              <div class="tags">Gallery website &nbsp;·&nbsp; Artist archive &nbsp;·&nbsp; Data visualization &nbsp;·&nbsp; Redesign</div>
+              <p>A redesign and Astro rebuild for a gallery that started in a Williamsburg garden shed in 1997 and now runs shows, concerts and films in Newburgh, NY. One data file per artist drives their record, every show page, a connection wheel on each profile, and a network graph of 212 connections, all drawn at build time so they work without JavaScript. Only verified profiles reach search engines, every artist gets generated share images, and the home page picks the current show by date. A poster-scale redesign, live at hollandtunnelgallery.com.</p>
+              <details class="story">
+                <summary>Why, how, what broke</summary>
+                <dl>
+                  <dt>Why</dt><dd>Twenty-nine years of shows and hundreds of artists, and the people behind them deserved more than a list of past exhibitions.</dd>
+                  <dt>How</dt><dd>Each artist's file lists their shows, and everything else (show pages, wheels, the network, the directory) is computed from that one list, so nothing can drift.</dd>
+                  <dt>What broke</dt><dd>The old orange wordmark measured 2.99:1 and failed contrast, so the site uses a slightly deeper orange and keeps orange text to 24 px and up. Photos taken from the old site came with white screenshot frames, so a script now trims them.</dd>
+                  <dt>Next time</dt><dd>Agree on the verification rules with the client before importing the archive, not after.</dd>
+                </dl>
+              </details>
+              <a class="case-link" href="/holland-tunnel-gallery-case-study"
+                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
+                Case Study &rarr;</a>
+            </div>
+          </div>
+
+          <!-- MiniMo Activities -->
+          <div class="project-card flip">
+            <div class="mockup"
+              style="cursor:pointer;background:#fdf4e9;border:1px solid rgba(31,111,106,0.3);padding:0;overflow:hidden;line-height:0;"
+              onclick="window.location='/minimo-activities-case-study'">
+              <img src="images/mm-home.webp" alt="MiniMo Activities home page with the headline Small moments. Real connection. beside the watercolor logo" width="2160" height="1350" loading="lazy" decoding="async"
+                style="width:100%;height:auto;display:block;transition:transform .3s ease;"
+                onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div class="info">
+              <h2>MiniMo <em>Activities</em></h2>
+              <div class="tags">Redesign &nbsp;·&nbsp; Next.js &nbsp;·&nbsp; WordPress migration &nbsp;·&nbsp; Interaction design</div>
+              <p>The site for two apps, MiniMo Kids and MiniMo Couples, moved off a WordPress theme and rebuilt as a static Next.js site at minimoactivities.com. A watercolor design system taken from the logo, a Moment Picker that suggests one activity for the moment a parent is actually in, all 41 old URLs kept, and connected structured data for both apps and every article.</p>
+              <details class="story">
+                <summary>Why, how, what broke</summary>
+                <dl>
+                  <dt>Why</dt><dd>Tired parents don't browse a library. They need one idea that fits right now, and the old theme couldn't give them that.</dd>
+                  <dt>How</dt><dd>A static export with no server to maintain, a design system built from the logo's own colors, and a picker that treats answers as hard limits.</dd>
+                  <dt>What broke</dt><dd>The first picker always returned something, including crafts for parents in a car. It now says so honestly when nothing fits. WordPress dates without time zones caused 36 sitemap errors until a date formatter fixed them.</dd>
+                  <dt>Next time</dt><dd>Write the picker's rules with the client before building the ranking.</dd>
+                </dl>
+              </details>
+              <a class="case-link" href="/minimo-activities-case-study"
+                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
+                Case Study &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Soul Shades -->
+          <div class="project-card">
+            <div class="mockup"
+              style="cursor:pointer;background:#0a0805;border:1px solid rgba(198,160,122,0.35);padding:0;overflow:hidden;line-height:0;"
+              onclick="window.location='/soul-shades-case-study'">
+              <img src="images/ss-home.webp" alt="Soul Shades home page with the wordmark in large raised letters and buttons to book the duo and hear the single Get Up" width="2160" height="1350" loading="lazy" decoding="async"
+                style="width:100%;height:auto;display:block;transition:transform .3s ease;"
+                onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+            <div class="info">
+              <h2>Soul <em>Shades</em></h2>
+              <div class="tags">Booking site &nbsp;·&nbsp; Music store &nbsp;·&nbsp; React &nbsp;·&nbsp; Schema &amp; AI search</div>
+              <p>Booking home and label site for a New York duo, DJ DX and Julie Schatz, at soulshadesmusic.com. A booking flow with spam filtering, a pay-what-you-want Stripe store, a release page for the single Get Up, every route prerendered so search engines and AI crawlers can read it, and an MCP server that lets AI assistants read prices and send inquiries.</p>
+              <details class="story">
+                <summary>Why, how, what broke</summary>
+                <dl>
+                  <dt>Why</dt><dd>One site had to book corporate work, sell music to fans, and launch a release without the three getting in each other's way.</dd>
+                  <dt>How</dt><dd>React and Vite on Vercel, prerendered to static HTML, with the server deciding what a buyer gets and one connected graph of structured data.</dd>
+                  <dt>What broke</dt><dd>The first store let the browser name the files being bought, so an edited request could buy anything for $3. The server decides now. Orders of four or more tracks also hit Stripe's 500-character limit on order data.</dd>
+                  <dt>Next time</dt><dd>Prerender from day one instead of after launch.</dd>
+                </dl>
+              </details>
+              <a class="case-link" href="/soul-shades-case-study"
+                style="all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid transparent;transition:border-color .15s;margin-top:4px;">View
+                Case Study &rarr;</a>
+            </div>
+          </div>
         </div>
       </section>
 

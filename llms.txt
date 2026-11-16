@@ -41,6 +41,19 @@ across financial products and SaaS platforms.
   client-side search index, the sitemap, and llms.txt. Cite-or-cut editorial standard, Person and
   MusicGroup schema per entry, no framework and no database.
 
+- **Holland Tunnel Gallery**. Redesign and rebuild for a Newburgh, NY art gallery founded in a
+  Williamsburg garden shed in 1997, live at hollandtunnelgallery.com. Astro artist archive where
+  one data file per artist drives show pages, connection wheels, and a build-time network graph;
+  verification status controls indexing; share images generated per artist; home page picks the show by date.
+
+- **MiniMo Activities**. Site for the MiniMo Kids and MiniMo Couples apps, rebuilt from WordPress as a
+  static Next.js site at minimoactivities.com: watercolor design system, a Moment Picker that suggests
+  one screen-free activity, all 41 URLs kept, structured data for both apps and every article.
+
+- **Soul Shades**. Booking and label site for the New York duo of DJ DX and Julie Schatz at
+  soulshadesmusic.com: booking with spam filtering, a pay-what-you-want Stripe store, the Get Up release
+  page, prerendered routes, connected structured data, and an MCP server for AI assistants.
+
 - **Lily's Secret**. Brand site for a UAE candle maker whose product hides a personal message in the
   wax, at lilysecretcandles.com. An interactive candle the visitor lights to reveal the message,
   a made-to-order builder with no checkout, six languages including full Arabic right-to-left, and
@@ -77,6 +90,9 @@ Specialized: PDF.js, Recharts, Formspree, Schema.org / JSON-LD, WCAG 2.1 AA acce
 - Case Study (Julie Schatz Music): https://www.robertvanliew.com/julie-schatz-case-study
 - Case Study (Bangin' & Beats, formerly Take Me Back Bingo): https://www.robertvanliew.com/bangin-and-beats-case-study
 - Case Study (The Jersey City Sound): https://www.robertvanliew.com/jersey-city-sound-case-study
+- Case Study (Holland Tunnel Gallery): https://www.robertvanliew.com/holland-tunnel-gallery-case-study
+- Case Study (MiniMo Activities): https://www.robertvanliew.com/minimo-activities-case-study
+- Case Study (Soul Shades): https://www.robertvanliew.com/soul-shades-case-study
 - Case Study (Lily's Secret): https://www.robertvanliew.com/lilys-secret-case-study
 - LinkedIn: https://www.linkedin.com/in/robert-vanliew
 - GitHub: https://github.com/robertvanliew

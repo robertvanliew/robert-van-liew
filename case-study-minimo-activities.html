@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MiniMo Activities, Case Study, Robert Van Liew</title>
+<meta name="description" content="Case study: rebuilding a WordPress site as a static Next.js site for two family apps, with a new visual direction, a moment picker, and all 41 URLs kept.">
+<meta name="author" content="Robert Van Liew">
+<link rel="canonical" href="https://www.robertvanliew.com/minimo-activities-case-study">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.robertvanliew.com/minimo-activities-case-study">
+<meta property="og:title" content="MiniMo Activities, Case Study, Robert Van Liew">
+<meta property="og:description" content="A WordPress site rebuilt in Next.js for two apps for parents and couples: a watercolor design system, an activity picker, and a migration that kept every URL.">
+<meta property="og:image" content="https://www.robertvanliew.com/images/mm-home.webp">
+<meta property="og:site_name" content="Robert Van Liew">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://www.robertvanliew.com/minimo-activities-case-study">
+<meta name="twitter:title" content="MiniMo Activities, Case Study, Robert Van Liew">
+<meta name="twitter:description" content="A WordPress site rebuilt in Next.js for two apps for parents and couples: a watercolor design system, an activity picker, and a migration that kept every URL.">
+<meta name="twitter:image" content="https://www.robertvanliew.com/images/mm-home.webp">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CreativeWork",
+      "@id": "https://www.robertvanliew.com/minimo-activities-case-study#creativework",
+      "name": "MiniMo Activities, Case Study",
+      "url": "https://www.robertvanliew.com/minimo-activities-case-study",
+      "description": "Case study covering the redesign and rebuild of minimoactivities.com, the site for the MiniMo Kids and MiniMo Couples apps: a watercolor editorial design system, a constraint-based activity picker, a WordPress to static Next.js migration that kept all 41 URLs, and structured data for apps and articles.",
+      "datePublished": "2026-11-16",
+      "dateModified": "2026-11-16",
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.robertvanliew.com/#person",
+        "name": "Robert Van Liew",
+        "url": "https://www.robertvanliew.com/"
+      },
+      "about": {
+        "@type": "Organization",
+        "name": "MiniMo Activities",
+        "url": "https://minimoactivities.com/"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.robertvanliew.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.robertvanliew.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://www.robertvanliew.com/#work"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MiniMo Activities",
+          "item": "https://www.robertvanliew.com/minimo-activities-case-study"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap"></noscript>
+<style>
+  /* Georgia scaled to Fraunces' width, so serif text keeps its line breaks when the web font loads. */
+  @font-face {
+    font-family: 'Fraunces Fallback';
+    src: local('Georgia');
+    size-adjust: 104.3%;
+  }
+  /* Fallback with JetBrains Mono's 0.6em advance, so mono text wraps the same before
+     and after the web font arrives (no layout shift on load). */
+  @font-face {
+    font-family: 'JBM Fallback';
+    src: local('Courier New'), local('Cousine'), local('Liberation Mono'), local('Nimbus Mono PS');
+  }
+  :root{
+    --bg-chrome:   #e2e4e3;
+    --bg-chrome-2: #d4d7d4;
+    --tab-inactive:#dcdedc;
+    --tab-hover:   #e8eae8;
+    --tab-active:  #f3f5f2;
+    --content:     #f3f5f2;
+    --content-2:   #e9ebe8;
+    --edge:        #c0c4c1;
+    --edge-soft:   #d4d7d3;
+    --ink:         #202522;
+    --ink-soft:    #5f6561;
+    --ink-faint:   #646a67;
+    --accent:      #1f6f6a;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Fraunces", "Fraunces Fallback", serif;
+    color: var(--ink);
+    background: var(--content);
+    min-height: 100vh;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--content);
+    border-bottom: 1px solid var(--edge-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 72px;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+  }
+  .nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color .15s, border-color .15s;
+  }
+  .nav-back:hover { color: var(--ink); border-color: var(--edge); }
+  .nav-crumb {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .nav-tag {
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    padding: 4px 10px;
+    border: 1px solid var(--edge-soft);
+    border-radius: 4px;
+  }
+
+  .page {
+    padding: 56px 72px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .project-eyebrow {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .project-eyebrow .crumb-cur {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .project-eyebrow .sep { color: var(--edge); font-family: "JetBrains Mono", "JBM Fallback", monospace; font-size: 11px; }
+
+  h1.title {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  h1.title em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 28px;
+  }
+  .project-tags span {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 5px 11px;
+    border: 1px solid var(--edge-soft);
+    border-radius: 4px;
+  }
+
+  .cs-intro {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 56px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--edge-soft);
+  }
+  .cs-desc {
+    font-size: 18px;
+    line-height: 1.65;
+    color: #332e24;
+    text-wrap: pretty;
+  }
+  .cs-desc em { color: var(--accent); font-style: italic; }
+  .cs-desc a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  .cs-meta-list { display: flex; flex-direction: column; gap: 18px; }
+  .cs-meta-item .k {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .cs-meta-item .v {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .cs-meta-item .v a { color: var(--accent); text-decoration: none; }
+  .cs-meta-item .v a:hover { text-decoration: underline; }
+
+  .cs-section { margin-bottom: 60px; }
+  .cs-section-label {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cs-section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--edge-soft);
+  }
+  .cs-section-title {
+    font-family: "Fraunces", serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .cs-section-body {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    text-wrap: pretty;
+    margin-bottom: 14px;
+  }
+  .cs-section-body strong { color: var(--ink); font-weight: 600; }
+  .cs-section-body a { color: var(--accent); }
+
+  .figure-frame {
+    margin-top: 28px;
+    background: #0f0a1a;
+    border: 1px solid rgba(168,85,247,0.15);
+    border-radius: 12px;
+    padding: 28px 24px;
+    color: #f4efe6;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    box-shadow: 0 16px 48px rgba(15,10,26,0.35);
+  }
+  .figure-frame .figure-label {
+    font-size: 9.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.5);
+    margin-bottom: 14px;
+  }
+  .figure-frame pre {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 11.5px;
+    line-height: 1.65;
+    white-space: pre;
+    overflow-x: auto;
+    color: rgba(244,239,230,0.92);
+    margin: 0;
+  }
+  .figure-caption {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .schema-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .schema-pill {
+    border: 1px solid var(--edge-soft);
+    border-radius: 8px;
+    padding: 14px 18px;
+    background: #fff;
+  }
+  .schema-pill .k {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+  .schema-pill .v {
+    font-family: "Fraunces", "Fraunces Fallback", serif;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .schema-pill .sub {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  .flow-card {
+    margin-top: 28px;
+    background: #fff;
+    border: 1px solid var(--edge-soft);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .flow-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--edge-soft);
+    align-items: start;
+  }
+  .flow-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .flow-row:first-child { padding-top: 0; }
+  .flow-step {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 3px;
+  }
+  .flow-body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .flow-body code {
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 12.5px;
+    background: var(--content-2);
+    padding: 1px 6px;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  .outro {
+    border-top: 1px solid var(--edge-soft);
+    padding-top: 36px;
+    margin-top: 40px;
+  }
+  .outro-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+  .outro-cta {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", "JBM Fallback", monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 3px;
+  }
+  .outro-cta:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  @media (max-width: 820px) {
+    nav { padding: 12px 20px; }
+    .nav-crumb { display: none; }
+    .page { padding: 36px 20px 80px; }
+    .cs-intro { grid-template-columns: 1fr; gap: 28px; }
+    .schema-grid { grid-template-columns: 1fr; }
+    .flow-row { grid-template-columns: 1fr; gap: 6px; }
+    .figure-frame { padding: 20px 16px; }
+    .figure-frame pre { font-size: 10.5px; }
+  }
+</style>
+<style>
+  img { max-width: 100%; height: auto; }
+  .cs-figure { margin: 28px 0 14px; }
+  .cs-figure__frame { background: #fdf4e9; border: 1px solid rgba(31, 111, 106, 0.25); border-radius: 14px; overflow: hidden; box-shadow: 0 18px 48px rgba(14, 13, 12, 0.22); }
+  .cs-figure__frame img { display: block; width: 100%; height: auto; }
+  .cs-figure__caption { font-family: "JetBrains Mono", "JBM Fallback", monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-faint); margin-top: 10px; line-height: 1.55; }
+  .cs-figure__caption strong { color: var(--ink-soft); font-weight: 600; }
+  .cs-figure--phone { max-width: 320px; margin-left: auto; margin-right: auto; }
+  .cs-figure--phone .cs-figure__caption { text-align: center; }
+  @media (max-width: 640px) { h1.title { font-family: "Fraunces", "Fraunces Fallback", serif; } }
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-back">&larr; Portfolio</a>
+  <span class="nav-crumb">case study / minimo-activities</span>
+  <span class="nav-tag">Family &middot; 2026</span>
+</nav>
+
+<div class="page">
+
+  <div class="project-eyebrow">
+    <a href="/" class="nav-back">&larr; Work</a>
+    <span class="sep">/</span>
+    <span class="crumb-cur">MiniMo Activities</span>
+  </div>
+
+  <h1 class="title">MiniMo <em>Activities</em></h1>
+
+  <div class="project-tags">
+    <span>Redesign</span>
+    <span>Next.js</span>
+    <span>Migration</span>
+    <span>Interaction Design</span>
+    <span>Schema &amp; AI Search</span>
+  </div>
+
+  <div class="cs-intro">
+    <div class="cs-desc">
+      MiniMo Activities makes two apps: MiniMo Kids, with short screen-free activities for parents of young children, and MiniMo Couples, with low-pressure ways for couples to reconnect. The website sells both apps and publishes free activity ideas and guides. It ran on a WordPress theme hosted on SiteGround. I redesigned it and rebuilt it as a static Next.js site at <a href="https://minimoactivities.com/" target="_blank" rel="noopener">minimoactivities.com</a>, kept every one of its 41 existing URLs, and added a picker that suggests one activity for the moment you are actually in.
+    </div>
+    <div class="cs-meta-list">
+      <div class="cs-meta-item"><div class="k">Role</div><div class="v">Designer &amp; Developer</div></div>
+      <div class="cs-meta-item"><div class="k">Client</div><div class="v">MiniMo Activities</div></div>
+      <div class="cs-meta-item"><div class="k">Timeline</div><div class="v">November 2026</div></div>
+      <div class="cs-meta-item"><div class="k">Stack</div><div class="v">Next.js 15 static export, React 19, Tailwind v4, Cloudflare Pages</div></div>
+      <div class="cs-meta-item"><div class="k">Live</div><div class="v"><a href="https://minimoactivities.com/" target="_blank" rel="noopener">minimoactivities.com &nearr;</a></div></div>
+      <div class="cs-meta-item"><div class="k">Scope</div><div class="v">Design system, build, WordPress migration, picker, structured data</div></div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Design</div>
+    <h2 class="cs-section-title">A Watercolor System Taken From the Logo</h2>
+    <p class="cs-section-body">The brand already had its best asset: a soft watercolor logo. The design system starts there. The page background is the exact cream of the logo, and the palette is pulled from its brush strokes: peach, clay, sage, and a warm mimosa yellow. One deep teal is the only color used for actions, so every button and link reads the same way across the site. Kids pages lean peach and clay, Couples pages lean sage and mimosa, so you always know which app a page is about.</p>
+    <p class="cs-section-body">Headings are set in Fraunces, a soft serif, and body text in Nunito, a rounded sans that matches the apps themselves. A light paper grain sits over the page, the hero headline gets a hand-drawn underline, and the logo is used as decoration rather than just a mark. Every color pair has its contrast ratio written next to the design token, and the teal measures 5.6:1 against the cream.</p>
+    <figure class="cs-figure">
+      <div class="cs-figure__frame">
+        <img src="images/mm-home.webp" alt="The minimoactivities.com home page: the headline Small moments. Real connection. with a hand-drawn underline beside the watercolor logo, and buttons to find an idea or get the apps" width="2160" height="1350" loading="lazy" decoding="async">
+      </div>
+      <figcaption class="cs-figure__caption">The home page. One action color, and a headline written for tired parents and busy couples.</figcaption>
+    </figure>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Interaction</div>
+    <h2 class="cs-section-title">A Picker for the Moment You Are In</h2>
+    <p class="cs-section-body">Parents don't browse an activity library at 5 pm. They want one idea that fits right now. The Moment Picker asks a few quick questions: for kids, where you are, your child's mood, and how much energy you have left, with an optional step for age, time, supplies, and whether everyone has to stay seated. For couples, it asks about energy and mood. It returns three ideas, then a gentle invitation to try the app. The free library is never locked.</p>
+    <p class="cs-section-body">The first version ranked every activity and always returned something, which meant suggesting a craft to a parent in a car. The rework treats the answers as hard limits instead of preferences, and when nothing fits it says so honestly instead of guessing. The matching logic has its own tests, so new activities can't quietly break it.</p>
+    <figure class="cs-figure cs-figure--phone">
+      <div class="cs-figure__frame">
+        <img src="images/mm-mobile.webp" alt="The MiniMo home page on a phone, with the headline, the Find an idea now button, and No prep, Screen-free for kids, and 5 to 15 minutes" width="780" height="1688" loading="lazy" decoding="async">
+      </div>
+      <figcaption class="cs-figure__caption">On a phone. Most visitors are parents holding one.</figcaption>
+    </figure>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">Migration &amp; Search</div>
+    <h2 class="cs-section-title">Leaving WordPress Without Losing a Page</h2>
+    <p class="cs-section-body">The new site is a static export: plain HTML that loads fast and has no server or database to maintain. All 41 saved WordPress URLs still work, and old feeds and archive pages send visitors to their new equivalents with permanent redirects. The 30 original featured images were restored byte for byte. Articles are now published through a JSON import that has to be approved before anything goes live, so nobody needs WordPress to add an activity.</p>
+    <p class="cs-section-body">Search was planned with the build. Every page carries connected structured data: the organization, the website, both apps as mobile applications for iOS and Android, articles, FAQs, and breadcrumbs. A check script audits every built page for title length, description length, and markup. The site also names AI crawlers in its robots file and publishes an llms.txt.</p>
+    <div class="schema-grid">
+      <div class="schema-pill"><div class="k">URLs kept</div><div class="v">41 of 41</div><div class="sub">Every saved WordPress address still resolves</div></div>
+      <div class="schema-pill"><div class="k">Images</div><div class="v">Under 100 KB</div><div class="sub">Featured art and share images, resized and compressed</div></div>
+      <div class="schema-pill"><div class="k">Structured data</div><div class="v">One graph</div><div class="sub">Organization, both apps, articles, FAQs, collections, and breadcrumbs</div></div>
+      <div class="schema-pill"><div class="k">Internal links</div><div class="v">2 to 4+</div><div class="sub">Minimum links pointing to each article, after the audit</div></div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="cs-section-label">What Broke</div>
+    <h2 class="cs-section-title">The Fixes After Launch</h2>
+    <p class="cs-section-body">Search Console reported 36 sitemap errors after the move, because WordPress dates had no time zone. A small date formatter fixed all of them. Ahrefs didn't recognize articles marked up as two types at once, so they became plain Articles. Old feed and archive URLs started showing up as 404s, and each got a redirect. Cookie consent now uses Google Consent Mode, so the analytics tag only loads after a visitor accepts.</p>
+  </div>
+
+  <div class="outro">
+    <div class="cs-section-label">Outro</div>
+    <p class="outro-body">The old site was a theme with content poured into it. The new one looks like the apps, answers the question a tired parent is actually asking, and moved off WordPress without losing a single URL. The picker is the part I would show first: it's small, honest when it has nothing to offer, and it sends people to the apps without locking anything.</p>
+    <a class="outro-cta" href="https://minimoactivities.com/" target="_blank" rel="noopener">Visit the live site &nearr;</a>
+  </div>
+
+</div>
+
+</body>
+</html>
