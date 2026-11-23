@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Robert Van Liew, Senior Product Designer, Resume</title>
-<meta name="description" content="Resume of Robert Van Liew, Senior Product Designer in New York. Fintech and SaaS product design, design systems, accessibility, front-end engineering." />
+<title>Robert Van Liew, Senior Product Designer &amp; Design Engineer, Resume</title>
+<meta name="description" content="Resume of Robert Van Liew, Senior Product Designer and Design Engineer in New York. Fintech and SaaS product design, design systems, accessibility, front-end engineering." />
 <meta name="author" content="Robert Van Liew" />
 <link rel="canonical" href="https://www.robertvanliew.com/resume" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
@@ -14,13 +14,13 @@
 
 <meta property="og:type" content="profile" />
 <meta property="og:url" content="https://www.robertvanliew.com/resume" />
-<meta property="og:title" content="Robert Van Liew, Senior Product Designer, Resume" />
+<meta property="og:title" content="Robert Van Liew, Senior Product Designer &amp; Design Engineer, Resume" />
 <meta property="og:description" content="Fintech and SaaS product design, design systems, accessibility, and front-end engineering. New York." />
 <meta property="og:image" content="https://www.robertvanliew.com/images/og-cover.png" />
 <meta property="og:site_name" content="Robert Van Liew" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Robert Van Liew, Senior Product Designer, Resume" />
+<meta name="twitter:title" content="Robert Van Liew, Senior Product Designer &amp; Design Engineer, Resume" />
 <meta name="twitter:description" content="Fintech and SaaS product design, design systems, accessibility, and front-end engineering. New York." />
 <meta name="twitter:image" content="https://www.robertvanliew.com/images/og-cover.png" />
 
@@ -29,7 +29,7 @@
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "url": "https://www.robertvanliew.com/resume",
-  "name": "Robert Van Liew, Senior Product Designer, Resume",
+  "name": "Robert Van Liew, Senior Product Designer & Design Engineer, Resume",
   "mainEntity": {
     "@type": "Person",
     "@id": "https://www.robertvanliew.com/#person",
@@ -113,6 +113,7 @@
     text-transform: uppercase;
     margin: 0 0 10px;
   }
+  .contact.pdf-link { margin-top: 4px; }
   .contact {
     font-family: var(--mono);
     font-size: 10.5px;
@@ -241,6 +242,7 @@
 
   /* ---------------- print --------------------- */
   @media print {
+    .pdf-link { display: none; }
     @page { size: Letter; margin: 0.35in 0.5in; }
     html, body { background: #fff; padding: 0; }
     .sheet {
@@ -282,7 +284,7 @@
   <!-- ============ HEADER ============ -->
   <header class="header">
     <h1 class="name">Robert Van Liew<em>.</em></h1>
-    <p class="role-line">Senior Product Designer &nbsp;·&nbsp; Full-Stack Developer</p>
+    <p class="role-line">Senior Product Designer &nbsp;·&nbsp; Design Engineer</p>
     <p class="contact">
       New York, NY &nbsp;|&nbsp;
       <a href="mailto:design@robertvanliew.com">design@robertvanliew.com</a> &nbsp;|&nbsp;
@@ -292,13 +294,14 @@
       <a href="https://linkedin.com/in/robert-vanliew">linkedin.com/in/robert-vanliew</a> &nbsp;|&nbsp;
       <a href="https://github.com/robertvanliew">github.com/robertvanliew</a>
     </p>
+    <p class="contact pdf-link"><a href="/Robert_Van_Liew_Resume.pdf" download>Download PDF ↗</a></p>
   </header>
 
   <!-- ============ SUMMARY ============ -->
   <section class="section" style="margin-top:0">
     <h2 class="section__title">Summary</h2>
     <p class="summary">
-      Senior Product Designer and Full-Stack Developer who writes the code and owns the semantic
+      Senior Product Designer and Design Engineer who writes the code and owns the semantic
       architecture. End-to-end design and engineering for fintech and SaaS products, with
       deep work in privacy-first architecture, WCAG accessibility, and React production
       systems.
@@ -314,13 +317,14 @@
         <h3 class="role__company">Smart Deductions</h3>
         <span class="role__dates">December 2025 - April 2026</span>
       </div>
-      <p class="role__title">Lead Product Designer and Front-End Engineer · Remote</p>
+      <p class="role__title">Founding Product Designer &amp; Engineer · Remote</p>
       <p class="role__lead">
-        Sole designer and engineer on a local-first financial SaaS for 1099 contractors,
-        built end-to-end in code using Claude and CLI workflows.
+        Sole designer and engineer on a local-first financial SaaS for 1099 contractors
+        (product strategy with a co-founder); designed and built the product end to end in
+        code with Claude and CLI workflows.
       </p>
       <ul class="role__list">
-        <li>Architected a zero-knowledge parsing engine that turns any PDF bank statement into an IRS-ready, auto-categorized CSV in under five seconds. Zero servers, zero accounts.</li>
+        <li>Architected a client-side parsing engine (bank statements never leave the browser) that turns PDF statements, CSV exports, and ZIP batches into an IRS-ready, auto-categorized CSV in under five seconds. Zero servers, zero accounts.</li>
         <li>Designed and shipped high-fidelity dashboards with purposeful motion, semantic tokens, and nine Schedule C categories rendered consistently across donut, bar, transaction, and export surfaces.</li>
         <li>Built a command palette, dual chart views, and a full WCAG 2.1 AA component library, audited at every commit rather than retrofitted.</li>
       </ul>
@@ -350,7 +354,7 @@
       </p>
       <ul class="role__list">
         <li><b>DMC Canada</b> (dmcdjcanada.com): sole designer-developer for the Canadian division of the DMC World DJ Championships. Reskinned the full Squarespace site in a one-week sprint through custom header code injection: dark theme, custom type, injected hero, contact panel, and ticker. Lighthouse 94, zero revision rounds.</li>
-        <li><b>Jersey Club Radio</b> (jerseyclubradio.com): React and Vite 24/7 streaming platform with a Supabase backend on Vercel, four schema types, persistent mini-player, and accessible dark UI. Currently live in Beta.</li>
+        <li><b>Jersey Club Radio</b> (jerseyclubradio.com): React and Vite 24/7 streaming platform with a Supabase backend on Vercel, four JSON-LD schema types (RadioStation, Organization, WebSite, FAQPage), persistent mini-player, and accessible dark UI. Currently live in Beta.</li>
         <li><b>Julie Schatz Music</b> (julieschatzmusic.com): editorial site for a Brooklyn-based violinist. 17 JSON-LD blocks wired through @id references, local-first ceremony picker, Formspree booking integration.</li>
         <li><b>Bangin' &amp; Beats</b> (banginandbeats.com, formerly Take Me Back Bingo): designed and built the site for a Hip-Hop and R&amp;B throwback party brand running live nights in NY/NJ, then rebuilt it end to end when the original name couldn't be trademarked. New identity, a renamed in-browser game, brand-guard tests on every page, and a domain migration with all 46 old URLs redirected in one hop.</li>
       </ul>
@@ -392,7 +396,7 @@
 
   <!-- ============ CERTIFICATIONS ============ -->
   <section class="section">
-    <h2 class="section__title">Recognition &amp; Certifications</h2>
+    <h2 class="section__title">Education, Certifications &amp; Recognition</h2>
     <div class="certs">
       <div class="cert">
         <span class="cert__name">AWS re:Invent 2026 All Builders Welcome Grant, Early Career Participant</span>

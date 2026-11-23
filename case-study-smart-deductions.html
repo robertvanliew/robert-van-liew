@@ -1526,7 +1526,7 @@
         <div class="cs-intro">
           <div class="cs-desc">
             Sole designer and engineer on <em>Smart Deductions</em>, a local-first, privacy-native expense tracker
-            built for <b>LLC owners and 1099 contractors</b>. Upload any PDF bank statement or CSV and receive an
+            built for <b>LLC owners and 1099 contractors</b>. Accepts PDF bank statements, CSV exports, and ZIP batches (multi-file by default) and returns an
             IRS-ready, auto-categorized dashboard in seconds. <em>Zero servers. Zero accounts. Nothing leaves your
               browser.</em> As an LLC owner myself, I lived this problem: parsing deductible expenses across multiple
             statements every quarter is painful, error-prone, and time-consuming. Smart Deductions eliminates that
@@ -1536,7 +1536,7 @@
           <div class="cs-meta-list">
             <div class="cs-meta-item">
               <div class="k">Role</div>
-              <div class="v">Product Designer · Engineer</div>
+              <div class="v">Founding Product Designer &amp; Engineer</div>
             </div>
             <div class="cs-meta-item">
               <div class="k">Stack</div>
@@ -1594,7 +1594,7 @@
                 </div>
 
                 <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;">Upload Statements</div>
-                <div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:18px;">Drag and drop your PDF bank statements or ZIP files here,<br>or click to browse.</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;margin-bottom:18px;">Drag and drop PDF bank statements, CSV exports, or ZIP files here,<br>or click to browse.</div>
 
                 <!-- ★ Privacy callout. the key design decision -->
                 <div style="background:rgba(0,212,160,0.05);border:1px solid rgba(0,212,160,0.18);border-radius:20px;padding:7px 14px;display:flex;align-items:center;gap:7px;">
@@ -3090,7 +3090,7 @@
                   style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2ec98e;margin-bottom:8px;">
                   Feature Scoping</div>
                 <p style="font-size:13px;line-height:1.6;color:#8892a4;margin:0;">Cut an ambitious OCR receipt-matching
-                  feature for V1 and shipped a rock-solid regex extraction engine instead. When engine confidence is low
+                  feature for V1 and shipped a rock-solid client-side parsing engine instead (bank statements never leave the browser). When engine confidence is low
                   on a row, the UI flags it for user review rather than silently misfiling it. Shipping a reliable core
                   outweighs experimental edge cases on V1.</p>
               </div>
@@ -3120,7 +3120,7 @@
                   style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#2ec98e;margin-bottom:8px;">
                   AI Workflow Acceleration</div>
                 <p style="font-size:13px;line-height:1.6;color:#8892a4;margin:0;">I used Claude and Gemini to accelerate
-                  the React/Vite boilerplate. Scaffolding the PDF.js parsing pipeline, regex extraction engine, and CSV
+                  the React/Vite boilerplate. Scaffolding the PDF.js parsing pipeline, client-side parsing engine, and CSV
                   export logic in hours rather than days. This freed me to spend the majority of build time on the
                   high-judgment design work: the confidence-flagging UX, the cross-linked chart interaction model, and
                   the purposeful motion system. Adopting AI tools to improve efficiency is not a shortcut; it's a force
